@@ -6,14 +6,38 @@ var app = express();
 var compiler = webpack(config);
 var session = require('express-session');
 var bodyParser = require('body-parser');
-var db = require('./models');
+//var db = require('./models');
+var MongoStore = require("connect-mongo")(session); 
 
-//create session 
+// APIs 
+var mongoose = require("mongoose"); 
+mongoose.connect("mongodb://localhost:27017/tennis");
+
+var db = mongoose.connection; 
+db.on("error", console.error.bind(console, "# MongoDB - Connection Error: "));
+// setup sessions 
+
 app.use(session({
-	secret: "super secret password",
-	resave: false,
-	saveUninitialized: true
+  secret: "robots",
+  saveUninitialized: false, 
+  resave: false,
+  store: new MongoStore({mongooseConnection: db, ttl: 2*24*60*60 })
+  // ttl ---> time to leave 2 days * 24 hrs * 60 min & 60 sec 
+  // eCommerce 2-4 weeks 
 }));
+
+var Courts = require("./models/courts.js"); 
+
+//--->>> POST BOOKS <<<-----// 
+
+app.get("/courts", function(req,res){
+  Courts.find(function(err, courts){
+    if(err){
+      console.log("error getting courts ", err); 
+    }
+    res.json(courts); 
+  });
+});
 
 // create idea of logged in user 
 app.use("/", function (req, res, next) {
@@ -87,17 +111,6 @@ app.post('/login', function(req, res){
 	});
 });
 
-app.get('/products', function(req, res){
-	
-	db.Product.find({}, function(err, products){
-		if(products){
-			res.send(products)
-		}else{
-			res.send([]);
-		}
-	});
-		
-});
 
 app.get('/logout', function(req, res){
 	req.logout(); 
