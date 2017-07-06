@@ -12,7 +12,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 
-//components `
+//components
 import App from 'App';
 import LoginContainer from './containers/LoginContainer';
 import SignUpContainer from './containers/SignUpContainer';
@@ -30,13 +30,16 @@ const store = createStore(
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render((
-	<Provider store={store}>
-		<Router history={history}>
-			<Route path="/" pageId="wrapper" component={Wrapper}>
-				<IndexRoute pageId="index" component={App}/>
-				<Route path="/login" pageId="Login" component={LoginContainer}/>
-				<Route path="/signup" pageId="SignUp" component={SignUpContainer}/>
-			</Route>
-		</Router>
-	</Provider>), document.getElementById('root'));
+const routes = (
+		<Provider store={store}>
+			<Router history={history}>
+				<Route path="/" pageId="wrapper" component={Wrapper}>
+					<IndexRoute pageId="index" component={App} />
+					<Route path="/login" pageId="Login" component={LoginContainer} />
+					<Route path="/signup" pageId="SignUp" component={SignUpContainer} />
+				</Route>
+			</Router>
+		</Provider>
+	)
+
+ReactDOM.render(routes, document.getElementById('root'));
