@@ -34,34 +34,35 @@ class Map extends Component {
 	        
 	            
 	        function Legend(controlDiv, map) {
-	          // Set CSS styles for the DIV containing the control
-	          // Setting padding to 5 px will offset the control
-	          // from the edge of the map
-	          controlDiv.style.padding = '5px';
+	            // Set CSS styles for the DIV containing the control
+	            // Setting padding to 5 px will offset the control
+	            // from the edge of the map
+	            controlDiv.style.padding = '5px';
 
-	          // Set CSS for the control border
-	          var controlUI = document.createElement('DIV');
-	          controlUI.style.backgroundColor = 'black';
-	          controlUI.style.borderStyle = 'solid';
-	          controlUI.style.borderWidth = '1px';
-	          controlUI.title = 'Legend';
-	          controlDiv.appendChild(controlUI);
+	            // Set CSS for the control border
+	            var controlUI = document.createElement('DIV');
+	            controlUI.style.backgroundColor = 'black';
+	            controlUI.style.borderStyle = 'solid';
+	            controlUI.style.borderWidth = '1px';
+	            controlUI.title = 'Legend';
+	            controlDiv.appendChild(controlUI);
 
-	          // Set CSS for the control text
-	          var controlText = document.createElement('DIV');
-	          controlText.style.fontFamily = 'Arial,sans-serif';
-	          controlText.style.fontSize = '12px';
-	          controlText.style.paddingLeft = '4px';
-	          controlText.style.paddingRight = '4px';
+	            // Set CSS for the control text
+	            var controlText = document.createElement('DIV');
+	            controlText.style.fontFamily = 'Arial,sans-serif';
+	            controlText.style.fontSize = '12px';
+	            controlText.style.paddingLeft = '4px';
+	            controlText.style.paddingRight = '4px';
 	          
-	          // Add the text
-	          controlText.innerHTML = '<b><center> Map Key </center></b><br />' +
+	            // Add the text
+	            controlText.innerHTML = '<b><center> Map Key </center></b><br />' +
 	            '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /> Tennis Club<br />' +
 	            '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /> Public Tennis Court<br />' +
 	            '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/> Tennis Shop<br />' +
 	            '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /> Other Facility <br />';
-	          controlUI.appendChild(controlText); 
-	        }
+	            
+	            controlUI.appendChild(controlText); 
+		    }
 
 				 var mapOptions = {
 	                center: new google.maps.LatLng(37.763108, -122.455799),
@@ -81,13 +82,14 @@ class Map extends Component {
 	            var bounds = new google.maps.LatLngBounds(); 
 	            
 	            function getPinColor(data){
-	                if(data.type === 'shop'){
+	            	let courtType = data.type.toLowerCase();
+	                if(courtType === 'shop'){
 	                    return "FE7569"
-	                }else if(data.type === 'club'){
+	                }else if(courtType === 'club'){
 	                    return "F8EC3B"
-	                }else if (data.type === 'court'){
+	                }else if (courtType === 'court'){
 	                    return "3BF83E"
-	                }else if (data.type === 'other'){
+	                }else if (courtType === 'other'){
 	                    return "00ccff"
 	                }else{
 	                    return "FE7569"
@@ -96,7 +98,6 @@ class Map extends Component {
 
 	        	for(var j=0; j<points.length; j++){
 		          (function(j){
-
 		                var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + getPinColor(_this.props.courts[j]),
 		                  new google.maps.Size(21, 34),
 		                  new google.maps.Point(0,0),
@@ -118,11 +119,13 @@ class Map extends Component {
 
 		         })(j) 
 	  		}
+	  			var legendDiv = document.createElement('div');
+	            legendDiv.style.color = "orange";
+	            var legend = new Legend(legendDiv, map);
+	            legendDiv.index = 1;
+	            map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
 		}else{
-			var map = new google.maps.Map(document.getElementById('map'), {
-	          center: {lat: -34.397, lng: 150.644},
-	          zoom: 8
-			});
+			
   		}
   	}
 }
