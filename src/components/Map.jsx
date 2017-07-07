@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 
 class Map extends Component {
 
-	componentWillReceiveProps(nextProps) {
-		if(nextProps.length > 0){
-			this.setState({
-				courts: this.props.courts
-			})
+	constructor(props){
+		super(props); 
+		this.state = {
+			courts: [],
+			expanded: false
+		}
+	}
+
+	// componentWillReceiveProps(nextProps) {
+	// 	if(nextProps.length > 0){
+	// 		this.setState({
+	// 			courts: this.props.courts
+	// 		})
+	// 	}
+	// }
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if(this.state.courts.length > 0){
+			return false;
+		}else{
+			return true;
 		}
 	}
 
@@ -26,7 +42,12 @@ class Map extends Component {
   	}
 
   	componentDidUpdate(){
-  		if(this.props.courts){
+  		if(this.props.courts.length > this.state.courts.length){
+  			this.setState({
+  				courts: this.props.courts
+  			})
+  		}
+  		if(this.state.courts.length > 0){
   			var styles = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#3a3a3a"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"lightness":20}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"on"},{"saturation":"0"},{"lightness":"100"},{"color":"#ffffff"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"landscape.natural.landcover","elementType":"labels.text.fill","stylers":[{"lightness":"-37"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":0.2},{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"lightness":"34"},{"color":"#e74110"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#090909"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"geometry","stylers":[{"lightness":17},{"color":"#1a1a1a"}]}]; 
 	        var courts; 
 	        var points = [];
@@ -113,9 +134,128 @@ class Map extends Component {
 		              		shadow: pinShadow,
 		        			map: map
 		        		});
+
+		        		var type = _this.state.courts[j].type.toLowerCase();
+		        		var contentString;
+		        		
+		        		if(type === "club"){
+		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].ClubName +  
+			            '<br/>'+
+			            '<br/>'+
+			            'Address: ' + _this.state.courts[j].ClubAddress
+			            '</font>'+
+			            '</div>';
+		        		}else if(type === "shop"){
+		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].name +  
+			            '<br/>'+
+			            '<br/>'+
+			            'Address: ' + _this.state.courts[j].address 
+			            '</font>'+
+			            '</div>';
+		        		}else{
+		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].CourtName +  
+			            '<br/>'+
+			            '<br/>'+
+			            'Address: ' + _this.state.courts[j].Address 
+			            '</font>'+
+			            '</div>';
+		        		}
+		        			
+
+			            // Create new info window - Popup with street location and the title of the movie 
+				          var infowindow = new google.maps.InfoWindow({
+				          content: contentString
+				          }, {passive: true});
+				          
+				          google.maps.event.addListener(infowindow,'closeclick',function(){
+				              _this.setState({
+				                expanded: false 
+				              }); //removes the marker
+				              // then, remove the infowindows name from the array
+				            }, {passive: true});
+				           
+				          
+
+				           google.maps.event.addListener(map,'click',function(){
+				           	console.log("map clicked")
+				           	
+				           	_this.setState({
+				           		expanded: false
+				           	});
+				           	infowindow.close(map,marker); 
+				           }, {passive: true});
+
 			
 		        		bounds.extend(marker.getPosition());
 		        		map.setCenter(bounds.getCenter());
+
+
+		        	google.maps.event.addListener(marker, 'click', function() {
+		        			
+		        		console.log("clicked ", _this.state);
+		        		
+
+	              if(_this.state.expanded === false){
+	              
+	          		
+	          		
+	                infowindow.open(map,marker);      
+	              
+	              // This is where the court data is set to the state of the app for display
+	              
+	              var type = _this.state.courts[j].type.toLowerCase();
+	              
+	              if(type === 'shop'){
+	                _this.setState({
+	                  name: _this.state.courts[j].name,
+	                  address: _this.state.courts[j].address,
+	                  phone: _this.state.courts[j].phone,
+	                  xcoord: _this.state.courts[j].xcoord,
+	                  ycoord: _this.state.courts[j].ycoord,
+	                  type: _this.state.courts[j].type,
+	                 // mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord} />, 
+	                  expanded: true
+	                });   
+	              }else if(type === 'club'){
+	                _this.setState({
+	                  name: _this.state.courts[j].ClubName,
+	                  address: _this.state.courts[j].ClubAddress,
+	                  phone: _this.state.courts[j].ClubPhone,
+	                  xcoord: _this.state.courts[j].xcoord,
+	                  ycoord: _this.state.courts[j].ycoord,
+	                  lights: _this.state.courts[j].ClubLights,
+	                  type: _this.state.courts[j].type,
+	                  wall: _this.state.courts[j].ClubWall,
+	                  grass: _this.state.courts[j].ClubGrass,
+	                  proShop: _this.state.courts[j].ClubProShop,
+	                  courtNumber: _this.state.courts[j].ClubCourts,
+	                  clay: _this.state.courts[j].ClubClay,
+	                  indoor: _this.state.courts[j].ClubIndoor,
+	                  string: _this.state.courts[j].ClubStringing,
+	                  //mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord}/>, 
+	                  expanded: true
+	                }); 
+	              
+	              }else if(type === "court" || type === 'other'){
+	                
+	                _this.setState({
+	                  name: _this.state.courts[j].CourtName,
+	                  address: _this.state.courts[j].Address,
+	                  xcoord: _this.state.courts[j].xcoord,
+	                  ycoord: _this.state.courts[j].ycoord,
+	                  lights: _this.state.courts[j].Lights,
+	                  type: _this.state.courts[j].type,
+	                  //mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord}/>, 
+	                  expanded: true   
+	                });   
+	              }else{
+	                // _this.setState({
+	                //   name: "An error has occured",
+	                //   expanded: true
+	                // }); 
+	              }
+	              }
+	            }, {passive: false});
 
 		         })(j) 
 	  		}
