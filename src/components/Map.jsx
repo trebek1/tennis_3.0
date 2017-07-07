@@ -16,6 +16,7 @@ class Map extends Component {
 		this.getPinColor = this.getPinColor.bind(this);
 		this.createMarker = this.createMarker.bind(this); 
 		this.setMarkerContent = this.setMarkerContent.bind(this);
+		this.setMarkerDataToState = this.setMarkerDataToState.bind(this);
 	}
 
 	createLegend(map){
@@ -101,6 +102,64 @@ class Map extends Component {
 			map: map
 		});
 		return marker; 
+	}
+
+	setMarkerDataToState(index){
+
+		var type = this.state.courts[index].type.toLowerCase();
+		var courts = this.state.courts;
+
+          
+          if(type === 'shop'){
+            _this.setState({
+              name: courts[index].name,
+              address: courts[index].address,
+              phone: courts[index].phone,
+              xcoord: courts[index].xcoord,
+              ycoord: courts[index].ycoord,
+              type: courts[index].type,
+             // mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord} />, 
+              expanded: true
+            });   
+          }else if(type === 'club'){
+            _this.setState({
+              name: courts[index].ClubName,
+              address: courts[index].ClubAddress,
+              phone: courts[index].ClubPhone,
+              xcoord: courts[index].xcoord,
+              ycoord: courts[index].ycoord,
+              lights: courts[index].ClubLights,
+              type: courts[index].type,
+              wall: courts[index].ClubWall,
+              grass: courts[index].ClubGrass,
+              proShop: courts[index].ClubProShop,
+              courtNumber: courts[index].ClubCourts,
+              clay: courts[index].ClubClay,
+              indoor: courts[index].ClubIndoor,
+              string: courts[index].ClubStringing,
+              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
+              expanded: true
+            }); 
+          
+          }else if(type === "court" || type === 'other'){
+            
+            _this.setState({
+              name: courts[index].CourtName,
+              address: courts[index].Address,
+              xcoord: courts[index].xcoord,
+              ycoord: courts[index].ycoord,
+              lights: courts[index].Lights,
+              type: courts[index].type,
+              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
+              expanded: true   
+            });   
+          }else{
+            // _this.setState({
+            //   name: "An error has occured",
+            //   expanded: true
+            // }); 
+          }
+
 	}
 
 	setMarkerContent(index){
@@ -215,28 +274,27 @@ class Map extends Component {
 
 
         	for(var j=0; j<points.length; j++){
-	          (function(j){
+	            (function(j){
 	          		
 	                var marker = _this.createMarker(map,points,j);
 	        		var infowindow = _this.setMarkerContent(j); 
 
-			          google.maps.event.addListener(infowindow,'closeclick',function(){
-			              _this.setState({
-			                expanded: false 
-			              }); //removes the marker
-			              // then, remove the infowindows name from the array
-			            }, {passive: true});
-			           
+			        google.maps.event.addListener(infowindow,'closeclick',function(){
+		              _this.setState({
+		                expanded: false 
+		              }); //removes the marker
+		              // then, remove the infowindows name from the array
+		            }, {passive: true});
+		           
 			          
 
-			           google.maps.event.addListener(map,'click',function(){
-			           	console.log("map clicked")
-			           	
+		            google.maps.event.addListener(map,'click',function(){
+		           	console.log("map clicked")
 			           	_this.setState({
 			           		expanded: false
 			           	});
 			           	infowindow.close(map,marker); 
-			           }, {passive: true});
+		            }, {passive: true});
 
 			
 		        		bounds.extend(marker.getPosition());
@@ -250,63 +308,11 @@ class Map extends Component {
 
 	              if(_this.state.expanded === false){
 	              
-	          		
-	          		
 	                infowindow.open(map,marker);      
 	              
 	              // This is where the court data is set to the state of the app for display
+	              _this.setMarkerDataToState(j); 
 	              
-	              var type = _this.state.courts[j].type.toLowerCase();
-	              
-	              if(type === 'shop'){
-	                _this.setState({
-	                  name: _this.state.courts[j].name,
-	                  address: _this.state.courts[j].address,
-	                  phone: _this.state.courts[j].phone,
-	                  xcoord: _this.state.courts[j].xcoord,
-	                  ycoord: _this.state.courts[j].ycoord,
-	                  type: _this.state.courts[j].type,
-	                 // mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord} />, 
-	                  expanded: true
-	                });   
-	              }else if(type === 'club'){
-	                _this.setState({
-	                  name: _this.state.courts[j].ClubName,
-	                  address: _this.state.courts[j].ClubAddress,
-	                  phone: _this.state.courts[j].ClubPhone,
-	                  xcoord: _this.state.courts[j].xcoord,
-	                  ycoord: _this.state.courts[j].ycoord,
-	                  lights: _this.state.courts[j].ClubLights,
-	                  type: _this.state.courts[j].type,
-	                  wall: _this.state.courts[j].ClubWall,
-	                  grass: _this.state.courts[j].ClubGrass,
-	                  proShop: _this.state.courts[j].ClubProShop,
-	                  courtNumber: _this.state.courts[j].ClubCourts,
-	                  clay: _this.state.courts[j].ClubClay,
-	                  indoor: _this.state.courts[j].ClubIndoor,
-	                  string: _this.state.courts[j].ClubStringing,
-	                  //mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord}/>, 
-	                  expanded: true
-	                }); 
-	              
-	              }else if(type === "court" || type === 'other'){
-	                
-	                _this.setState({
-	                  name: _this.state.courts[j].CourtName,
-	                  address: _this.state.courts[j].Address,
-	                  xcoord: _this.state.courts[j].xcoord,
-	                  ycoord: _this.state.courts[j].ycoord,
-	                  lights: _this.state.courts[j].Lights,
-	                  type: _this.state.courts[j].type,
-	                  //mini: <MiniMap xcoord = {_this.state.courts[j].xcoord} ycoord = {_this.state.courts[j].ycoord}/>, 
-	                  expanded: true   
-	                });   
-	              }else{
-	                // _this.setState({
-	                //   name: "An error has occured",
-	                //   expanded: true
-	                // }); 
-	              }
 	              }
 	            }, {passive: false});
 
