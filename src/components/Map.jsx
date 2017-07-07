@@ -13,6 +13,9 @@ class Map extends Component {
 		this.getCourts = this.getCourts.bind(this);
 		this.createMap = this.createMap.bind(this); 
 		this.getPoints = this.getPoints.bind(this);
+		this.getPinColor = this.getPinColor.bind(this);
+		this.createMarker = this.createMarker.bind(this); 
+		this.setMarkerContent = this.setMarkerContent.bind(this);
 	}
 
 	createLegend(map){
@@ -46,9 +49,7 @@ class Map extends Component {
             styles: styles,
             bounds: bounds
         };
-	        	
 	    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
 	    return map; 
 	}
 
@@ -64,6 +65,79 @@ class Map extends Component {
     	}
 
     	return points;   
+	}
+
+	getPinColor(data){
+		var courtType = data.type.toLowerCase();
+        
+        if(courtType === 'shop'){
+            return "FE7569"
+        }else if(courtType === 'club'){
+            return "F8EC3B"
+        }else if (courtType === 'court'){
+            return "3BF83E"
+        }else if (courtType === 'other'){
+            return "00ccff"
+        }else{
+            return "FE7569"
+        }
+	}
+
+	createMarker(map, points, index){
+		var _this = this; 
+		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + _this.getPinColor(_this.state.courts[index]),
+          new google.maps.Size(21, 34),
+          new google.maps.Point(0,0),
+          new google.maps.Point(10, 34));
+        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+          new google.maps.Size(40, 37),
+          new google.maps.Point(0, 0),
+          new google.maps.Point(12, 35));
+        
+		var marker = new google.maps.Marker({
+			position: points[index],
+      		icon: pinImage,
+      		shadow: pinShadow,
+			map: map
+		});
+		return marker; 
+	}
+
+	setMarkerContent(index){
+
+		var type = this.state.courts[index].type.toLowerCase();
+		var contentString;
+		
+		if(type === "club"){
+			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].ClubName +  
+        '<br/>'+
+        '<br/>'+
+        'Address: ' + this.state.courts[index].ClubAddress
+        '</font>'+
+        '</div>';
+		}else if(type === "shop"){
+			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].name +  
+        '<br/>'+
+        '<br/>'+
+        'Address: ' + this.state.courts[index].address 
+        '</font>'+
+        '</div>';
+		}else{
+			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].CourtName +  
+        '<br/>'+
+        '<br/>'+
+        'Address: ' + this.state.courts[index].Address 
+        '</font>'+
+        '</div>';
+		}
+			
+        // Create new info window - Popup with street location and the title of the movie 
+          var infowindow = new google.maps.InfoWindow({
+          content: contentString
+          }, {passive: true});
+
+          return infowindow; 
+        
 	}
 
 
@@ -136,93 +210,33 @@ class Map extends Component {
 	        var _this = this; 
 
 	        var map = this.createMap();
-	        var bounds = map.getBounds();
+	        var bounds = map.getBounds();	        
+			var points = this.getPoints();
 
-	        
-			var points = this.getPoints(); 	
 
-	            function getPinColor(data){
-	            	let courtType = data.type.toLowerCase();
-	                if(courtType === 'shop'){
-	                    return "FE7569"
-	                }else if(courtType === 'club'){
-	                    return "F8EC3B"
-	                }else if (courtType === 'court'){
-	                    return "3BF83E"
-	                }else if (courtType === 'other'){
-	                    return "00ccff"
-	                }else{
-	                    return "FE7569"
-	                }
-	            }
+        	for(var j=0; j<points.length; j++){
+	          (function(j){
+	          		
+	                var marker = _this.createMarker(map,points,j);
+	        		var infowindow = _this.setMarkerContent(j); 
 
-	        	for(var j=0; j<points.length; j++){
-		          (function(j){
-		                var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + getPinColor(_this.props.courts[j]),
-		                  new google.maps.Size(21, 34),
-		                  new google.maps.Point(0,0),
-		                  new google.maps.Point(10, 34));
-		                var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-		                  new google.maps.Size(40, 37),
-		                  new google.maps.Point(0, 0),
-		                  new google.maps.Point(12, 35));
-		                
-		        		var marker = new google.maps.Marker({
-		        			position: points[j],
-		              		icon: pinImage,
-		              		shadow: pinShadow,
-		        			map: map
-		        		});
+			          google.maps.event.addListener(infowindow,'closeclick',function(){
+			              _this.setState({
+			                expanded: false 
+			              }); //removes the marker
+			              // then, remove the infowindows name from the array
+			            }, {passive: true});
+			           
+			          
 
-		        		var type = _this.state.courts[j].type.toLowerCase();
-		        		var contentString;
-		        		
-		        		if(type === "club"){
-		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].ClubName +  
-			            '<br/>'+
-			            '<br/>'+
-			            'Address: ' + _this.state.courts[j].ClubAddress
-			            '</font>'+
-			            '</div>';
-		        		}else if(type === "shop"){
-		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].name +  
-			            '<br/>'+
-			            '<br/>'+
-			            'Address: ' + _this.state.courts[j].address 
-			            '</font>'+
-			            '</div>';
-		        		}else{
-		        			contentString = '<div id="content"><font color = "orange">'+ _this.state.courts[j].CourtName +  
-			            '<br/>'+
-			            '<br/>'+
-			            'Address: ' + _this.state.courts[j].Address 
-			            '</font>'+
-			            '</div>';
-		        		}
-		        			
-
-			            // Create new info window - Popup with street location and the title of the movie 
-				          var infowindow = new google.maps.InfoWindow({
-				          content: contentString
-				          }, {passive: true});
-				          
-				          google.maps.event.addListener(infowindow,'closeclick',function(){
-				              _this.setState({
-				                expanded: false 
-				              }); //removes the marker
-				              // then, remove the infowindows name from the array
-				            }, {passive: true});
-				           
-				          
-
-				           google.maps.event.addListener(map,'click',function(){
-				           	console.log("map clicked")
-				           	
-				           	_this.setState({
-				           		expanded: false
-				           	});
-				           	infowindow.close(map,marker); 
-				           }, {passive: true});
+			           google.maps.event.addListener(map,'click',function(){
+			           	console.log("map clicked")
+			           	
+			           	_this.setState({
+			           		expanded: false
+			           	});
+			           	infowindow.close(map,marker); 
+			           }, {passive: true});
 
 			
 		        		bounds.extend(marker.getPosition());
