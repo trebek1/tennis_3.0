@@ -9,7 +9,8 @@ import {bindActionCreators} from "redux";
 import {getCourts} from "../actions/courtActions"; 
 
 // Dumb Components
-import Map from "../components/Map.jsx"
+import Map from "../components/Map.jsx";
+import ButtonPannel from "../components/ButtonPannel.jsx";
 
 class App extends Component {
 	constructor(props){
@@ -23,6 +24,7 @@ class App extends Component {
     		<Link to="/login">Login</Link> <br/>
     		<Link to="/signup">SignUp</Link> 
         <Map courts={this.props.courts} />
+        <ButtonPannel />
     	 </div>
     );
   }
