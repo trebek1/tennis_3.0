@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 //Action to dispatch 
-import {getCourts} from "../actions/courtActions"; 
+import {getCourts, selectStyle} from "../actions/courtActions"; 
 
 // Dumb Components
 import Map from "../components/Map.jsx";
@@ -23,8 +23,8 @@ class App extends Component {
     		Something Goes here<br/>
     		<Link to="/login">Login</Link> <br/>
     		<Link to="/signup">SignUp</Link> 
-        <Map courts={this.props.courts} />
-        <ButtonPannel />
+        <Map courts={this.props.courts} style={this.props.style} />
+        <ButtonPannel selectStyle={this.props.selectStyle} />
     	 </div>
     );
   }
@@ -35,13 +35,15 @@ class App extends Component {
 
 function mapStateToProps(state){
   return {
-    courts: state.courts.courts.sfcourts
+    courts: state.courts.courts.sfcourts,
+    style: state.styles.styles
   }
 }
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		getCourts: getCourts
+		getCourts: getCourts,
+    selectStyle: selectStyle
 		}, dispatch);
 }
 
