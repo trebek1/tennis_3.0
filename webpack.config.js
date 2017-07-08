@@ -33,7 +33,7 @@ module.exports = {
     root: __dirname,
     extensions: ['', '.js', '.jsx'],
     alias: {
-      App: 'src/components/App.jsx'
+      AppContainer: 'src/containers/AppContainer.jsx'
     }
   }
 };

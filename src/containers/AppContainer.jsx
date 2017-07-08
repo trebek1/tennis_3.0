@@ -9,23 +9,22 @@ import {bindActionCreators} from "redux";
 import {getCourts} from "../actions/courtActions"; 
 
 // Dumb Components
-import Map from "./Map.jsx"
+import Map from "../components/Map.jsx"
 
 class App extends Component {
 	constructor(props){
 		super(props); 
 		this.state = {courts: {}}
 	}
-  	
-  	render() {
-      return (	
-          <div>
-        		Something Goes here<br/>
-        		<Link to="/login">Login</Link> <br/>
-        		<Link to="/signup">SignUp</Link> 
-            <Map courts={this.props.courts} />
-        	 </div>
-      );
+  render() {
+    return (	
+      <div>
+    		Something Goes here<br/>
+    		<Link to="/login">Login</Link> <br/>
+    		<Link to="/signup">SignUp</Link> 
+        <Map courts={this.props.courts} />
+    	 </div>
+    );
   }
   componentDidMount(){
   	this.props.getCourts(); 
@@ -33,9 +32,9 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-    return {
-      courts: state.courts.courts.sfcourts
-    }
+  return {
+    courts: state.courts.courts.sfcourts
+  }
 }
 
 function mapDispatchToProps(dispatch){

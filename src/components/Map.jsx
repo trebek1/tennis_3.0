@@ -17,7 +17,7 @@ class Map extends Component {
 		this.createMarker = this.createMarker.bind(this); 
 		this.setMarkerContent = this.setMarkerContent.bind(this);
 		this.setMarkerDataToState = this.setMarkerDataToState.bind(this);
-	}
+	};
 
 	createLegend(map){
 		
@@ -26,7 +26,7 @@ class Map extends Component {
         legendDiv.style.color = "orange";
         legendDiv.index = 1;
         map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
-	}
+	};
 
 	getCourts(){
 
@@ -35,7 +35,7 @@ class Map extends Component {
   				courts: this.props.courts
   			});
   		}
-	}
+	};
 
 	createMap(){
 
@@ -54,7 +54,7 @@ class Map extends Component {
 	    });
 
 	    return map; 
-	}
+	};
 
 	getPoints(){
 		var points = []; 
@@ -66,7 +66,7 @@ class Map extends Component {
     		points.push(a);
     	}
     	return points;   
-	}
+	};
 
 	getPinColor(data){
 		var courtType = data.Type.toLowerCase();
@@ -82,7 +82,7 @@ class Map extends Component {
         }else{
             return "FE7569"
         }
-	}
+	};
 
 	createMarker(map, points, index){
 		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + this.getPinColor(this.state.courts[index]),
@@ -100,7 +100,7 @@ class Map extends Component {
 			map: map
 		});
 		return marker; 
-	}
+	};
 
 	setMarkerDataToState(index){
 
@@ -125,7 +125,7 @@ class Map extends Component {
           //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
           expanded: true
         }); 
-	}
+	};
 
 	setMarkerContent(index){
 
@@ -145,7 +145,7 @@ class Map extends Component {
 
     return infowindow; 
         
-	}
+	};
 
 	legend(controlDiv, map) {
 	    // Set CSS styles for the DIV containing the control
@@ -176,7 +176,7 @@ class Map extends Component {
 	    '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /> Other Facility <br />';
 	    
 	    controlUI.appendChild(controlText); 
-	}
+	};
 
 	shouldComponentUpdate(nextProps, nextState) {
 		if(this.state.courts.length > 0){
@@ -184,7 +184,7 @@ class Map extends Component {
 		}else{
 			return true;
 		}
-	}
+	};
 	
   	render(){
   		var style = {
@@ -193,7 +193,7 @@ class Map extends Component {
             margin: '0 auto 0 auto'
     	}
   		return <div id="map" className="map-gic main-map" style={style} ref="gmap"> I&apos;m a dumb map! </div>
-  	}
+  	};
 
   	componentDidUpdate(){
 
@@ -202,11 +202,9 @@ class Map extends Component {
   			
 	        var courts; 
 	        var _this = this; 
-
 	        var map = this.createMap();
 	        var bounds = map.getBounds();	        
 			var points = this.getPoints();
-
 
         	for(var j=0; j<points.length; j++){
 	            (function(j){
@@ -270,7 +268,7 @@ class Map extends Component {
 	  		//Create the map legend! 
 	  		this.createLegend(map); 
 		}
-  	}
+  	};
 }
 
 export default Map
