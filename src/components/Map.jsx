@@ -109,19 +109,6 @@ class Map extends Component {
 		var type = this.state.courts[index].Type.toLowerCase();
 		var courts = this.state.courts;
 
-          
-          if(type === 'shop'){
-            this.setState({
-              name: courts[index].Name,
-              address: courts[index].Address,
-              phone: courts[index].Phone,
-              xcoord: courts[index].X,
-              ycoord: courts[index].Y,
-              type: courts[index].Type,
-             // mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord} />, 
-              expanded: true
-            });   
-          }else if(type === 'club'){
             this.setState({
               name: courts[index].Name,
               address: courts[index].Address,
@@ -140,31 +127,6 @@ class Map extends Component {
               //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
               expanded: true
             }); 
-          
-          }else if(type === "court"){
-            
-            this.setState({
-              name: courts[index].Name,
-              address: courts[index].Address,
-              xcoord: courts[index].X,
-              ycoord: courts[index].Y,
-              lights: courts[index].Lights,
-              type: courts[index].Type,
-              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
-              expanded: true   
-            });   
-          }else if(type === "other"){
-            this.setState({
-              name: courts[index].Name,
-              address: courts[index].Address,
-              xcoord: courts[index].X,
-              ycoord: courts[index].Y,
-              lights: courts[index].Lights,
-              type: courts[index].Type,
-              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
-              expanded: true   
-          });
-        }
 	}
 
 	setMarkerContent(index){
