@@ -60,7 +60,7 @@ class Map extends Component {
 		var courts = this.state.courts;
 
 		for(var i = 0; i<courts.length; i++){
-    		var temp = [courts[i].xcoord,courts[i].ycoord]
+    		var temp = [courts[i].X,courts[i].Y]
     		var a = new google.maps.LatLng(temp[0],temp[1]);
     		points.push(a);
     	}
@@ -69,7 +69,7 @@ class Map extends Component {
 	}
 
 	getPinColor(data){
-		var courtType = data.type.toLowerCase();
+		var courtType = data.Type.toLowerCase();
         
         if(courtType === 'shop'){
             return "FE7569"
@@ -106,89 +106,81 @@ class Map extends Component {
 
 	setMarkerDataToState(index){
 
-		var type = this.state.courts[index].type.toLowerCase();
+		var type = this.state.courts[index].Type.toLowerCase();
 		var courts = this.state.courts;
 
           
           if(type === 'shop'){
-            _this.setState({
-              name: courts[index].name,
-              address: courts[index].address,
-              phone: courts[index].phone,
-              xcoord: courts[index].xcoord,
-              ycoord: courts[index].ycoord,
-              type: courts[index].type,
+            this.setState({
+              name: courts[index].Name,
+              address: courts[index].Address,
+              phone: courts[index].Phone,
+              xcoord: courts[index].X,
+              ycoord: courts[index].Y,
+              type: courts[index].Type,
              // mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord} />, 
               expanded: true
             });   
           }else if(type === 'club'){
-            _this.setState({
-              name: courts[index].ClubName,
-              address: courts[index].ClubAddress,
-              phone: courts[index].ClubPhone,
-              xcoord: courts[index].xcoord,
-              ycoord: courts[index].ycoord,
-              lights: courts[index].ClubLights,
-              type: courts[index].type,
-              wall: courts[index].ClubWall,
-              grass: courts[index].ClubGrass,
-              proShop: courts[index].ClubProShop,
-              courtNumber: courts[index].ClubCourts,
-              clay: courts[index].ClubClay,
-              indoor: courts[index].ClubIndoor,
-              string: courts[index].ClubStringing,
+            this.setState({
+              name: courts[index].Name,
+              address: courts[index].Address,
+              phone: courts[index].Phone,
+              xcoord: courts[index].X,
+              ycoord: courts[index].Y,
+              lights: courts[index].Lights,
+              type: courts[index].Type,
+              wall: courts[index].Wall,
+              grass: courts[index].Grass,
+              proShop: courts[index].ProShop,
+              courtNumber: courts[index].Courts,
+              clay: courts[index].Clay,
+              indoor: courts[index].Indoor,
+              string: courts[index].Stringing,
               //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
               expanded: true
             }); 
           
-          }else if(type === "court" || type === 'other'){
+          }else if(type === "court"){
             
-            _this.setState({
-              name: courts[index].CourtName,
+            this.setState({
+              name: courts[index].Name,
               address: courts[index].Address,
-              xcoord: courts[index].xcoord,
-              ycoord: courts[index].ycoord,
+              xcoord: courts[index].X,
+              ycoord: courts[index].Y,
               lights: courts[index].Lights,
-              type: courts[index].type,
+              type: courts[index].Type,
               //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
               expanded: true   
             });   
-          }else{
-            // _this.setState({
-            //   name: "An error has occured",
-            //   expanded: true
-            // }); 
-          }
-
+          }else if(type === "other"){
+            this.setState({
+              name: courts[index].Name,
+              address: courts[index].Address,
+              xcoord: courts[index].X,
+              ycoord: courts[index].Y,
+              lights: courts[index].Lights,
+              type: courts[index].Type,
+              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
+              expanded: true   
+          });
+        }
 	}
 
 	setMarkerContent(index){
 
-		var type = this.state.courts[index].type.toLowerCase();
+		var type = this.state.courts[index].Type.toLowerCase();
+		var court = this.state.courts[index];
 		var contentString;
 		
-		if(type === "club"){
-			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].ClubName +  
+		
+			contentString = '<div id="content"><font color = "orange">'+ court.Name +  
         '<br/>'+
         '<br/>'+
-        'Address: ' + this.state.courts[index].ClubAddress
+        'Address: ' + court.Address
         '</font>'+
         '</div>';
-		}else if(type === "shop"){
-			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].name +  
-        '<br/>'+
-        '<br/>'+
-        'Address: ' + this.state.courts[index].address 
-        '</font>'+
-        '</div>';
-		}else{
-			contentString = '<div id="content"><font color = "orange">'+ this.state.courts[index].CourtName +  
-        '<br/>'+
-        '<br/>'+
-        'Address: ' + this.state.courts[index].Address 
-        '</font>'+
-        '</div>';
-		}
+		
 			
         // Create new info window - Popup with street location and the title of the movie 
           var infowindow = new google.maps.InfoWindow({
@@ -199,15 +191,6 @@ class Map extends Component {
         
 	}
 
-
-
-	// componentWillReceiveProps(nextProps) {
-	// 	if(nextProps.length > 0){
-	// 		this.setState({
-	// 			courts: this.props.courts
-	// 		})
-	// 	}
-	// }
 
 	legend(controlDiv, map) {
 	    // Set CSS styles for the DIV containing the control
@@ -262,7 +245,6 @@ class Map extends Component {
   	componentDidUpdate(){
 
   		this.getCourts();
-  		
   		if(this.state.courts.length > 0){
   			
 	        var courts; 
@@ -279,12 +261,12 @@ class Map extends Component {
 	                var marker = _this.createMarker(map,points,j);
 	        		var infowindow = _this.setMarkerContent(j); 
 
-			        google.maps.event.addListener(infowindow,'closeclick',function(){
-		              _this.setState({
-		                expanded: false 
-		              }); //removes the marker
-		              // then, remove the infowindows name from the array
-		            }, {passive: true});
+	        		//
+			        // google.maps.event.addListener(infowindow,'closeclick',function(){
+		         //      _this.setState({
+		         //        expanded: false 
+		         //      }); 
+		         //    }, {passive: true});
 		           
 			          
 
@@ -308,11 +290,25 @@ class Map extends Component {
 
 	              if(_this.state.expanded === false){
 	              
-	                infowindow.open(map,marker);      
+	                infowindow.open(map,this); 
+
+	                _this.setState({
+	                	infowindow: infowindow,
+	                	marker: marker
+	                });     
 	              
-	              // This is where the court data is set to the state of the app for display
-	              _this.setMarkerDataToState(j); 
+	              	// This is where the court data is set to the state of the app for display
+	              	_this.setMarkerDataToState(j); 
 	              
+	              }else{
+	              	_this.state.infowindow.close(map,_this.state.marker); 
+	              	infowindow.open(map,marker);
+	              	 _this.setState({
+	                	infowindow: infowindow,
+	                	marker: marker
+	                });     
+	              	_this.setMarkerDataToState(j); 
+
 	              }
 	            }, {passive: false});
 
