@@ -30,7 +30,7 @@ export default class ButtonPannel extends Component {
     	}
 
     	return (
-	        <div>
+	        <div id="styleContainer">
 	        	<span className="anchor"> Styles: </span>
 		        <span className="tab night " onClick={this.handleClick.bind(null,"night") }> Night </span>
 		        <span className="tab day " onClick={this.handleClick.bind(null,"day")}> Day </span>

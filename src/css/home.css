@@ -15,7 +15,12 @@
 }
 
 #styleSelectorContainer{
-	padding: 10px;
+	padding: 10px 0px;
+}
+
+#styleContainer{
+	display: inline-block;
+	border-bottom: 1px solid black
 }
 
 #mainContainer{

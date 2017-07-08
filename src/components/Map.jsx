@@ -300,7 +300,32 @@ class Map extends Component {
 	            }, {passive: true}); 
 
 	  		//Create the map legend! 
-	  		this.createLegend(map); 
+	  		this.createLegend(map);
+	  	
+	  		// Todo this implementation is not very good
+  	// 		switch(_this.state.style){
+			// 	case "day":
+			// 		document.getElementById("legendContainer").style["background-color"] = "white";
+			// 		return;
+			// 	case "night": 
+			// 		document.getElementById("legendContainer").style["background-color"] = "black";
+			// 		return; 
+			// 	case "wimbledon": 
+			// 		document.getElementById("legendContainer").style["background-color"] = "purple";
+			// 		return;
+			// 	case "australia":
+			// 		document.getElementById("legendContainer").style["background-color"] = "green";
+			// 		return;
+			// 	case "french":
+			// 		document.getElementById("legendContainer").style["background-color"] = "orange";
+			// 		return; 
+			// 	case "usa":
+			// 		document.getElementById("legendContainer").style["background-color"] = "blue";
+			// 		return;
+			// 	default: 
+			// }	
+  		
+
 		}
   	};
 }
