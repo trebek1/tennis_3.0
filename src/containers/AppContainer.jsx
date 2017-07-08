@@ -19,13 +19,10 @@ class App extends Component {
 	}
   render() {
     return (	
-      <div>
-    		Something Goes here<br/>
-    		<Link to="/login">Login</Link> <br/>
-    		<Link to="/signup">SignUp</Link> 
+      <div id="mainContainer">
         <Map courts={this.props.courts} style={this.props.style} />
         <ButtonPannel selectStyle={this.props.selectStyle} />
-    	 </div>
+    	</div>
     );
   }
   componentDidMount(){

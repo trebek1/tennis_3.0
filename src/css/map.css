@@ -1,15 +1,3 @@
-.test {
-  background-color: #c5d5cb;
-}
-.main-heading {
-  text-align: center;
-  background-color: #e3e0cf;
-}
-.main-map {
-  height: 500px;
-  width: 75%;
-  margin: 1em;
-}
 
 .gm-style > div:first-child > div + div > div:last-child > div > div:first-child > div
 {

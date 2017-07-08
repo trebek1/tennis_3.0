@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-//import unblocker from '../../assets/code-test.png';
+import {Link} from 'react-router';
 
 export default class Header extends Component {
   	render() {
     return (	
         <div className="header">
-      		Header
+      		<Link to="/login">Login</Link> <br/>
+    		<Link to="/signup">SignUp</Link> 
       	 </div>
     );
   }
