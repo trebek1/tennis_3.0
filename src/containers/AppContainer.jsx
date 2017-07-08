@@ -15,7 +15,7 @@ import ButtonPannel from "../components/ButtonPannel.jsx";
 class App extends Component {
 	constructor(props){
 		super(props); 
-		this.state = {courts: {}}
+		this.state = {courts: []}
 	}
   render() {
     return (	
