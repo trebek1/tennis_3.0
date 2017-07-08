@@ -1,4 +1,6 @@
 @import "./map.css";
+@import "./contentWindow.css";
+
 
 .tab, .anchor{
 	font-size: 20px;

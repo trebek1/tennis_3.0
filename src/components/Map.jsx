@@ -159,14 +159,15 @@ class Map extends Component {
 
 	setMarkerContent(index){
 
+		
+
 		var type = this.state.courts[index].Type.toLowerCase();
 		var court = this.state.courts[index];
-		var contentString = '<div id="content"><font color = "orange">'+ court.Name +  
-        '<br/>'+
-        '<br/>'+
-        'Address: ' + court.Address
-        '</font>'+
-        '</div>';
+		var contentString = 
+		'<div id="content">' +
+			'<div> Name: ' + court.Name + ' </div>' +
+			'<div> Address: ' + court.Address + 
+		'</div>';
 		
         // Create new info window - Popup with street location and the title of the movie 
         var infowindow = new google.maps.InfoWindow({
@@ -199,11 +200,11 @@ class Map extends Component {
 	    controlText.style.paddingRight = '4px';
 	  
 	    // Add the text
-	    controlText.innerHTML = '<b><center> Map Key </center></b><br />' +
-	    '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /> Tennis Club<br />' +
-	    '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /> Public Tennis Court<br />' +
-	    '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/> Tennis Shop<br />' +
-	    '<img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /> Other Facility <br />';
+	    controlText.innerHTML = '<div id="legendContainer"><div id="key"> Map Key</div>' +
+	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /></span> <span>Tennis Club</span></div>' +
+	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /></span><span> Public Tennis Court</span></div>' +
+	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/></span><span> Tennis Shop</span></div>' +
+	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /></span><span> Other Facility</span></div></div>';
 	    
 	    controlUI.appendChild(controlText); 
 	};
