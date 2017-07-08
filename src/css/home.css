@@ -1,14 +1,21 @@
 @import "./map.css";
 @import "./contentWindow.css";
 
-
 .tab, .anchor{
 	font-size: 20px;
+}
+
+.active{
+	background: silver;
 }
 
 .tab:hover{
 	color: orange;
 	cursor: pointer;
+}
+
+#styleSelectorContainer{
+	padding: 10px;
 }
 
 #mainContainer{
@@ -18,7 +25,6 @@
 
 .header{
 	top: 0;
-	
 }
 
 .footer {
@@ -52,7 +58,6 @@
 	right: 0;
 	margin: auto;
 }
-
 
 input.input {
 	display: block;

@@ -159,8 +159,6 @@ class Map extends Component {
 
 	setMarkerContent(index){
 
-		
-
 		var type = this.state.courts[index].Type.toLowerCase();
 		var court = this.state.courts[index];
 		var contentString = 
@@ -209,8 +207,6 @@ class Map extends Component {
 	    controlUI.appendChild(controlText); 
 	};
 
-
-
 	//Lifecycle Methods
 
 	shouldComponentUpdate(nextProps, nextState) {	
@@ -230,7 +226,7 @@ class Map extends Component {
 			width: '100%',
             margin: '0 auto 0 auto'
     	}
-  		return <div id="map" className="map-gic main-map" style={style} ref="gmap"> I&apos;m a dumb map! </div>
+  		return <div id="map" className="map-gic main-map" style={style} ref="gmap"> Map Loading </div>
   	};
 
   	componentDidUpdate(){
@@ -289,7 +285,7 @@ class Map extends Component {
 
 		                }
 	            	}, {passive: false});
-		         })(j)
+		         })(j);
 	  		}
 
 	  		//Add listener to map so that if its clicked then the window closes if its open

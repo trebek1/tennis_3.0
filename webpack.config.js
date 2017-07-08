@@ -26,7 +26,6 @@ module.exports = {
     {test: /\.jsx?$/, loader: 'babel-loader',query : { presets: ["react", "es2015", "stage-1"]}},
     { test: /\.css$/, loader: "style-loader!css-loader" },
     { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" }
-
   ]
   },
   resolve: {

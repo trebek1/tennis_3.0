@@ -21,7 +21,9 @@ class App extends Component {
     return (	
       <div id="mainContainer">
         <Map courts={this.props.courts} style={this.props.style} />
-        <ButtonPannel selectStyle={this.props.selectStyle} />
+        <div id="styleSelectorContainer">
+          <ButtonPannel selectStyle={this.props.selectStyle} />
+        </div>
     	</div>
     );
   }
