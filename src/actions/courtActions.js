@@ -16,8 +16,6 @@ export function getCourts(){
 }
 
 export function selectStyle(type){
-	return function(dispatch){
-		dispatch({type: "SELECT_STYLE", payload: type});	
+	return {type: "SELECT_STYLE", payload: type};	
 	}
 	
-}

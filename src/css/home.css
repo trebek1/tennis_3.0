@@ -5,7 +5,16 @@
 	height: 40px;
 	width: 120px;
 	float: left;
+}
+
+.tab, .anchor{
+	font-size: 20px;
 }	
+
+.tab:hover{
+	color: orange;
+	cursor: pointer;
+}
 
 .app-wrapper {
 	padding-top: 60px;
