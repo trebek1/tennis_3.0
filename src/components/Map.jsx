@@ -23,9 +23,7 @@ class Map extends Component {
 		
 		var legendDiv = document.createElement('div');
 		var legend = this.legend(legendDiv, map);
-        
         legendDiv.style.color = "orange";
-        
         legendDiv.index = 1;
         map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
 	}
@@ -37,7 +35,6 @@ class Map extends Component {
   				courts: this.props.courts
   			});
   		}
-
 	}
 
 	createMap(){
@@ -51,11 +48,15 @@ class Map extends Component {
             bounds: bounds
         };
 	    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+	    this.setState({
+	    	map: map
+	    });
+
 	    return map; 
 	}
 
 	getPoints(){
-
 		var points = []; 
 		var courts = this.state.courts;
 
@@ -64,7 +65,6 @@ class Map extends Component {
     		var a = new google.maps.LatLng(temp[0],temp[1]);
     		points.push(a);
     	}
-
     	return points;   
 	}
 
@@ -85,8 +85,7 @@ class Map extends Component {
 	}
 
 	createMarker(map, points, index){
-		var _this = this; 
-		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + _this.getPinColor(_this.state.courts[index]),
+		var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + this.getPinColor(this.state.courts[index]),
           new google.maps.Size(21, 34),
           new google.maps.Point(0,0),
           new google.maps.Point(10, 34));
@@ -94,7 +93,6 @@ class Map extends Component {
           new google.maps.Size(40, 37),
           new google.maps.Point(0, 0),
           new google.maps.Point(12, 35));
-        
 		var marker = new google.maps.Marker({
 			position: points[index],
       		icon: pinImage,
@@ -109,50 +107,45 @@ class Map extends Component {
 		var type = this.state.courts[index].Type.toLowerCase();
 		var courts = this.state.courts;
 
-            this.setState({
-              name: courts[index].Name,
-              address: courts[index].Address,
-              phone: courts[index].Phone,
-              xcoord: courts[index].X,
-              ycoord: courts[index].Y,
-              lights: courts[index].Lights,
-              type: courts[index].Type,
-              wall: courts[index].Wall,
-              grass: courts[index].Grass,
-              proShop: courts[index].ProShop,
-              courtNumber: courts[index].Courts,
-              clay: courts[index].Clay,
-              indoor: courts[index].Indoor,
-              string: courts[index].Stringing,
-              //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
-              expanded: true
-            }); 
+        this.setState({
+          name: courts[index].Name,
+          address: courts[index].Address,
+          phone: courts[index].Phone,
+          xcoord: courts[index].X,
+          ycoord: courts[index].Y,
+          lights: courts[index].Lights,
+          type: courts[index].Type,
+          wall: courts[index].Wall,
+          grass: courts[index].Grass,
+          proShop: courts[index].ProShop,
+          courtNumber: courts[index].Courts,
+          clay: courts[index].Clay,
+          indoor: courts[index].Indoor,
+          string: courts[index].Stringing,
+          //mini: <MiniMap xcoord = {courts[index].xcoord} ycoord = {courts[index].ycoord}/>, 
+          expanded: true
+        }); 
 	}
 
 	setMarkerContent(index){
 
 		var type = this.state.courts[index].Type.toLowerCase();
 		var court = this.state.courts[index];
-		var contentString;
-		
-		
-			contentString = '<div id="content"><font color = "orange">'+ court.Name +  
+		var contentString = '<div id="content"><font color = "orange">'+ court.Name +  
         '<br/>'+
         '<br/>'+
         'Address: ' + court.Address
         '</font>'+
         '</div>';
 		
-			
         // Create new info window - Popup with street location and the title of the movie 
-          var infowindow = new google.maps.InfoWindow({
-          content: contentString
-          }, {passive: true});
+        var infowindow = new google.maps.InfoWindow({
+          	content: contentString
+        }, {passive: true});
 
-          return infowindow; 
+    return infowindow; 
         
 	}
-
 
 	legend(controlDiv, map) {
 	    // Set CSS styles for the DIV containing the control
@@ -193,9 +186,7 @@ class Map extends Component {
 		}
 	}
 	
-  	
   	render(){
-
   		var style = {
     		height: '500px', 
 			width: '100%',
@@ -220,68 +211,65 @@ class Map extends Component {
         	for(var j=0; j<points.length; j++){
 	            (function(j){
 	          		
+	          		// get marker and infowindow variables from functions
 	                var marker = _this.createMarker(map,points,j);
 	        		var infowindow = _this.setMarkerContent(j); 
+	        		
+	        		//set bounds and set center of map 
+	        		bounds.extend(marker.getPosition());
+	        		map.setCenter(bounds.getCenter());
 
-	        		//
-			        // google.maps.event.addListener(infowindow,'closeclick',function(){
-		         //      _this.setState({
-		         //        expanded: false 
-		         //      }); 
-		         //    }, {passive: true});
-		           
-			          
-
-		            google.maps.event.addListener(map,'click',function(){
-		           	console.log("map clicked")
-			           	_this.setState({
-			           		expanded: false
-			           	});
-			           	infowindow.close(map,marker); 
-		            }, {passive: true});
-
-			
-		        		bounds.extend(marker.getPosition());
-		        		map.setCenter(bounds.getCenter());
-
-
+	        		//Handle clicking marker 
 		        	google.maps.event.addListener(marker, 'click', function() {
-		        			
-		        		console.log("clicked ", _this.state);
-		        		
+		        	
+			        	//If not expended then expand the window
+		              	if(_this.state.expanded === false){
+		              		
+		              		//Expand window
+		                	infowindow.open(map,this); 
 
-	              if(_this.state.expanded === false){
-	              
-	                infowindow.open(map,this); 
+		                	//Add window and marker to state
+			                _this.setState({
+			                	infowindow: infowindow,
+			                	marker: marker
+			                });     
+		              
+		              	//Set data to state for court 
+		              	_this.setMarkerDataToState(j); 
+		              
+		                }else{
+		                	
+		                	// if expanded window we have to close the window and open another
+			              	_this.state.infowindow.close(map,_this.state.marker); 
+			              	infowindow.open(map,marker);
+			              	
+			              	// put new window and marker on state 
+			              	 _this.setState({
+			                	infowindow: infowindow,
+			                	marker: marker
+			                });     
+			              	 //Set rest of data to state
+			              	_this.setMarkerDataToState(j); 
 
-	                _this.setState({
-	                	infowindow: infowindow,
-	                	marker: marker
-	                });     
-	              
-	              	// This is where the court data is set to the state of the app for display
-	              	_this.setMarkerDataToState(j); 
-	              
-	              }else{
-	              	_this.state.infowindow.close(map,_this.state.marker); 
-	              	infowindow.open(map,marker);
-	              	 _this.setState({
-	                	infowindow: infowindow,
-	                	marker: marker
-	                });     
-	              	_this.setMarkerDataToState(j); 
-
-	              }
-	            }, {passive: false});
-
-		         })(j) 
+		                }
+	            	}, {passive: false});
+		         })(j)
 	  		}
 
+	  		//Add listener to map so that if its clicked then the window closes if its open
+	  		google.maps.event.addListener(map,'click',function(){
+	           	if(_this.state.infowindow){
+	           		_this.state.infowindow.close(_this.state.map,_this.state.marker); 
+		           	_this.setState({
+		           		expanded: false,
+		           		infowindow: null
+		           	});
+	           	}
+	            }, {passive: true}); 
+
+	  		//Create the map legend! 
 	  		this.createLegend(map); 
-	  			
-		}else{
-			
-  		}
+		}
   	}
 }
 
