@@ -9,4 +9,15 @@
 #key{
 	text-align: center;
 	font-weight: bold;
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
+.keyValue{
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.leftSpace{
+	padding-left: 10px;
 }

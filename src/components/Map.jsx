@@ -201,10 +201,10 @@ class Map extends Component {
 	  
 	    // Add the text
 	    controlText.innerHTML = '<div id="legendContainer"><div id="key"> Map Key</div>' +
-	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /></span> <span>Tennis Club</span></div>' +
-	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /></span><span> Public Tennis Court</span></div>' +
-	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/></span><span> Tennis Shop</span></div>' +
-	    '<div><span><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /></span><span> Other Facility</span></div></div>';
+	    '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /></span><span class="keyValue leftSpace">Tennis Club</span></div>' +
+	    '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /></span><span class="keyValue leftSpace"> Public Tennis Court</span></div>' +
+	    '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/></span><span class="keyValue leftSpace"> Tennis Shop</span></div>' +
+	    '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /></span><span class="keyValue leftSpace"> Other Facility</span></div></div>';
 	    
 	    controlUI.appendChild(controlText); 
 	};
