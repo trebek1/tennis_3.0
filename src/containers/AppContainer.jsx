@@ -12,6 +12,7 @@ import {getCourts, selectStyle} from "../actions/courtActions";
 import Map from "../components/Map.jsx";
 import ButtonPannel from "../components/ButtonPannel.jsx";
 import CourtList from "../components/CourtList.jsx";
+import Key from "../components/Key.jsx";
 
 class App extends Component {
 	constructor(props){
@@ -25,6 +26,9 @@ class App extends Component {
           <CourtList courts={this.props.courts} />
         </div> 
         <Map courts={this.props.courts} style={this.props.style} />
+        <div id="keyContainer">
+          <Key />
+         </div> 
         <div id="styleSelectorContainer">
           <ButtonPannel selectStyle={this.props.selectStyle} />
         </div>

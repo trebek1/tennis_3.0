@@ -49,13 +49,14 @@ class Map extends Component {
 		}
 	}
 
+	//Removed Legend from the map itself 
 	createLegend(map){
 		
-		var legendDiv = document.createElement('div');
-		var legend = this.legend(legendDiv, map);
-        legendDiv.style.color = "orange";
-        legendDiv.index = 1;
-        map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
+	// 	var legendDiv = document.createElement('div');
+	// 	var legend = this.legend(legendDiv, map);
+ 	//  legendDiv.style.color = "orange";
+ 	//  legendDiv.index = 1;
+ 	//  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
 	};
 
 	getCourts(){
@@ -298,10 +299,10 @@ class Map extends Component {
 	            }, {passive: true}); 
 
 	  		//Create the map legend! 
-	  		this.createLegend(map);
+	  		//this.createLegend(map);
 	  	
 	  		// Todo this implementation is not very good
-  	// 		switch(_this.state.style){
+  			//switch(_this.state.style){
 			// 	case "day":
 			// 		document.getElementById("legendContainer").style["background-color"] = "white";
 			// 		return;

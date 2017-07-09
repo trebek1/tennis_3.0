@@ -5,16 +5,24 @@
 	font-size: 20px;
 }
 
+.ib{
+	display: inline-block;
+}
+
 #sideContainer, #map{
 	display: inline-block;
 }
 
 #sideContainer{
-	width: 35%;
+	width: 25%;
 	height: 500px;
 	display: inline-block;
 	overflow: scroll;
 	white-space: wrap; 
+}
+
+#keyContainer{
+	padding: 10px 0px;
 }
 
 #courtList{
@@ -48,7 +56,7 @@
 }
 
 #mapContainer{
-	width: 65%;
+	width: 75%;
 	height: 500px;
 	display: inline-block;
 }
