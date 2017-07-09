@@ -18,6 +18,7 @@
 
 .link{
 	color:black;
+	padding: 10px;
 }
 
 .headerLink a{
@@ -56,7 +57,7 @@
 
 #sideContainer{
 	width: 25%;
-	height: 400px;
+	height: 450px;
 	display: inline-block;
 	overflow: scroll;
 	white-space: wrap; 
@@ -64,7 +65,7 @@
 
 #mapContainer{
 	width: 75%;
-	height: 400px;
+	height: 450px;
 	display: inline-block;
 }
 
