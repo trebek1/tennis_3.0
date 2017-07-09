@@ -221,12 +221,10 @@ class Map extends Component {
 	};
 	
   	render(){
-  		var style = {
-    		height: '500px', 
-			width: '100%',
-            margin: '0 auto 0 auto'
-    	}
-  		return <div id="map" className="map-gic main-map" style={style} ref="gmap"> Map Loading </div>
+  		
+  		return <div id="mapContainer">
+  				<div id="map" className="map-gic main-map" ref="gmap"> Map Loading </div>
+  			</div>
   	};
 
   	componentDidUpdate(){

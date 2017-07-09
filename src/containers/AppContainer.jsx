@@ -11,6 +11,7 @@ import {getCourts, selectStyle} from "../actions/courtActions";
 // Dumb Components
 import Map from "../components/Map.jsx";
 import ButtonPannel from "../components/ButtonPannel.jsx";
+import CourtList from "../components/CourtList.jsx";
 
 class App extends Component {
 	constructor(props){
@@ -20,6 +21,9 @@ class App extends Component {
   render() {
     return (	
       <div id="mainContainer">
+        <div id="sideContainer">
+          <CourtList courts={this.props.courts} />
+        </div> 
         <Map courts={this.props.courts} style={this.props.style} />
         <div id="styleSelectorContainer">
           <ButtonPannel selectStyle={this.props.selectStyle} />
