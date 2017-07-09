@@ -1,5 +1,6 @@
 @import "./map.css";
 @import "./contentWindow.css";
+@import "../../node_modules/font-awesome/css/font-awesome.min.css";
 
 .app-wrapper, .content{
 	height: 100%;

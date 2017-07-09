@@ -23,9 +23,10 @@ module.exports = {
       include: path.join(__dirname, 'src')
     },
     { test: /\.jsx$/, loaders: ["react-hot", "jsx-loader"], include: path.join(__dirname, "src") },
-    {test: /\.jsx?$/, loader: 'babel-loader',query : { presets: ["react", "es2015", "stage-1"]}},
+    {test:  /\.jsx?$/, loader: 'babel-loader',query : { presets: ["react", "es2015", "stage-1"]}},
     { test: /\.css$/, loader: "style-loader!css-loader" },
-    { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" }
+    { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" },
+    { test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/, loader: 'url?limit=100000&name=[name].[ext]'}
   ]
   },
   resolve: {

@@ -158,11 +158,29 @@ class Map extends Component {
 	setMarkerContent(index){
 		var type = this.state.courts[index].Type.toLowerCase();
 		var court = this.state.courts[index];
+
+		var courtPhoneString; 
+		if(court.Phone){
+			courtPhoneString = '<div><i class="fa fa-mobile fa-fw" aria-hidden="true"></i> '+ court.Phone + ' </div>'; 
+		}else{
+			courtPhoneString = ""; 
+		}
+		var courtLightString; 
+		if(court.Lights){
+			courtLightString = '<div><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i> '+ court.Lights + ' </div>';
+		}else{
+			courtLightString = "";
+		}
+
 		var contentString = 
 		'<div id="content">' +
-			'<div> Name: ' + court.Name + ' </div>' +
-			'<div> Address: ' + court.Address + 
+			'<div class="courtName"> ' + court.Name + ' </div>' +
+			'<div><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i> ' + court.Address + ' </div>' +
+			courtLightString +
+			courtPhoneString +
 		'</div>';
+		
+
 		
         // Create new info window - Popup with street location and the title of the movie 
         var infowindow = new google.maps.InfoWindow({

@@ -35,3 +35,11 @@
 .leftSpace{
 	padding-left: 10px;
 }
+
+.fa {
+	color: orange;
+}
+
+.courtName{
+	font-size: 17px;
+}
