@@ -9,7 +9,6 @@ const courts = (state = initialState, action) => {
 		case 'GET_COURTS':
 			var data = action.data;
 			return Object.assign ({},state,{
-				
 				courts: action.payload[0].sfcourts,
 				sortedCourts: action.payload[0].sfcourts
 			});
@@ -18,9 +17,22 @@ const courts = (state = initialState, action) => {
 				var sortedCourts = state.courts.filter(function(court){
 					return court.Type === "club"; 
 				}); 
+			}else if(action.payload === "court"){
+				var sortedCourts = state.courts.filter(function(court){
+					return court.Type === "Court"; 
+				}); 
+			}else if(action.payload === "shop"){
+				var sortedCourts = state.courts.filter(function(court){
+					return court.Type === "shop"; 
+				}); 
+			}else if(action.payload === "other"){
+				var sortedCourts = state.courts.filter(function(court){
+					return court.Type === "Other"; 
+				}); 
+			}else{
+				sortedCourts = state.sortedCourts; 
 			}
 			return Object.assign ({},state,{
-				
 				sortedCourts
 			});
 		default:
