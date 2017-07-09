@@ -1,6 +1,14 @@
 @import "./map.css";
 @import "./contentWindow.css";
 
+#title{
+	text-align: center;
+	padding: 10px;
+	font-size: 40px;
+
+}
+
+
 .tab, .anchor{
 	font-size: 20px;
 }
@@ -8,6 +16,15 @@
 .ib{
 	display: inline-block;
 	cursor: pointer;
+	padding: 0px 5px;
+}
+
+.ib:hover{
+	background: orange;
+}
+
+.keyTitle{
+	padding-right: 15px;
 }
 
 #sideContainer, #map{

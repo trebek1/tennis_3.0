@@ -22,6 +22,7 @@ class App extends Component {
   render() {
     return (	
       <div id="mainContainer">
+        <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
           <CourtList courts={this.props.courts} />
         </div> 
