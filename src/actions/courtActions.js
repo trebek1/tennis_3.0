@@ -17,5 +17,10 @@ export function getCourts(){
 
 export function selectStyle(type){
 	return {type: "SELECT_STYLE", payload: type};	
-	}
+}
+
+export function sortPoints(type){
+	return {type: "SORT_POINTS", payload: type};
+}
+
 	

@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 //Action to dispatch 
-import {getCourts, selectStyle} from "../actions/courtActions"; 
+import {getCourts, selectStyle, sortPoints} from "../actions/courtActions"; 
 
 // Dumb Components
 import Map from "../components/Map.jsx";
@@ -17,18 +17,19 @@ import Key from "../components/Key.jsx";
 class App extends Component {
 	constructor(props){
 		super(props); 
-		this.state = {courts: []}
+		this.state = {courts: [], sortedCourts: []}
 	}
+
   render() {
     return (	
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
-          <CourtList courts={this.props.courts} />
+          <CourtList courts={this.props.sortedCourts} />
         </div> 
-        <Map courts={this.props.courts} style={this.props.style} />
+        <Map courts={this.props.sortedCourts} style={this.props.style} />
         <div id="keyContainer">
-          <Key />
+          <Key sortPoints={this.props.sortPoints} />
          </div> 
         <div id="styleSelectorContainer">
           <ButtonPannel selectStyle={this.props.selectStyle} />
@@ -37,21 +38,23 @@ class App extends Component {
     );
   }
   componentDidMount(){
-  	this.props.getCourts(); 
+  	this.props.getCourts();
   }
 }
 
 function mapStateToProps(state){
   return {
-    courts: state.courts.courts.sfcourts,
-    style: state.styles.styles
+    courts: state.courts.courts,
+    style: state.styles.styles,
+    sortedCourts: state.courts.sortedCourts
   }
 }
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		getCourts: getCourts,
-    selectStyle: selectStyle
+		getCourts,
+    selectStyle,
+    sortPoints
 		}, dispatch);
 }
 

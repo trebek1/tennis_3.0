@@ -60,7 +60,6 @@ class Map extends Component {
 	};
 
 	getCourts(){
-
 		if(this.props.courts.length > this.state.courts.length){
   			this.setState({
   				courts: this.props.courts
@@ -211,9 +210,19 @@ class Map extends Component {
 	//Lifecycle Methods
 
 	shouldComponentUpdate(nextProps, nextState) {	
-		if(this.state.courts.length === 0 || this.state.style != nextProps.style){
+		if(this.state.courts.length === 0){
+			this.setState({
+				courts: this.props.courts
+			});
+			return true;
+		}else if(this.state.style != nextProps.style){
 			this.setState({
 				style: nextProps.style
+			});
+			return true;
+		}else if(nextProps.courts.length != this.state.courts.length){
+			this.setState({
+				courts: nextProps.courts
 			});
 			return true;
 		}else{
@@ -222,15 +231,16 @@ class Map extends Component {
 	};
 	
   	render(){
-  		
   		return <div id="mapContainer">
   				<div id="map" className="map-gic main-map" ref="gmap"> Map Loading </div>
   			</div>
   	};
 
   	componentDidUpdate(){
-
-  		this.getCourts();
+  		if(this.state.courts.length === 0){
+  			this.getCourts();	
+  		}
+  		
   		if(this.state.courts.length > 0){
   			
 	        var courts; 

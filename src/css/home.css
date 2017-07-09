@@ -37,13 +37,13 @@
 	font-size: 20px;
 }
 
-.ib{
+.key{
 	display: inline-block;
 	cursor: pointer;
 	padding: 0px 5px;
 }
 
-.ib:hover{
+.key:hover{
 	background: orange;
 }
 
