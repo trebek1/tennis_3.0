@@ -6,6 +6,7 @@ export default class CourtList extends Component {
     render() {	
 
     	var url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|";
+    	
     	return(
     		<div>
     			<span id="key"> Map Key</span>
