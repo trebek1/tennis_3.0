@@ -29,6 +29,10 @@ const courts = (state = initialState, action) => {
 				var sortedCourts = state.courts.filter(function(court){
 					return court.Type === "Other"; 
 				}); 
+			}else if(action.payload === "all"){
+				var sortedCourts = state.courts.filter(function(court){
+					return court.Type != null; 
+				}); 
 			}else{
 				sortedCourts = state.sortedCourts; 
 			}

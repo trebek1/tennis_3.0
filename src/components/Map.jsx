@@ -297,6 +297,12 @@ class Map extends Component {
 		         })(j);
 	  		}
 
+	  		// zoom out once so that user is guaranteed to see markers if on sort
+	  		if(points.length < 100){
+	  			map.setZoom(map.getZoom() - 1);	
+	  		}
+	  		
+
 	  		//Add listener to map so that if its clicked then the window closes if its open
 	  		google.maps.event.addListener(map,'click',function(){
 	           	if(_this.state.infowindow){
