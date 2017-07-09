@@ -7,6 +7,7 @@
 
 .ib{
 	display: inline-block;
+	cursor: pointer;
 }
 
 #sideContainer, #map{
