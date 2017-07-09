@@ -42,7 +42,7 @@ const courts = (state = initialState, action) => {
 				selectedPoint: []
 			});
 		case "SELECT_POINT":
-			var selectedPoint = state.courts[action.payload];
+			var selectedPoint = state.sortedCourts[action.payload];
 			return Object.assign ({},state,{
 				selectedPoint: [selectedPoint]
 			});

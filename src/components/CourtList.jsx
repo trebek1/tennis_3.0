@@ -13,6 +13,11 @@ export default class CourtList extends Component {
 	
 	renderList(){
 		var courts = this.props.courts; 
+		courts.sort(function(court,nextCourt){
+			var a = court.Name.toUpperCase(); 
+			var b = nextCourt.Name.toUpperCase(); 
+			return a.localeCompare(b);
+		});
 		var _this = this; 
 		 return (<ul id="courtList">
 		 		{courts.map(function(court, index){
