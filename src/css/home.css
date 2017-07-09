@@ -61,6 +61,7 @@
 	display: inline-block;
 	overflow: scroll;
 	white-space: wrap; 
+	background: #DCDCDC;
 }
 
 #mapContainer{

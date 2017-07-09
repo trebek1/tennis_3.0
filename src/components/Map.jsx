@@ -51,12 +51,11 @@ class Map extends Component {
 
 	//Removed Legend from the map itself 
 	createLegend(map){
-		
-	// 	var legendDiv = document.createElement('div');
-	// 	var legend = this.legend(legendDiv, map);
- 	//  legendDiv.style.color = "orange";
- 	//  legendDiv.index = 1;
- 	//  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
+		var legendDiv = document.createElement('div');
+		var legend = this.legend(legendDiv, map);
+	 	legendDiv.style.color = "orange";
+	 	legendDiv.index = 1;
+	 	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);   
 	};
 
 	getCourts(){
@@ -133,7 +132,6 @@ class Map extends Component {
 	};
 
 	setMarkerDataToState(index){
-
 		var type = this.state.courts[index].Type.toLowerCase();
 		var courts = this.state.courts;
 
@@ -158,7 +156,6 @@ class Map extends Component {
 	};
 
 	setMarkerContent(index){
-
 		var type = this.state.courts[index].Type.toLowerCase();
 		var court = this.state.courts[index];
 		var contentString = 
@@ -251,7 +248,6 @@ class Map extends Component {
 
         	for(var j=0; j<points.length; j++){
 	            (function(j){
-	          		
 	          		// get marker and infowindow variables from functions
 	                var marker = _this.createMarker(map,points,j);
 	        		var infowindow = _this.setMarkerContent(j); 
@@ -339,8 +335,6 @@ class Map extends Component {
 			// 		return;
 			// 	default: 
 			// }	
-  		
-
 		}
   	};
 }
