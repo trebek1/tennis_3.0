@@ -23,4 +23,8 @@ export function sortPoints(type){
 	return {type: "SORT_POINTS", payload: type};
 }
 
+export function selectPoint(index){
+	return {type: "SELECT_POINT", payload: index};
+}
+
 	

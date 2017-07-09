@@ -294,8 +294,15 @@ class Map extends Component {
 	  		}
 
 	  		// zoom out once so that user is guaranteed to see markers if on sort
-	  		if(points.length < 100){
+	  		if(points.length < 100 && points.length != 1){
 	  			map.setZoom(map.getZoom() - 1);	
+	  		}
+
+	  		if(points.length === 1){
+	  			var point = points[0];
+	  			var bounds = new google.maps.LatLngBounds(point);
+	  			map.fitBounds(bounds);
+	  			map.setZoom(15);
 	  		}
 	  		
 

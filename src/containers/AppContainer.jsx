@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 //Action to dispatch 
-import {getCourts, selectStyle, sortPoints} from "../actions/courtActions"; 
+import {getCourts, selectStyle, sortPoints, selectPoint} from "../actions/courtActions"; 
 
 // Dumb Components
 import Map from "../components/Map.jsx";
@@ -25,9 +25,9 @@ class App extends Component {
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
-          <CourtList courts={this.props.sortedCourts} />
+          <CourtList selectPoint={this.props.selectPoint} courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} />
         </div> 
-        <Map courts={this.props.sortedCourts} style={this.props.style} />
+        <Map courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} style={this.props.style} />
         <div id="keyContainer">
           <Key sortPoints={this.props.sortPoints} />
          </div> 
@@ -46,7 +46,8 @@ function mapStateToProps(state){
   return {
     courts: state.courts.courts,
     style: state.styles.styles,
-    sortedCourts: state.courts.sortedCourts
+    sortedCourts: state.courts.sortedCourts,
+    selectedPoint: state.courts.selectedPoint
   }
 }
 
@@ -54,7 +55,8 @@ function mapDispatchToProps(dispatch){
 	return bindActionCreators({
 		getCourts,
     selectStyle,
-    sortPoints
+    sortPoints,
+    selectPoint
 		}, dispatch);
 }
 

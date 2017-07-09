@@ -8,7 +8,7 @@ export default class CourtList extends Component {
 	}
 
 	clickFunction(index){
-		console.log("this is index ", index);
+		this.props.selectPoint(index);
 	}
 	
 	renderList(){

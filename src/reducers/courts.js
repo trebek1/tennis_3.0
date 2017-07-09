@@ -1,7 +1,8 @@
 
 const initialState = {
 	courts: [],
-	sortedCourts: []
+	sortedCourts: [],
+	selectedPoint: []
 }
 
 const courts = (state = initialState, action) => {
@@ -37,8 +38,15 @@ const courts = (state = initialState, action) => {
 				sortedCourts = state.sortedCourts; 
 			}
 			return Object.assign ({},state,{
-				sortedCourts
+				sortedCourts,
+				selectedPoint: []
 			});
+		case "SELECT_POINT":
+			var selectedPoint = state.courts[action.payload];
+			return Object.assign ({},state,{
+				selectedPoint: [selectedPoint]
+			});
+
 		default:
 			return state;
 	}
