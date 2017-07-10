@@ -10,8 +10,9 @@ var bodyParser = require('body-parser');
 var MongoStore = require("connect-mongo")(session); 
 
 // APIs 
-var mongoose = require("mongoose"); 
-mongoose.connect("mongodb://localhost:27017/tennis");
+var mongoose = require("mongoose");
+var url = "mongodb://"+process.env.TENNIS_USERNAME + ":"+ process.env.TENNIS_PASSWORD + "@ds153652.mlab.com:53652/tennis";
+mongoose.connect(url);
 
 var db = mongoose.connection; 
 db.on("error", console.error.bind(console, "# MongoDB - Connection Error: "));
