@@ -2,7 +2,8 @@
 const initialState = {
 	courts: [],
 	sortedCourts: [],
-	selectedPoint: []
+	selectedPoint: [],
+	sort: "all"
 }
 
 const courts = (state = initialState, action) => {
@@ -46,6 +47,11 @@ const courts = (state = initialState, action) => {
 			return Object.assign ({},state,{
 				selectedPoint: [selectedPoint]
 			});
+
+		case "UPDATE_SORT":
+		return Object.assign ({}, state,{
+			sort: action.payload
+		});
 
 		default:
 			return state;

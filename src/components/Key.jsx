@@ -14,6 +14,7 @@ export default class CourtList extends Component {
         if(element){
             element.parentNode.removeChild(element);
         }
+        this.props.updateSort(type); 
     }
 	
     render() {	

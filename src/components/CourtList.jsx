@@ -41,10 +41,10 @@ export default class CourtList extends Component {
   		if(this.props.courts.length === 1 && document.getElementById("return") === null){
   			var node = document.createElement("LI");
   			node.id = "return"; 
-			node.innerHTML = "Return to All Courts"; 
+			node.innerHTML = "Return to Previous Map"; 
 			node.className = "courtListItem";
 			node.addEventListener("click", function(){
-				_this.props.sortPoints("all"); 
+				_this.props.sortPoints(_this.props.sort); 
 
 			var element = document.getElementById("return");
 				element.parentNode.removeChild(element);

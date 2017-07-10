@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
 //Action to dispatch 
-import {getCourts, selectStyle, sortPoints, selectPoint} from "../actions/courtActions"; 
+import {getCourts, selectStyle, sortPoints, selectPoint, updateSort} from "../actions/courtActions"; 
 
 // Dumb Components
 import Map from "../components/Map.jsx";
@@ -15,21 +15,17 @@ import CourtList from "../components/CourtList.jsx";
 import Key from "../components/Key.jsx";
 
 class App extends Component {
-	constructor(props){
-		super(props); 
-		this.state = {courts: [], sortedCourts: []}
-	}
-
+	
   render() {
     return (	
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
-          <CourtList sortPoints={this.props.sortPoints} selectPoint={this.props.selectPoint} courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} />
+          <CourtList sort={this.props.sort} sortPoints={this.props.sortPoints} selectPoint={this.props.selectPoint} courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} />
         </div> 
         <Map courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} style={this.props.style} />
         <div id="keyContainer">
-          <Key sortPoints={this.props.sortPoints} />
+          <Key updateSort={this.props.updateSort} sortPoints={this.props.sortPoints} />
          </div> 
         <div id="styleSelectorContainer">
           <ButtonPannel selectStyle={this.props.selectStyle} />
@@ -47,7 +43,8 @@ function mapStateToProps(state){
     courts: state.courts.courts,
     style: state.styles.styles,
     sortedCourts: state.courts.sortedCourts,
-    selectedPoint: state.courts.selectedPoint
+    selectedPoint: state.courts.selectedPoint,
+    sort: state.courts.sort
   }
 }
 
@@ -56,7 +53,8 @@ function mapDispatchToProps(dispatch){
 		getCourts,
     selectStyle,
     sortPoints,
-    selectPoint
+    selectPoint,
+    updateSort
 		}, dispatch);
 }
 
