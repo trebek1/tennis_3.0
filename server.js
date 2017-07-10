@@ -80,36 +80,36 @@ app.get('/session', function(req, res){
 	}); 
 });
 
-app.post('/signup', function(req, res){
-	var info = req.body; 
-	db.User.find({username: info.username}, function(err,user){
-		if(user.length === 0){
-			db.User.createSecure(info.username, info.password, info.id, info.passphrase, info.address, function(err, user){
-        if(user){
-          res.send(user);
-        }else{
-          res.send(err);
-        }
-			});	
-		}else{
-      res.send("Error: username already taken");
-    }
-	});
-});
+// app.post('/signup', function(req, res){
+// 	var info = req.body; 
+// 	db.User.find({username: info.username}, function(err,user){
+// 		if(user.length === 0){
+// 			db.User.createSecure(info.username, info.password, info.id, info.passphrase, info.address, function(err, user){
+//         if(user){
+//           res.send(user);
+//         }else{
+//           res.send(err);
+//         }
+// 			});	
+// 		}else{
+//       res.send("Error: username already taken");
+//     }
+// 	});
+// });
 
-app.post('/login', function(req, res){
-	var user = req.body;
-  console.log("login user ", user); 
-	db.User.authenticate(user.username, user.password, function(err, user){
-    if(user){
-      console.log("valid user")
-      req.login(user);
-      res.send(user);  
-    }else{
-      res.send(err);
-    }
-	});
-});
+// app.post('/login', function(req, res){
+// 	var user = req.body;
+//   console.log("login user ", user); 
+// 	db.User.authenticate(user.username, user.password, function(err, user){
+//     if(user){
+//       console.log("valid user")
+//       req.login(user);
+//       res.send(user);  
+//     }else{
+//       res.send(err);
+//     }
+// 	});
+// });
 
 
 app.get('/logout', function(req, res){

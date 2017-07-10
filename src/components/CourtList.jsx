@@ -8,7 +8,9 @@ export default class CourtList extends Component {
 	}
 
 	clickFunction(index){
-		this.props.selectPoint(index);
+		if(this.props.courts.length > 1 ){
+			this.props.selectPoint(index);	
+		}
 	}
 	
 	renderList(){
@@ -32,7 +34,23 @@ export default class CourtList extends Component {
     	}else{
     		return null; 	
     	}
-    	
+  	}
+
+  	componentDidUpdate(){
+  		var _this = this;
+  		if(this.props.courts.length === 1 && document.getElementById("return") === null){
+  			var node = document.createElement("LI");
+  			node.id = "return"; 
+			node.innerHTML = "Return to All Courts"; 
+			node.className = "courtListItem";
+			node.addEventListener("click", function(){
+				_this.props.sortPoints("all"); 
+
+			var element = document.getElementById("return");
+				element.parentNode.removeChild(element);
+			}); 
+			document.getElementById("courtList").appendChild(node);
+  		}
   	}
 }
 

@@ -6,8 +6,7 @@ class Map extends Component {
 		super(props); 
 		this.state = {
 			courts: [],
-			expanded: false,
-			style: "night"
+			expanded: false
 		}
 		this.createLegend = this.createLegend.bind(this);
 		this.legend = this.legend.bind(this);  

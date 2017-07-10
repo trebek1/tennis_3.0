@@ -9,6 +9,11 @@ export default class CourtList extends Component {
 
     sortPoints(type){
         this.props.sortPoints(type);
+        
+        var element = document.getElementById("return");
+        if(element){
+            element.parentNode.removeChild(element);
+        }
     }
 	
     render() {	
@@ -17,7 +22,7 @@ export default class CourtList extends Component {
 
     	return(
     		<div>
-    			<span className="anchor keyTitle">Key:</span>
+    			<span className="anchor keyTitle">Sort By Type:</span>
 				<div onClick={this.sortPoints.bind(null, "club")}     id="keyClub"     className="key club"><span className="keyValue"><img src={url + "F8EC3B"} /></span><span className="keyValue leftSpace">Tennis Club</span></div>
 				<div onClick={this.sortPoints.bind(null, "court")}    id="keyCourt"    className="key court"><span className="keyValue"><img src={url + "3BF83E"} /></span><span className="keyValue leftSpace"> Public Tennis Court</span></div>
 				<div onClick={this.sortPoints.bind(null, "shop")}     id="keyShop"     className="key shop"><span className="keyValue"><img src={url + "FE7569"}/></span><span className="keyValue leftSpace"> Tennis Shop</span></div>

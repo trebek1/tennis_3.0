@@ -25,7 +25,7 @@ class App extends Component {
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
-          <CourtList selectPoint={this.props.selectPoint} courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} />
+          <CourtList sortPoints={this.props.sortPoints} selectPoint={this.props.selectPoint} courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} />
         </div> 
         <Map courts={this.props.selectedPoint.length > 0? this.props.selectedPoint:this.props.sortedCourts} style={this.props.style} />
         <div id="keyContainer">

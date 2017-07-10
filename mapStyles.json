@@ -17,7 +17,6 @@
 // ORANGE1 fb9b65 
 // ORANGE2 f6905f
 // ORANGE3 ec8157
-
 //GREEN2 026e56 roads
 
 [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f6905f"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#fb9b65"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#ec8157"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#026e56"},{"lightness":"3"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#2e908b"}]}]

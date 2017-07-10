@@ -1,5 +1,5 @@
 const initialState = {
-	styles: "night"
+	styles: "wimbledon"
 }
 
 const styles = (state = initialState, action) => {

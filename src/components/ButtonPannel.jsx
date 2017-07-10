@@ -6,11 +6,10 @@ export default class ButtonPannel extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			previous: "night",
-			active: "night"
+			previous: "wimbledon",
+			active: "wimbledon"
 		}
 		this.handleClick = this.handleClick.bind(this); 
-
 	}
 
 	handleClick(active){
@@ -20,7 +19,6 @@ export default class ButtonPannel extends Component {
 			active
 		})
 	}
-
 
     render() {
     	

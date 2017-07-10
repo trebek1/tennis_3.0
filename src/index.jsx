@@ -35,8 +35,8 @@ const routes = (
 			<Router history={history}>
 				<Route path="/" pageId="wrapper" component={Wrapper}>
 					<IndexRoute pageId="index" component={AppContainer} />
-					<Route path="/login" pageId="Login" component={LoginContainer} />
-					<Route path="/signup" pageId="SignUp" component={SignUpContainer} />
+					// <Route path="/login" pageId="Login" component={LoginContainer} />
+					// <Route path="/signup" pageId="SignUp" component={SignUpContainer} />
 				</Route>
 			</Router>
 		</Provider>
