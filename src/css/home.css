@@ -58,7 +58,7 @@
 
 #sideContainer{
 	width: 25%;
-	height: 450px;
+	height: 400px;
 	display: inline-block;
 	overflow: scroll;
 	white-space: wrap; 
@@ -67,7 +67,7 @@
 
 #mapContainer{
 	width: 75%;
-	height: 450px;
+	height: 400px;
 	display: inline-block;
 }
 
