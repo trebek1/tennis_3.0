@@ -72,6 +72,7 @@ class Map extends Component {
 		var mapOptions = {
             center: new google.maps.LatLng(37.763108, -122.455799),
             zoom: 13,
+            gestureHandling: "greedy",
             styles: styles,
             bounds: bounds
         };
