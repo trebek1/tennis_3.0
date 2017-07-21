@@ -42,6 +42,8 @@
 	display: inline-block;
 	cursor: pointer;
 	padding: 0px 5px;
+	padding: 10px;
+	border-radius: 25px;
 }
 
 .key:hover:not(.activeSort){
@@ -114,6 +116,7 @@
 
 .tab{
 	padding: 10px;
+	border-radius: 25px;
 }
 
 .active{
