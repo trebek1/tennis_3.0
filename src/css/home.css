@@ -44,8 +44,8 @@
 	padding: 0px 5px;
 }
 
-.key:hover{
-	background: orange;
+.key:hover:not(.activeSort){
+	color: orange;
 }
 
 .keyTitle{
@@ -118,11 +118,16 @@
 
 .active{
 	background: silver;
+	cursor: pointer;
 }
 
-.tab:hover{
+.tab:hover:not(.active){
 	color: orange;
 	cursor: pointer;
+}
+
+.activeSort{
+	background: orange;
 }
 
 #styleSelectorContainer{
