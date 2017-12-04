@@ -27,9 +27,7 @@ app.use(session({
   // eCommerce 2-4 weeks 
 }));
 
-var Courts = require("./models/courts.js"); 
-
-//--->>> POST BOOKS <<<-----// 
+var Courts = require("./models/courts.js");
 
 app.get("/courts", function(req,res){
   Courts.find(function(err, courts){
