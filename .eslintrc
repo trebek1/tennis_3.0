@@ -2,6 +2,6 @@
   parser: "babel-eslint",
   "extends": "airbnb",
   "rules": {
- 	  "prefer-destructuring": 0
+ 	  
   }
 }

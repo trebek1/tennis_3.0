@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const courts = (state = initialState, action) => {
-  let sortedCourts;
+  let { sortedCourts } = state;
   let selectedPoint;
   switch (action.type) {
     case 'GET_COURTS':
@@ -27,7 +27,7 @@ const courts = (state = initialState, action) => {
       } else if (action.payload === 'all') {
         sortedCourts = state.courts.filter(court => court.Type != null);
       } else {
-        sortedCourts = state.sortedCourts;
+        // sortedCourts = state.sortedCourts;
       }
       return Object.assign({}, state, {
         sortedCourts,
