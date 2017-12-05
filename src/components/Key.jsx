@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class CourtList extends Component {
+export default class Key extends Component {
   constructor(props) {
     super(props); // only props if you want to access props in constructor
     this.state = {
@@ -87,12 +87,7 @@ export default class CourtList extends Component {
   }
 }
 
-CourtList.defaultProps = {
-  sortPoints: PropTypes.func,
-  updateSort: PropTypes.func,
-};
-
-CourtList.propTypes = {
-  sortPoints: PropTypes.func,
-  updateSort: PropTypes.func,
+Key.propTypes = {
+  sortPoints: PropTypes.func.isRequired,
+  updateSort: PropTypes.func.isRequired,
 };

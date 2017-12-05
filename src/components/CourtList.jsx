@@ -1,58 +1,52 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class CourtList extends Component {
+  componentDidUpdate() {
+    const that = this;
+    if (this.props.courts.length === 1 && document.getElementById('return') === null) {
+      const node = document.createElement('LI');
+      node.id = 'return';
+      node.innerHTML = 'Return to Previous Map';
+      node.className = 'courtListItem';
+      node.addEventListener('click', () => {
+        that.props.sortPoints(that.props.sort);
+        const element = document.getElementById('return');
+        element.parentNode.removeChild(element);
+      });
+      document.getElementById('courtList').appendChild(node);
+    }
+  }
+  clickFunction = (index) => {
+    if (this.props.courts.length > 1) {
+      this.props.selectPoint(index);
+    }
+  }
 
-	constructor(props){
-		super(props);
-		this.clickFunction = this.clickFunction.bind(this); 
-	}
+  renderList() {
+    const courts = this.props.courts;
+    courts.sort((court, nextCourt) => {
+      const a = court.Name.toUpperCase();
+      const b = nextCourt.Name.toUpperCase();
+      return a.localeCompare(b);
+    });
+    const that = this;
+    return (
+      <ul id="courtList">
+        {courts.map((court, index) => <li onClick={that.clickFunction(index)} className="courtListItem" key={index}> {court.Name} </li>)}
+      </ul>
+    );
+  }
 
-	clickFunction(index){
-		if(this.props.courts.length > 1 ){
-			this.props.selectPoint(index);	
-		}
-	}
-	
-	renderList(){
-		var courts = this.props.courts; 
-		courts.sort(function(court,nextCourt){
-			var a = court.Name.toUpperCase(); 
-			var b = nextCourt.Name.toUpperCase(); 
-			return a.localeCompare(b);
-		});
-		var _this = this; 
-		 return (<ul id="courtList">
-		 		{courts.map(function(court, index){
-			return <li onClick={_this.clickFunction.bind(null, index)} className="courtListItem" key={index}> {court.Name} </li>
-		})}
-		 	</ul>)
-	}
-    
-    render() {
-    	if(this.props.courts != undefined && this.props.courts.length > 0){
-    		return this.renderList.bind(this)();
-    	}else{
-    		return null; 	
-    	}
-  	}
-
-  	componentDidUpdate(){
-  		var _this = this;
-  		if(this.props.courts.length === 1 && document.getElementById("return") === null){
-  			var node = document.createElement("LI");
-  			node.id = "return"; 
-			node.innerHTML = "Return to Previous Map"; 
-			node.className = "courtListItem";
-			node.addEventListener("click", function(){
-				_this.props.sortPoints(_this.props.sort); 
-
-			var element = document.getElementById("return");
-				element.parentNode.removeChild(element);
-			}); 
-			document.getElementById("courtList").appendChild(node);
-  		}
-  	}
+  render() {
+    if (this.props.courts !== undefined && this.props.courts.length > 0) {
+      return this.renderList.bind(this)();
+    }
+    return null;
+  }
 }
 
-
-		
+CourtList.propTypes = {
+  selectPoint: PropTypes.func.isRequired,
+  courts: PropTypes.arrayOf(React.PropTypes.object).isRequired,
+};
