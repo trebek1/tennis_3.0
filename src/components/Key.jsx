@@ -1,55 +1,98 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class CourtList extends Component {
-	
-    constructor(props){
-        super(props); // only props if you want to access props in constructor 
-        this.sortPoints = this.sortPoints.bind(this);
-        this.state = {
-            sort: "all"
-        } 
+  constructor(props) {
+    super(props); // only props if you want to access props in constructor
+    this.state = {
+      sort: 'all',
+    };
+  }
+
+  componentDidMount() {
+    if (window.document.getElementsByClassName('activeSort').length > 0) {
+      const sort = window.document.getElementsByClassName('activeSort')[0];
+      if (sort.id !== this.state.sort) {
+        const newSort = window.document.getElementById(this.state.sort);
+        sort.classList.remove('activeSort');
+        newSort.className += ' activeSort';
+      }
     }
+  }
 
-    sortPoints(type){
-        this.props.sortPoints(type);
-        
-        var element = document.getElementById("return");
-        if(element){
-            element.parentNode.removeChild(element);
-        }
-        this.props.updateSort(type);
-
-        this.setState({
-            sort: type
-        });
+  sortPoints = (type) => {
+    this.props.sortPoints(type);
+    const element = window.document.getElementById('return');
+    if (element) {
+      element.parentNode.removeChild(element);
     }
-	
-    render() {	
-        if(document.getElementsByClassName("activeSort").length > 0){
-            var sort = document.getElementsByClassName("activeSort")[0];
-            if(sort.id != this.state.sort){
-                var newSort = document.getElementById(this.state.sort);
-                    sort.classList.remove("activeSort");
-                    newSort.className += " activeSort"; 
-            }  
-        }
-        
-    	var url = "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|";
+    this.props.updateSort(type);
+    this.setState({
+      sort: type,
+    });
+  }
 
-    	return(
-    		<div>
-    			<span className="anchor keyTitle">Sort By Type:</span>
-				<div onClick={this.sortPoints.bind(null, "club")}     id="club"     className="key club"><span className="keyValue"><img src={url + "F8EC3B"} /></span><span className="keyValue leftSpace">Tennis Club</span></div>
-				<div onClick={this.sortPoints.bind(null, "court")}    id="court"    className="key court"><span className="keyValue"><img src={url + "3BF83E"} /></span><span className="keyValue leftSpace"> Public Tennis Court</span></div>
-				<div onClick={this.sortPoints.bind(null, "shop")}     id="shop"     className="key shop"><span className="keyValue"><img src={url + "FE7569"}/></span><span className="keyValue leftSpace"> Tennis Shop</span></div>
-				<div onClick={this.sortPoints.bind(null, "other")} id="other" className="key other"><span className="keyValue"><img src={url + "00ccff"} /></span><span className="keyValue leftSpace"> Other Facility</span></div>
-                <div onClick={this.sortPoints.bind(null, "all")} id="all" className="key all activeSort"><span className="keyValue"><img src={url + "F8EC3B"} /></span><span className="keyValue"><img src={url + "3BF83E"} /></span><span className="keyValue"><img src={url + "FE7569"}/></span><span className="keyValue"><img src={url + "00ccff"} /></span><span className="keyValue leftSpace"> All Locations</span></div>    	
-    		</div>
-    	) 	
-  	}
+  render() {
+    const url = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|';
+    const clubUrl = `${url} + 'F8EC3B`;
+    const courtUrl = `${url} + '3BF83E`;
+    const shopUrl = `${url} + 'FE7569`;
+    const otherUrl = `${url} + '00ccff`;
+    const allUrl = `${url} + F8EC3B`;
+
+    return (
+      <div>
+        <span className="anchor keyTitle">Sort By Type:</span>
+        <div onClick={this.sortPoints('club')} id="club" className="key club">
+          <span className="keyValue">
+            <img src={clubUrl} alt="club" />
+          </span>
+          <span className="keyValue leftSpace">Tennis Club</span>
+        </div>
+        <div onClick={this.sortPoints('court')} id="court" className="key court">
+          <span className="keyValue">
+            <img src={courtUrl} alt="court" />
+          </span>
+          <span className="keyValue leftSpace"> Public Tennis Court</span>
+        </div>
+        <div onClick={this.sortPoints('shop')} id="shop" className="key shop">
+          <span className="keyValue">
+            <img src={shopUrl} alt="shop" />
+          </span>
+          <span className="keyValue leftSpace"> Tennis Shop</span>
+        </div>
+        <div onClick={this.sortPoints('other')} id="other" className="key other">
+          <span className="keyValue">
+            <img src={otherUrl} alt="other" />
+          </span>
+          <span className="keyValue leftSpace"> Other Facility</span>
+        </div>
+        <div onClick={this.sortPoints('all')} id="all" className="key all activeSort">
+          <span className="keyValue">
+            <img src={allUrl} alt="all" />
+          </span>
+          <span className="keyValue">
+            <img src={courtUrl} alt="courts" />
+          </span>
+          <span className="keyValue">
+            <img src={shopUrl} alt="shop" />
+          </span>
+          <span className="keyValue">
+            <img src={otherUrl} alt="other" />
+          </span>
+          <span className="keyValue leftSpace">All Locations</span>
+        </div>
+      </div>
+    );
+  }
 }
 
+CourtList.defaultProps = {
+  sortPoints: PropTypes.func,
+  updateSort: PropTypes.func,
+};
 
-		
-
-
+CourtList.propTypes = {
+  sortPoints: PropTypes.func,
+  updateSort: PropTypes.func,
+};
