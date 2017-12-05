@@ -23,7 +23,7 @@ export default class CourtList extends Component {
     }
   }
 
-  renderList() {
+  renderList = () => {
     const courts = this.props.courts;
     courts.sort((court, nextCourt) => {
       const a = court.Name.toUpperCase();
@@ -33,14 +33,14 @@ export default class CourtList extends Component {
     const that = this;
     return (
       <ul id="courtList">
-        {courts.map((court, index) => <li onClick={that.clickFunction(index)} className="courtListItem" key={index}> {court.Name} </li>)}
+        {courts.map((court, index) => <li onClick={that.clickFunction.bind(null, index)} className="courtListItem" key={index}> {court.Name} </li>)}
       </ul>
     );
   }
 
   render() {
     if (this.props.courts !== undefined && this.props.courts.length > 0) {
-      return this.renderList.bind(this)();
+      return this.renderList();
     }
     return null;
   }

@@ -26,12 +26,12 @@ export default class ButtonPannel extends Component {
     return (
       <div id="styleContainer">
         <span className="anchor"> Styles: </span>
-        <span className="tab night " onClick={this.handleClick('night')}> Night </span>
-        <span className="tab day " onClick={this.handleClick('day')}> Day </span>
-        <span className="tab australia " onClick={this.handleClick('australia')}> Australian Open </span>
-        <span className="tab french " onClick={this.handleClick('french')}> French Open </span>
-        <span className="tab wimbledon " onClick={this.handleClick('wimbledon')}> Wimbledon </span>
-        <span className="tab usa " onClick={this.handleClick('usa')}> U.S. Open </span>
+        <span className="tab night " onClick={this.handleClick.bind(null, 'night')}> Night </span>
+        <span className="tab day " onClick={this.handleClick.bind(null, 'day')}> Day </span>
+        <span className="tab australia " onClick={this.handleClick.bind(null, 'australia')}> Australian Open </span>
+        <span className="tab french " onClick={this.handleClick.bind(null, 'french')}> French Open </span>
+        <span className="tab wimbledon " onClick={this.handleClick.bind(null, 'wimbledon')}> Wimbledon </span>
+        <span className="tab usa " onClick={this.handleClick.bind(null, 'usa')}> U.S. Open </span>
       </div>
     );
   }
