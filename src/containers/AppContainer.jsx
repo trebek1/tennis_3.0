@@ -75,19 +75,19 @@ App.propTypes = {
   style: PropTypes.string,
   getCourts: PropTypes.func.isRequired,
   updateSort: PropTypes.func.isRequired,
-  selectedPoint: [],
+  selectedPoint: PropTypes.array,
   sort: PropTypes.string,
   sortPoints: PropTypes.func,
   selectStyle: PropTypes.func.isRequired,
   selectPoint: PropTypes.func,
-  sortedCourts: [],
+  sortedCourts: PropTypes.array,
 };
 
 App.defaultProps = {
   style: PropTypes.string,
   sortPoints: PropTypes.func,
-  selectedPoint: [],
+  selectedPoint: PropTypes.array,
   sort: PropTypes.string,
   selectPoint: PropTypes.func,
-  sortedCourts: [],
+  sortedCourts: PropTypes.array,
 };

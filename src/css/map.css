@@ -1,6 +1,6 @@
 
+/* This hides the white background */
 .gm-style > div:first-child > div + div > div:last-child > div > div:first-child > div {
- /*    we have to use !important because we are overwritng inline styles */
     visibility: hidden;
 }
 

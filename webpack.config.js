@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -14,10 +15,11 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({favicon: 'static/favicon.ico'})
   ],
   module: {
-    postLoaders: [
+    preLoaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -36,6 +38,7 @@ module.exports = {
     {test:  /\.jsx?$/, loader: 'babel-loader',query : { presets: ["react", "es2015", "stage-1"]}},
     { test: /\.css$/, loader: "style-loader!css-loader" },
     { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" },
+    {test: /\.(ico)$/i, loader: 'file?name=[name].[ext]'},
     { test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/, loader: 'url?limit=100000&name=[name].[ext]'}
   ]
   },

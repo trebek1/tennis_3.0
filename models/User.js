@@ -8,7 +8,7 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.checkPassword = function(password) {
-        return bcrypt.compareSync(password, this.passwordDigest);
+  return bcrypt.compareSync(password, this.passwordDigest);
 };
 
 userSchema.statics.createSecure = function (username, password, cb) {

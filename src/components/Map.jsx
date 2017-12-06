@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Map extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class Map extends Component {
           // if not expended then expand the window
           if (that.state.expanded === false) {
             // Expand window
-            infowindow.open(map, this);
+            infowindow.open(map, marker);
             // Add window and marker to state
             that.setState({
               infowindow,
@@ -271,5 +272,5 @@ class Map extends Component {
 export default Map;
 
 Map.propTypes = {
-  courts: [].isRequired,
+  courts: PropTypes.array.isRequired,
 };

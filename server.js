@@ -6,18 +6,23 @@ var app = express();
 var compiler = webpack(config);
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 //var db = require('./models');
 var MongoStore = require("connect-mongo")(session); 
 
 // APIs 
 var mongoose = require("mongoose");
 var url = "mongodb://"+process.env.TENNIS_USERNAME + ":"+ process.env.TENNIS_PASSWORD + "@ds153652.mlab.com:53652/tennis";
-mongoose.connect(url);
+mongoose.connect(url, {useMongoClient: true});
 
 var db = mongoose.connection; 
 db.on("error", console.error.bind(console, "# MongoDB - Connection Error: "));
 // setup sessions 
 
+// favicon
+app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')));
+
+// session if I want to implement login at some point
 app.use(session({
   secret: "robots",
   saveUninitialized: false, 
