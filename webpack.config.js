@@ -17,7 +17,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
-    preLoaders: [
+    postLoaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
