@@ -72,6 +72,11 @@ class Map extends Component {
             // Set rest of data to state
             that.setMarkerDataToState(j);
           }
+          const a = document.getElementsByClassName('gm-style-iw');
+          for (let i = 0; i < a.length; i++) {
+            const node = a[i].parentElement;
+            node.removeChild(node.firstChild);
+          }
         }, { passive: false });
       }
       // zoom out once so that user is guaranteed to see markers if on sort
