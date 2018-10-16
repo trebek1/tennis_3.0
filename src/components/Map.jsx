@@ -278,5 +278,5 @@ export default Map;
 
 Map.propTypes = {
   courts: PropTypes.array.isRequired,
-  styles: PropTypes.array.isRequired
+  style: PropTypes.string.isRequired,
 };
