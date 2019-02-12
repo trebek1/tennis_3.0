@@ -1,19 +1,22 @@
-const { GET_COURTS, SORT_POINTS, SELECT_POINT } = require('../actions/courtActions');
+const {
+  GET_COURTS,
+  SORT_POINTS,
+  SELECT_POINT
+} = require("../actions/courtActions");
 
 const initialState = {
   courts: [],
   sortedCourts: [],
   selectedPoint: [],
-  sort: 'all',
+  sort: "all"
 };
 
-const COURT = 'court';
-const COURT_TYPE = 'Court';
-const CLUB = 'club';
-const SHOP = 'shop';
-const OTHER = 'other';
-const OTHER_TYPE = 'Other';
-
+const COURT = "court";
+const COURT_TYPE = "Court";
+const CLUB = "club";
+const SHOP = "shop";
+const OTHER = "other";
+const OTHER_TYPE = "Other";
 
 const courts = (state = initialState, action) => {
   let { sortedCourts } = state;
@@ -23,20 +26,26 @@ const courts = (state = initialState, action) => {
       return {
         ...state,
         courts: action.payload[0].sfcourts,
-        sortedCourts: action.payload[0].sfcourts,
+        sortedCourts: action.payload[0].sfcourts
       };
     case SORT_POINTS:
       sortedCourts = [];
       switch (action.payload) {
         case CLUB:
         case SHOP:
-          sortedCourts = state.courts.filter(court => court.Type === action.payload);
+          sortedCourts = state.courts.filter(
+            court => court.Type === action.payload
+          );
           break;
         case COURT:
-          sortedCourts = state.courts.filter(court => court.Type === COURT_TYPE);
+          sortedCourts = state.courts.filter(
+            court => court.Type === COURT_TYPE
+          );
           break;
         case OTHER:
-          sortedCourts = state.courts.filter(court => court.Type === OTHER_TYPE);
+          sortedCourts = state.courts.filter(
+            court => court.Type === OTHER_TYPE
+          );
           break;
         default:
           sortedCourts = state.courts.filter(court => court.Type != null);
@@ -44,13 +53,13 @@ const courts = (state = initialState, action) => {
       return {
         ...state,
         sortedCourts,
-        selectedPoint: [],
+        selectedPoint: []
       };
     case SELECT_POINT:
       selectedPoint = state.sortedCourts[action.payload];
       return {
         ...state,
-        selectedPoint: [selectedPoint],
+        selectedPoint: [selectedPoint]
       };
 
     default:

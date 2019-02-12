@@ -1,7 +1,7 @@
-const { SELECT_STYLE } = require('../actions/courtActions');
+const { SELECT_STYLE } = require("../actions/courtActions");
 
 const initialState = {
-  styles: 'wimbledon',
+  styles: "wimbledon"
 };
 
 const styles = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const styles = (state = initialState, action) => {
     case SELECT_STYLE:
       return {
         ...state,
-        styles: action.payload,
+        styles: action.payload
       };
     default:
       return state;

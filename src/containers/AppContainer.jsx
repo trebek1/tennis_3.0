@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // Redux
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 // Action to dispatch
-import { getCourts, selectStyle, sortPoints, selectPoint, updateSort } from '../actions/courtActions';
+import {
+  getCourts,
+  selectStyle,
+  sortPoints,
+  selectPoint,
+  updateSort
+} from "../actions/courtActions";
 
 // Dumb Components
-import Map from '../components/Map';
-import ButtonPannel from '../components/ButtonPannel';
-import CourtList from '../components/CourtList';
-import Key from '../components/Key';
+import Map from "../components/Map";
+import ButtonPannel from "../components/ButtonPannel";
+import CourtList from "../components/CourtList";
+import Key from "../components/Key";
 
 class App extends Component {
   componentDidMount() {
@@ -29,11 +35,19 @@ class App extends Component {
             sort={this.props.sort}
             sortPoints={this.props.sortPoints}
             selectPoint={this.props.selectPoint}
-            courts={selectedPointLength ? this.props.selectedPoint : this.props.sortedCourts}
+            courts={
+              selectedPointLength
+                ? this.props.selectedPoint
+                : this.props.sortedCourts
+            }
           />
         </div>
         <Map
-          courts={selectedPointLength ? this.props.selectedPoint : this.props.sortedCourts}
+          courts={
+            selectedPointLength
+              ? this.props.selectedPoint
+              : this.props.sortedCourts
+          }
           style={this.props.style}
         />
         <div id="keyContainer">
@@ -56,20 +70,26 @@ function mapStateToProps(state) {
     style: state.styles.styles,
     sortedCourts: state.courts.sortedCourts,
     selectedPoint: state.courts.selectedPoint,
-    sort: state.courts.sort,
+    sort: state.courts.sort
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getCourts,
-    selectStyle,
-    sortPoints,
-    selectPoint,
-    updateSort,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      getCourts,
+      selectStyle,
+      sortPoints,
+      selectPoint,
+      updateSort
+    },
+    dispatch
+  );
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 App.propTypes = {
   style: PropTypes.string,
@@ -80,7 +100,7 @@ App.propTypes = {
   sortPoints: PropTypes.func,
   selectStyle: PropTypes.func.isRequired,
   selectPoint: PropTypes.func,
-  sortedCourts: PropTypes.array,
+  sortedCourts: PropTypes.array
 };
 
 App.defaultProps = {
@@ -89,5 +109,5 @@ App.defaultProps = {
   selectedPoint: PropTypes.array,
   sort: PropTypes.string,
   selectPoint: PropTypes.func,
-  sortedCourts: PropTypes.array,
+  sortedCourts: PropTypes.array
 };

@@ -1,45 +1,45 @@
-.gm-style-iw{
-	color: orange;
-	background: black;
-	padding: 10px;
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
+.gm-style-iw {
+  color: orange;
+  background: black;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: orange;
 }
 
-#content{
-	font-weight: bold;
+#content {
+  font-weight: bold;
 }
 
-.tab::active{
-	background: red;
+.tab::active {
+  background: red;
 }
 
-#legendContainer{
-	padding: 10px;
+#legendContainer {
+  padding: 10px;
 }
 
-#key{
-	text-align: center;
-	font-weight: bold;
-	font-size: 15px;
-	padding-bottom: 10px;
+#key {
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  padding-bottom: 10px;
 }
 
-.keyValue{
-	display:inline-block;
-	vertical-align: middle;
+.keyValue {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.leftSpace{
-	padding-left: 10px;
+.leftSpace {
+  padding-left: 10px;
 }
 
 .fa {
-	color: orange;
+  color: orange;
 }
 
-.courtName{
-	font-size: 17px;
+.courtName {
+  font-size: 17px;
 }

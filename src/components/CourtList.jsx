@@ -1,27 +1,30 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class CourtList extends Component {
   componentDidUpdate() {
     const that = this;
-    if (this.props.courts.length === 1 && document.getElementById('return') === null) {
-      const node = document.createElement('LI');
-      node.id = 'return';
-      node.innerHTML = 'Return to Previous Map';
-      node.className = 'courtListItem';
-      node.addEventListener('click', () => {
+    if (
+      this.props.courts.length === 1 &&
+      document.getElementById("return") === null
+    ) {
+      const node = document.createElement("LI");
+      node.id = "return";
+      node.innerHTML = "Return to Previous Map";
+      node.className = "courtListItem";
+      node.addEventListener("click", () => {
         that.props.sortPoints(that.props.sort);
-        const element = document.getElementById('return');
+        const element = document.getElementById("return");
         element.parentNode.removeChild(element);
       });
-      document.getElementById('courtList').appendChild(node);
+      document.getElementById("courtList").appendChild(node);
     }
   }
-  clickFunction = (index) => {
+  clickFunction = index => {
     if (this.props.courts.length > 1) {
       this.props.selectPoint(index);
     }
-  }
+  };
 
   renderList = () => {
     const courts = this.props.courts;
@@ -33,10 +36,19 @@ export default class CourtList extends Component {
     const that = this;
     return (
       <ul id="courtList">
-        {courts.map((court, index) => <li onClick={that.clickFunction.bind(null, index)} className="courtListItem" key={index}> {court.Name} </li>)}
+        {courts.map((court, index) => (
+          <li
+            onClick={that.clickFunction.bind(null, index)}
+            className="courtListItem"
+            key={index}
+          >
+            {" "}
+            {court.Name}{" "}
+          </li>
+        ))}
       </ul>
     );
-  }
+  };
 
   render() {
     if (this.props.courts !== undefined && this.props.courts.length > 0) {
@@ -48,5 +60,5 @@ export default class CourtList extends Component {
 
 CourtList.propTypes = {
   selectPoint: PropTypes.func.isRequired,
-  courts: PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  courts: PropTypes.arrayOf(React.PropTypes.object).isRequired
 };
