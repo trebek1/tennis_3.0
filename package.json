@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node server.js"
   },
+  "engines": {
+    "node": "10.10.0"
+  },
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
