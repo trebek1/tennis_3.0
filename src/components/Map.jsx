@@ -10,7 +10,6 @@ class Map extends Component {
     };
   }
 
-  //  Lifecycle Methods
   shouldComponentUpdate(nextProps) {
     if (this.state.courts.length === 0) {
       this.setState({

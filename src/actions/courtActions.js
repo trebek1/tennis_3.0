@@ -1,29 +1,18 @@
 import axios from 'axios';
 
-export function getCourts() {
-  return (dispatch) => {
-    axios.get('/courts')
-      .then((response) => {
-        dispatch({ type: 'GET_COURTS', payload: response.data });
-      })
-      .catch(() => {
-        // console.log('an error occurred ', err);
-      });
-  };
-}
+export const GET_COURTS = 'GET_COURTS';
+export const SELECT_POINT = 'SELECT_POINT';
+export const SELECT_STYLE = 'SELECT_STYLE';
+export const SORT_POINTS = 'SORT_POINTS';
+export const UPDATE_SORT = 'UPDATE_SORT';
 
-export function selectStyle(type) {
-  return { type: 'SELECT_STYLE', payload: type };
-}
 
-export function sortPoints(type) {
-  return { type: 'SORT_POINTS', payload: type };
-}
+export const getCourts = () => (dispatch) => axios.get('/courts').then((response) => dispatch({ type: GET_COURTS, payload: response.data }));
 
-export function selectPoint(index) {
-  return { type: 'SELECT_POINT', payload: index };
-}
+export const selectStyle = (type) => ({ type: SELECT_STYLE, payload: type });
 
-export function updateSort(sort) {
-  return { type: 'UPDATE_SORT', payload: sort };
-}
+export const sortPoints = (type) => ({ type: SORT_POINTS, payload: type });
+
+export const selectPoint = (index) => ({ type: SELECT_POINT, payload: index });
+
+export const updateSort = (sort) => ({ type: UPDATE_SORT, payload: sort });

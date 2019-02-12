@@ -1,3 +1,5 @@
+const { GET_COURTS, SORT_POINTS, SELECT_POINT } = require('../actions/courtActions');
+
 const initialState = {
   courts: [],
   sortedCourts: [],
@@ -5,43 +7,51 @@ const initialState = {
   sort: 'all',
 };
 
+const COURT = 'court';
+const COURT_TYPE = 'Court';
+const CLUB = 'club';
+const SHOP = 'shop';
+const OTHER = 'other';
+const OTHER_TYPE = 'Other';
+
+
 const courts = (state = initialState, action) => {
   let { sortedCourts } = state;
   let selectedPoint;
   switch (action.type) {
-    case 'GET_COURTS':
-      return Object.assign({}, state, {
+    case GET_COURTS:
+      return {
+        ...state,
         courts: action.payload[0].sfcourts,
         sortedCourts: action.payload[0].sfcourts,
-      });
-    case 'SORT_POINTS':
-      if (action.payload === 'club') {
-        sortedCourts = state.courts.filter(court => court.Type === 'club');
-      } else if (action.payload === 'court') {
-        sortedCourts = state.courts.filter(court => court.Type === 'Court');
-      } else if (action.payload === 'shop') {
-        sortedCourts = state.courts.filter(court => court.Type === 'shop');
-      } else if (action.payload === 'other') {
-        sortedCourts = state.courts.filter(court => court.Type === 'Other');
-      } else if (action.payload === 'all') {
-        sortedCourts = state.courts.filter(court => court.Type != null);
-      } else {
-        // sortedCourts = state.sortedCourts;
+      };
+    case SORT_POINTS:
+      sortedCourts = [];
+      switch (action.payload) {
+        case CLUB:
+        case SHOP:
+          sortedCourts = state.courts.filter(court => court.Type === action.payload);
+          break;
+        case COURT:
+          sortedCourts = state.courts.filter(court => court.Type === COURT_TYPE);
+          break;
+        case OTHER:
+          sortedCourts = state.courts.filter(court => court.Type === OTHER_TYPE);
+          break;
+        default:
+          sortedCourts = state.courts.filter(court => court.Type != null);
       }
-      return Object.assign({}, state, {
+      return {
+        ...state,
         sortedCourts,
         selectedPoint: [],
-      });
-    case 'SELECT_POINT':
+      };
+    case SELECT_POINT:
       selectedPoint = state.sortedCourts[action.payload];
-      return Object.assign({}, state, {
+      return {
+        ...state,
         selectedPoint: [selectedPoint],
-      });
-
-    case 'UPDATE_SORT':
-      return Object.assign({}, state, {
-        sort: action.payload,
-      });
+      };
 
     default:
       return state;

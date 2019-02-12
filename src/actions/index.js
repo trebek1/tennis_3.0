@@ -6,15 +6,12 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT"; 
 
 
-export function reqData() {
-  return {
-    type: REQ_DATA
-  }
-}
+export const reqData = () => ({
+  type: REQ_DATA
+});
 
-export function resData(products) {
-  return {
-    type: RES_DATA,
-    products
-  }
-}
+
+export const resData = (products) => ({
+  type: RES_DATA,
+  products
+});
