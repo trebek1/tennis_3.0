@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonPannelConfig from "../constants/buttonPannelConfig";
 
+const DEFAULT_ACTIVE = "wimbledon";
+const DEFAULT_PREVIOUS = "wimbledon";
+
 export default class ButtonPannel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      previous: "wimbledon",
-      active: "wimbledon"
-    };
-  }
+  state = {
+    previous: DEFAULT_PREVIOUS,
+    active: DEFAULT_ACTIVE
+  };
 
   handleClick = active => {
     const { selectStyle } = this.props;
@@ -21,21 +21,16 @@ export default class ButtonPannel extends Component {
   };
 
   render() {
-    if (document.getElementsByClassName(this.state.previous).length > 0) {
-      document
-        .getElementsByClassName(this.state.previous)[0]
-        .classList.remove("active");
-      document.getElementsByClassName(this.state.active)[0].className +=
-        " active";
-    }
+    const { active } = this.state;
     return (
       <div id="styleContainer">
         <span className="anchor"> Styles: </span>
         {Object.keys(ButtonPannelConfig).map(button => {
           const config = ButtonPannelConfig[button];
+          const isActive = config.clickText === active;
           return (
             <span
-              className={config.className}
+              className={`${config.className} ${isActive ? "active" : ""}`}
               key={config.text}
               onClick={() => this.handleClick(config.clickText)}
             >
