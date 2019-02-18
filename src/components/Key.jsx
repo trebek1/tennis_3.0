@@ -40,13 +40,19 @@ export default class Key extends Component {
         <span className="anchor keyTitle">Sort By Type:</span>
 
         {Object.keys(CourtTypeConfig).map(court => {
-          const { className, id, text, textClassName, url } = CourtTypeConfig[
-            court
-          ];
+          const {
+            className,
+            id,
+            imageNode,
+            text,
+            textClassName,
+            url
+          } = CourtTypeConfig[court];
           return (
             <CourtTypeTile
               className={className}
               id={id}
+              imageNode={imageNode}
               key={id}
               sortPoints={this.sortPoints}
               text={text}
@@ -55,31 +61,6 @@ export default class Key extends Component {
             />
           );
         })}
-        <div
-          onClick={() => this.sortPoints("all")}
-          id="all"
-          className="key all activeSort"
-        >
-          <span className="keyValue">
-            <img
-              src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
-              alt="all"
-            />
-            <img
-              src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
-              alt="all"
-            />
-            <img
-              src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
-              alt="all"
-            />
-            <img
-              src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
-              alt="all"
-            />
-          </span>
-          <span className="keyValue leftSpace">All Locations</span>
-        </div>
       </div>
     );
   }
