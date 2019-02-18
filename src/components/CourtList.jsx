@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 export default class CourtList extends Component {
   componentDidUpdate() {
-    const that = this;
     if (
       this.props.courts.length === 1 &&
       document.getElementById("return") === null
@@ -13,47 +12,33 @@ export default class CourtList extends Component {
       node.innerHTML = "Return to Previous Map";
       node.className = "courtListItem";
       node.addEventListener("click", () => {
-        that.props.sortPoints(that.props.sort);
+        this.props.sortPoints(this.props.sort);
         const element = document.getElementById("return");
         element.parentNode.removeChild(element);
       });
       document.getElementById("courtList").appendChild(node);
     }
   }
-  clickFunction = index => {
-    if (this.props.courts.length > 1) {
-      this.props.selectPoint(index);
-    }
-  };
-
-  renderList = () => {
-    const courts = this.props.courts;
-    courts.sort((court, nextCourt) => {
-      const a = court.Name.toUpperCase();
-      const b = nextCourt.Name.toUpperCase();
-      return a.localeCompare(b);
-    });
-    const that = this;
-    return (
-      <ul id="courtList">
-        {courts.map((court, index) => (
-          <li
-            onClick={() => that.clickFunction(index)}
-            className="courtListItem"
-            key={index}
-          >
-            {" "}
-            {court.Name}{" "}
-          </li>
-        ))}
-      </ul>
-    );
-  };
 
   render() {
-    const { courts } = this.props;
+    const { courts, selectPoint } = this.props;
     if (courts != null && courts.length > 0) {
-      return this.renderList();
+      courts.sort((court, nextCourt) =>
+        court.Name.toUpperCase().localeCompare(nextCourt.Name.toUpperCase())
+      );
+      return (
+        <ul id="courtList">
+          {courts.map((court, index) => (
+            <li
+              onClick={() => selectPoint(index)}
+              className="courtListItem"
+              key={index}
+            >
+              {court.Name}{" "}
+            </li>
+          ))}
+        </ul>
+      );
     }
     return null;
   }
