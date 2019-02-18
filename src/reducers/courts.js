@@ -49,6 +49,7 @@ const courts = (state = initialState, action) => {
           break;
         default:
           sortedCourts = state.courts.filter(court => court.Type != null);
+          break;
       }
       return {
         ...state,
