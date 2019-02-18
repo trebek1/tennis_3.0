@@ -6,7 +6,6 @@ export default {
     id: "club",
     imageNode: null,
     text: "Tennis Club",
-    textClassName: "keyValue leftSpace",
     url:
       "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
   },
@@ -15,7 +14,6 @@ export default {
     id: "court",
     imageNode: null,
     text: "Public Tennis Court",
-    textClassName: "keyValue leftSpace",
     url:
       "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
   },
@@ -24,7 +22,6 @@ export default {
     id: "shop",
     imageNode: null,
     text: "Tennis Shop",
-    textClassName: "keyValue leftSpace",
     url:
       "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
   },
@@ -33,12 +30,11 @@ export default {
     id: "other",
     imageNode: null,
     text: "Other Facility",
-    textClassName: "keyValue leftSpace",
     url:
       "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
   },
   all: {
-    className: "key all activeSort",
+    className: "key all",
     id: "all",
     imageNode: (
       <span className="keyValue">
@@ -61,7 +57,6 @@ export default {
       </span>
     ),
     text: "All Locations",
-    textClassName: "keyValue leftSpace",
     url: null
   }
 };

@@ -3,34 +3,22 @@ import PropTypes from "prop-types";
 import CourtTypeTile from "./CourtTypeTile";
 import CourtTypeConfig from "../constants/courtTypeConfig";
 
+const DEFAULT_SORT = "all";
+
 export default class Key extends Component {
-  constructor(props) {
-    super(props); // only props if you want to access props in constructor
-    this.state = {
-      sort: "all"
-    };
-  }
+  state = {
+    sort: DEFAULT_SORT
+  };
 
-  componentDidUpdate() {
-    if (window.document.getElementsByClassName("activeSort").length > 0) {
-      const sort = window.document.getElementsByClassName("activeSort")[0];
-      if (sort.id !== this.state.sort) {
-        const newSort = window.document.getElementById(this.state.sort);
-        sort.classList.remove("activeSort");
-        newSort.className += " activeSort";
-      }
-    }
-  }
-
-  sortPoints = type => {
-    this.props.sortPoints(type);
+  sortPoints = sort => {
+    this.props.sortPoints(sort);
     const element = window.document.getElementById("return");
     if (element) {
       element.parentNode.removeChild(element);
     }
-    this.props.updateSort(type);
+    this.props.updateSort(sort);
     this.setState({
-      sort: type
+      sort
     });
   };
 
@@ -50,7 +38,9 @@ export default class Key extends Component {
           } = CourtTypeConfig[court];
           return (
             <CourtTypeTile
-              className={className}
+              className={`${className} ${
+                this.state.sort === id ? "activeSort" : ""
+              }`}
               id={id}
               imageNode={imageNode}
               key={id}
