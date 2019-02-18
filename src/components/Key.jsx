@@ -45,7 +45,7 @@ export default class Key extends Component {
       <div>
         <span className="anchor keyTitle">Sort By Type:</span>
         <div
-          onClick={this.sortPoints.bind(null, "club")}
+          onClick={() => this.sortPoints("club")}
           id="club"
           className="key club"
         >
@@ -55,7 +55,7 @@ export default class Key extends Component {
           <span className="keyValue leftSpace">Tennis Club</span>
         </div>
         <div
-          onClick={this.sortPoints.bind(null, "court")}
+          onClick={() => this.sortPoints("court")}
           id="court"
           className="key court"
         >
@@ -65,7 +65,7 @@ export default class Key extends Component {
           <span className="keyValue leftSpace"> Public Tennis Court</span>
         </div>
         <div
-          onClick={this.sortPoints.bind(null, "shop")}
+          onClick={() => this.sortPoints("shop")}
           id="shop"
           className="key shop"
         >
@@ -75,7 +75,7 @@ export default class Key extends Component {
           <span className="keyValue leftSpace"> Tennis Shop</span>
         </div>
         <div
-          onClick={this.sortPoints.bind(null, "other")}
+          onClick={() => this.sortPoints("other")}
           id="other"
           className="key other"
         >
@@ -85,7 +85,7 @@ export default class Key extends Component {
           <span className="keyValue leftSpace"> Other Facility</span>
         </div>
         <div
-          onClick={this.sortPoints.bind(null, "all")}
+          onClick={() => this.sortPoints("all")}
           id="all"
           className="key all activeSort"
         >

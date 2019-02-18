@@ -11,7 +11,8 @@ export default class ButtonPannel extends Component {
   }
 
   handleClick = active => {
-    this.props.selectStyle.bind(null, active)();
+    const { selectStyle } = this.props;
+    selectStyle(active);
     this.setState({
       previous: this.state.active,
       active
@@ -29,34 +30,31 @@ export default class ButtonPannel extends Component {
     return (
       <div id="styleContainer">
         <span className="anchor"> Styles: </span>
-        <span
-          className="tab night "
-          onClick={this.handleClick.bind(null, "night")}
-        >
+        <span className="tab night " onClick={() => this.handleClick("night")}>
           Night
         </span>
-        <span className="tab day " onClick={this.handleClick.bind(null, "day")}>
+        <span className="tab day " onClick={() => this.handleClick("day")}>
           Day
         </span>
         <span
           className="tab australia "
-          onClick={this.handleClick.bind(null, "australia")}
+          onClick={() => this.handleClick("australia")}
         >
           Australian Open
         </span>
         <span
           className="tab french "
-          onClick={this.handleClick.bind(null, "french")}
+          onClick={() => this.handleClick("french")}
         >
           French Open
         </span>
         <span
           className="tab wimbledon "
-          onClick={this.handleClick.bind(null, "wimbledon")}
+          onClick={() => this.handleClick("wimbledon")}
         >
           Wimbledon
         </span>
-        <span className="tab usa " onClick={this.handleClick.bind(null, "usa")}>
+        <span className="tab usa " onClick={() => this.handleClick("usa")}>
           U.S. Open
         </span>
       </div>

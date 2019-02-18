@@ -38,7 +38,7 @@ export default class CourtList extends Component {
       <ul id="courtList">
         {courts.map((court, index) => (
           <li
-            onClick={that.clickFunction.bind(null, index)}
+            onClick={() => that.clickFunction(index)}
             className="courtListItem"
             key={index}
           >
@@ -51,7 +51,8 @@ export default class CourtList extends Component {
   };
 
   render() {
-    if (this.props.courts !== undefined && this.props.courts.length > 0) {
+    const { courts } = this.props;
+    if (courts != null && courts.length > 0) {
       return this.renderList();
     }
     return null;
