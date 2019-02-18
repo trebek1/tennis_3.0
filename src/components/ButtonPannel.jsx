@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ButtonPannelConfig from "../constants/buttonPannelConfig";
 
 export default class ButtonPannel extends Component {
   constructor(props) {
@@ -30,33 +31,18 @@ export default class ButtonPannel extends Component {
     return (
       <div id="styleContainer">
         <span className="anchor"> Styles: </span>
-        <span className="tab night " onClick={() => this.handleClick("night")}>
-          Night
-        </span>
-        <span className="tab day " onClick={() => this.handleClick("day")}>
-          Day
-        </span>
-        <span
-          className="tab australia "
-          onClick={() => this.handleClick("australia")}
-        >
-          Australian Open
-        </span>
-        <span
-          className="tab french "
-          onClick={() => this.handleClick("french")}
-        >
-          French Open
-        </span>
-        <span
-          className="tab wimbledon "
-          onClick={() => this.handleClick("wimbledon")}
-        >
-          Wimbledon
-        </span>
-        <span className="tab usa " onClick={() => this.handleClick("usa")}>
-          U.S. Open
-        </span>
+        {Object.keys(ButtonPannelConfig).map(button => {
+          const config = ButtonPannelConfig[button];
+          return (
+            <span
+              className={config.className}
+              key={config.text}
+              onClick={() => this.handleClick(config.clickText)}
+            >
+              {config.text}
+            </span>
+          );
+        })}
       </div>
     );
   }
