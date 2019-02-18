@@ -34,7 +34,7 @@ export default class CourtList extends Component {
               className="courtListItem"
               key={index}
             >
-              {court.Name}{" "}
+              {court.Name}
             </li>
           ))}
         </ul>

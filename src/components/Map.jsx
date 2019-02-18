@@ -3,13 +3,10 @@ import PropTypes from "prop-types";
 import courtStyles from "../constants/courtStyles";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      courts: [],
-      expanded: false
-    };
-  }
+  state = {
+    courts: [],
+    expanded: false
+  };
 
   shouldComponentUpdate(nextProps) {
     if (this.state.courts.length === 0) {
@@ -145,11 +142,11 @@ class Map extends Component {
 
     return infowindow;
   };
-  setMarkerDataToState = () => {
+  setMarkerDataToState = () =>
     this.setState({
       expanded: true
     });
-  };
+
   getPinColor = data => {
     const courtType = data.Type.toLowerCase();
     switch (courtType) {
@@ -273,8 +270,7 @@ class Map extends Component {
     return (
       <div id="mapContainer">
         <div id="map" className="map-gic main-map" ref="gmap">
-          {" "}
-          Map Loading{" "}
+          Map Loading...
         </div>
       </div>
     );

@@ -11,49 +11,44 @@ export default class Key extends Component {
   };
 
   sortPoints = sort => {
-    this.props.sortPoints(sort);
-    const element = window.document.getElementById("return");
-    if (element) {
-      element.parentNode.removeChild(element);
-    }
-    this.props.updateSort(sort);
+    const { sortPoints, updateSort } = this.props;
+    sortPoints(sort);
+    updateSort(sort);
     this.setState({
       sort
     });
   };
 
-  render() {
-    return (
-      <div>
-        <span className="anchor keyTitle">Sort By Type:</span>
+  render = () => (
+    <div>
+      <span className="anchor keyTitle">Sort By Type:</span>
 
-        {Object.keys(CourtTypeConfig).map(court => {
-          const {
-            className,
-            id,
-            imageNode,
-            text,
-            textClassName,
-            url
-          } = CourtTypeConfig[court];
-          return (
-            <CourtTypeTile
-              className={`${className} ${
-                this.state.sort === id ? "activeSort" : ""
-              }`}
-              id={id}
-              imageNode={imageNode}
-              key={id}
-              sortPoints={this.sortPoints}
-              text={text}
-              textClassName={textClassName}
-              url={url}
-            />
-          );
-        })}
-      </div>
-    );
-  }
+      {Object.keys(CourtTypeConfig).map(court => {
+        const {
+          className,
+          id,
+          imageNode,
+          text,
+          textClassName,
+          url
+        } = CourtTypeConfig[court];
+        return (
+          <CourtTypeTile
+            className={`${className} ${
+              this.state.sort === id ? "activeSort" : ""
+            }`}
+            id={id}
+            imageNode={imageNode}
+            key={id}
+            sortPoints={this.sortPoints}
+            text={text}
+            textClassName={textClassName}
+            url={url}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 Key.propTypes = {

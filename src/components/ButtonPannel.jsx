@@ -27,10 +27,11 @@ export default class ButtonPannel extends Component {
         <span className="anchor"> Styles: </span>
         {Object.keys(ButtonPannelConfig).map(button => {
           const config = ButtonPannelConfig[button];
-          const isActive = config.clickText === active;
           return (
             <span
-              className={`${config.className} ${isActive ? "active" : ""}`}
+              className={`${config.className} ${
+                config.clickText === active ? "active" : ""
+              }`}
               key={config.text}
               onClick={() => this.handleClick(config.clickText)}
             >
