@@ -17,7 +17,8 @@
     "react/no-string-refs": 0,
     "quotes": 0,
     "comma-dangle": 0,
-    "function-paren-newline": 0
+    "function-paren-newline": 0,
+    "object-curly-newline": 0
   },
   "globals": {
     "document": true,
