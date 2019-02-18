@@ -56,7 +56,7 @@ const courts = (state = initialState, action) => {
         selectedPoint: []
       };
     case SELECT_POINT:
-      selectedPoint = state.sortedCourts[action.payload];
+      selectedPoint = sortedCourts[action.payload];
       return {
         ...state,
         selectedPoint: [selectedPoint]

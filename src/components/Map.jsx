@@ -39,8 +39,8 @@ class Map extends Component {
       const points = this.getPoints();
       for (let j = 0; j < points.length; j++) {
         // get marker and infowindow variables from functions
-        const marker = that.createMarker(map, points, j);
-        const infowindow = that.setMarkerContent(j);
+        const marker = this.createMarker(map, points, j);
+        const infowindow = this.setMarkerContent(j);
         // set bounds and set center of map
         bounds.extend(marker.getPosition());
         map.setCenter(bounds.getCenter());
