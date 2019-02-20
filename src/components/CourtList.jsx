@@ -24,7 +24,7 @@ export default class CourtList extends Component {
     const { courts, selectPoint } = this.props;
     if (courts != null && courts.length > 0) {
       courts.sort((court, nextCourt) =>
-        court.Name.toUpperCase().localeCompare(nextCourt.Name.toUpperCase())
+        court.name.toUpperCase().localeCompare(nextCourt.name.toUpperCase())
       );
       return (
         <ul id="courtList">
@@ -34,7 +34,7 @@ export default class CourtList extends Component {
               key={index}
               onClick={() => selectPoint(index)}
             >
-              {court.Name}
+              {court.name}
             </li>
           ))}
         </ul>

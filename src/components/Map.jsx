@@ -88,19 +88,19 @@ class Map extends Component {
   setMarkerContent = index => {
     const court = this.props.courts[index];
     const contentString = `<div id="content"><div class="courtName">${
-      court.Name
+      court.name
     }</div><div><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i>${
-      court.Address
+      court.address
     }</div>${
-      court.Lights
+      court.lights
         ? `<div><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i>${
-            court.Lights
+            court.lights
           }</div>`
         : ""
     } ${
-      court.Phone
+      court.phone
         ? `<div><i class="fa fa-mobile fa-fw" aria-hidden="true"></i>${
-            court.Phone
+            court.phone
           }</div>`
         : ""
     }</div>`;
@@ -115,8 +115,7 @@ class Map extends Component {
   };
 
   getPinColor = data => {
-    const courtType = data.Type.toLowerCase();
-    switch (courtType) {
+    switch (data.type) {
       case "shop":
         return "FE7569";
       case "club":
@@ -133,7 +132,7 @@ class Map extends Component {
     const points = [];
     const courts = this.props.courts;
     for (let i = 0; i < courts.length; i++) {
-      const temp = [courts[i].X, courts[i].Y];
+      const temp = [courts[i].x, courts[i].y];
       const a = new google.maps.LatLng(temp[0], temp[1]);
       points.push(a);
     }
