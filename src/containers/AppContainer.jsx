@@ -57,12 +57,15 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  courts: state.courts.courts,
-  style: state.styles.styles,
-  sortedCourts: state.courts.sortedCourts,
-  selectedPoint: state.courts.selectedPoint,
-  sort: state.courts.sort
+const mapStateToProps = ({
+  courts: { sortedCourts, selectedPoint, sort, courts },
+  styles: { styles }
+}) => ({
+  courts,
+  style: styles,
+  sortedCourts,
+  selectedPoint,
+  sort
 });
 
 const mapDispatchToProps = dispatch =>
