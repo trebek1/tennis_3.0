@@ -30,7 +30,7 @@ class App extends Component {
       updateSort,
       selectStyle
     } = this.props;
-    const selectedPointLength = selectedPoint.length > 0;
+    const selectedPointLength = selectedPoint.length === 1;
     return (
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>

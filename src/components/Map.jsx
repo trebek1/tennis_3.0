@@ -8,20 +8,11 @@ class Map extends Component {
     expanded: false
   };
 
-  shouldComponentUpdate(nextProps) {
-    if (this.state.courts.length === 0) {
+  shouldComponentUpdate({ courts, style }) {
+    if (this.state.courts !== courts || this.state.style !== style) {
       this.setState({
-        courts: this.props.courts
-      });
-      return true;
-    } else if (this.state.style !== nextProps.style) {
-      this.setState({
-        style: nextProps.style
-      });
-      return true;
-    } else if (nextProps.courts.length !== this.state.courts.length) {
-      this.setState({
-        courts: nextProps.courts
+        courts,
+        style
       });
       return true;
     }
@@ -29,10 +20,7 @@ class Map extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.courts.length === 0) {
-      this.getCourts();
-    }
-    if (this.state.courts.length > 0) {
+    if (this.props.courts.length > 0) {
       const map = this.createMap();
       let bounds = map.getBounds();
       const that = this;
@@ -78,7 +66,7 @@ class Map extends Component {
         const point = points[0];
         bounds = new google.maps.LatLngBounds(point);
         map.fitBounds(bounds);
-        map.setZoom(15);
+        map.setZoom(map.getZoom() - 6);
       }
       // Add listener to map so that if its clicked then the window closes if its open
       google.maps.event.addListener(
@@ -98,29 +86,24 @@ class Map extends Component {
     }
   }
   setMarkerContent = index => {
-    const court = this.state.courts[index];
-    let courtLightString;
-    let courtPhoneString;
-    if (court.Phone) {
-      courtPhoneString = `<div><i class="fa fa-mobile fa-fw" aria-hidden="true"></i>${
-        court.Phone
-      }</div>`;
-    } else {
-      courtPhoneString = "";
-    }
-    if (court.Lights) {
-      courtLightString = `<div><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i>${
-        court.Lights
-      }</div>`;
-    } else {
-      courtLightString = "";
-    }
-
+    const court = this.props.courts[index];
     const contentString = `<div id="content"><div class="courtName">${
       court.Name
     }</div><div><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i>${
       court.Address
-    }</div>${courtLightString} ${courtPhoneString}</div>`;
+    }</div>${
+      court.Lights
+        ? `<div><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i>${
+            court.Lights
+          }</div>`
+        : ""
+    } ${
+      court.Phone
+        ? `<div><i class="fa fa-mobile fa-fw" aria-hidden="true"></i>${
+            court.Phone
+          }</div>`
+        : ""
+    }</div>`;
     // Create new info window - Popup with street location and the title of the movie
     const infowindow = new google.maps.InfoWindow(
       {
@@ -148,7 +131,7 @@ class Map extends Component {
   };
   getPoints = () => {
     const points = [];
-    const courts = this.state.courts;
+    const courts = this.props.courts;
     for (let i = 0; i < courts.length; i++) {
       const temp = [courts[i].X, courts[i].Y];
       const a = new google.maps.LatLng(temp[0], temp[1]);
@@ -156,20 +139,13 @@ class Map extends Component {
     }
     return points;
   };
-  getCourts = () => {
-    if (this.props.courts.length > this.state.courts.length) {
-      this.setState({
-        courts: this.props.courts
-      });
-    }
-  };
 
-  chooseStyles = () => courtStyles[this.state.style] || [];
+  chooseStyles = () => courtStyles[this.props.style] || [];
 
   createMarker = (map, points, index) => {
     const pinImage = new google.maps.MarkerImage(
       `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
-        this.state.courts[index]
+        this.props.courts[index]
       )}`,
       new google.maps.Size(21, 34),
       new google.maps.Point(0, 0),

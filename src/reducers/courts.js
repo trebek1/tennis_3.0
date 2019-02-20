@@ -29,7 +29,7 @@ const courts = (state = initialState, action) => {
         sortedCourts: action.payload[0].sfcourts
       };
     case SORT_POINTS:
-      sortedCourts = [];
+      sortedCourts = courts;
       switch (action.payload) {
         case CLUB:
         case SHOP:
