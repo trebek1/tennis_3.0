@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { func, array, string } from "prop-types";
 
 // Redux
 import { connect } from "react-redux";
@@ -82,22 +82,22 @@ export default connect(
 )(App);
 
 App.propTypes = {
-  getCourts: PropTypes.func.isRequired,
-  selectedPoint: PropTypes.array,
-  selectPoint: PropTypes.func,
-  selectStyle: PropTypes.func.isRequired,
-  sortedCourts: PropTypes.array,
-  style: PropTypes.string,
-  sort: PropTypes.string,
-  sortPoints: PropTypes.func,
-  updateSort: PropTypes.func.isRequired
+  getCourts: func.isRequired,
+  selectedPoint: array,
+  selectPoint: func,
+  selectStyle: func.isRequired,
+  sortedCourts: array,
+  style: string,
+  sort: string,
+  sortPoints: func,
+  updateSort: func.isRequired
 };
 
 App.defaultProps = {
-  style: PropTypes.string,
-  sortPoints: PropTypes.func,
-  selectedPoint: PropTypes.array,
-  sort: PropTypes.string,
-  selectPoint: PropTypes.func,
-  sortedCourts: PropTypes.array
+  style: string,
+  sortPoints: func,
+  selectedPoint: array,
+  sort: string,
+  selectPoint: func,
+  sortedCourts: array
 };
