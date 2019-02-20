@@ -30,9 +30,9 @@ export default class CourtList extends Component {
         <ul id="courtList">
           {courts.map((court, index) => (
             <li
-              onClick={() => selectPoint(index)}
               className="courtListItem"
               key={index}
+              onClick={() => selectPoint(index)}
             >
               {court.Name}
             </li>

@@ -1,10 +1,10 @@
 import React from "react";
 
 const CourtTypeTile = ({ className, id, imageNode, sortPoints, text, url }) => (
-  <div onClick={() => sortPoints(id)} id={id} className={className}>
+  <div className={className} id={id} onClick={() => sortPoints(id)}>
     {imageNode == null ? (
       <span className="keyValue">
-        <img src={url} alt={id} />
+        <img alt={id} src={url} />
       </span>
     ) : (
       imageNode

@@ -9,10 +9,10 @@ import { bindActionCreators } from "redux";
 import courtActions from "../actions/courtActions";
 
 // Dumb Components
-import Map from "../components/Map";
 import ButtonPannel from "../components/ButtonPannel";
 import CourtList from "../components/CourtList";
 import Key from "../components/Key";
+import Map from "../components/Map";
 
 class App extends Component {
   componentDidMount() {
@@ -36,10 +36,10 @@ class App extends Component {
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
           <CourtList
+            courts={selectedPointLength ? selectedPoint : sortedCourts}
+            selectPoint={selectPoint}
             sort={sort}
             sortPoints={sortPoints}
-            selectPoint={selectPoint}
-            courts={selectedPointLength ? selectedPoint : sortedCourts}
           />
         </div>
         <Map
@@ -82,15 +82,15 @@ export default connect(
 )(App);
 
 App.propTypes = {
-  style: PropTypes.string,
   getCourts: PropTypes.func.isRequired,
-  updateSort: PropTypes.func.isRequired,
   selectedPoint: PropTypes.array,
+  selectPoint: PropTypes.func,
+  selectStyle: PropTypes.func.isRequired,
+  sortedCourts: PropTypes.array,
+  style: PropTypes.string,
   sort: PropTypes.string,
   sortPoints: PropTypes.func,
-  selectStyle: PropTypes.func.isRequired,
-  selectPoint: PropTypes.func,
-  sortedCourts: PropTypes.array
+  updateSort: PropTypes.func.isRequired
 };
 
 App.defaultProps = {
