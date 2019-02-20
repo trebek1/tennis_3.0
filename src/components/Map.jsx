@@ -40,7 +40,7 @@ class Map extends Component {
       for (let j = 0; j < points.length; j++) {
         // get marker and infowindow variables from functions
         const marker = this.createMarker(map, points, j);
-        const infowindow = this.setMarkerContent(j);
+        let infowindow = null;
         // set bounds and set center of map
         bounds.extend(marker.getPosition());
         map.setCenter(bounds.getCenter());
@@ -49,29 +49,20 @@ class Map extends Component {
           marker,
           "click",
           () => {
-            // if not expended then expand the window
-            if (that.state.expanded === false) {
-              // Expand window
-              infowindow.open(map, marker);
-              // Add window and marker to state
-              that.setState({
-                infowindow,
-                marker
-              });
-              // Set data to state for court
-              that.setMarkerDataToState(j);
-            } else {
-              // if expanded window we have to close the window and open another
+            // Expand window
+            if (that.state.infowindow) {
               that.state.infowindow.close(map, that.state.marker);
-              infowindow.open(map, marker);
-              // put new window and marker on state
-              that.setState({
-                infowindow,
-                marker
-              });
-              // Set rest of data to state
-              that.setMarkerDataToState(j);
             }
+            infowindow = this.setMarkerContent(j);
+            infowindow.open(map, marker);
+            // Add window and marker to state
+            that.setState({
+              infowindow,
+              marker
+            });
+            // Set data to state for court
+            that.setMarkerDataToState(j);
+
             const a = document.getElementsByClassName("gm-style-iw");
             for (let i = 0; i < a.length; i++) {
               const node = a[i].parentElement;
@@ -139,7 +130,6 @@ class Map extends Component {
       },
       { passive: true }
     );
-
     return infowindow;
   };
   setMarkerDataToState = () =>
