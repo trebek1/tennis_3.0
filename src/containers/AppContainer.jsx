@@ -6,13 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // Action to dispatch
-import {
-  getCourts,
-  selectStyle,
-  sortPoints,
-  selectPoint,
-  updateSort
-} from "../actions/courtActions";
+import courtActions from "../actions/courtActions";
 
 // Dumb Components
 import Map from "../components/Map";
@@ -26,66 +20,59 @@ class App extends Component {
   }
 
   render() {
-    const selectedPointLength = this.props.selectedPoint.length > 0;
+    const {
+      sort,
+      sortPoints,
+      selectPoint,
+      selectedPoint,
+      sortedCourts,
+      style,
+      updateSort,
+      selectStyle
+    } = this.props;
+    const selectedPointLength = selectedPoint.length > 0;
     return (
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
           <CourtList
-            sort={this.props.sort}
-            sortPoints={this.props.sortPoints}
-            selectPoint={this.props.selectPoint}
-            courts={
-              selectedPointLength
-                ? this.props.selectedPoint
-                : this.props.sortedCourts
-            }
+            sort={sort}
+            sortPoints={sortPoints}
+            selectPoint={selectPoint}
+            courts={selectedPointLength ? selectedPoint : sortedCourts}
           />
         </div>
         <Map
-          courts={
-            selectedPointLength
-              ? this.props.selectedPoint
-              : this.props.sortedCourts
-          }
-          style={this.props.style}
+          courts={selectedPointLength ? selectedPoint : sortedCourts}
+          style={style}
         />
         <div id="keyContainer">
-          <Key
-            updateSort={this.props.updateSort}
-            sortPoints={this.props.sortPoints}
-          />
+          <Key updateSort={updateSort} sortPoints={sortPoints} />
         </div>
         <div id="styleSelectorContainer">
-          <ButtonPannel selectStyle={this.props.selectStyle} />
+          <ButtonPannel selectStyle={selectStyle} />
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    courts: state.courts.courts,
-    style: state.styles.styles,
-    sortedCourts: state.courts.sortedCourts,
-    selectedPoint: state.courts.selectedPoint,
-    sort: state.courts.sort
-  };
-}
+const mapStateToProps = state => ({
+  courts: state.courts.courts,
+  style: state.styles.styles,
+  sortedCourts: state.courts.sortedCourts,
+  selectedPoint: state.courts.selectedPoint,
+  sort: state.courts.sort
+});
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
     {
-      getCourts,
-      selectStyle,
-      sortPoints,
-      selectPoint,
-      updateSort
+      ...courtActions
     },
     dispatch
   );
-}
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
