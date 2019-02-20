@@ -60,8 +60,6 @@ class Map extends Component {
               infowindow,
               marker
             });
-            // Set data to state for court
-            that.setMarkerDataToState(j);
 
             const a = document.getElementsByClassName("gm-style-iw");
             for (let i = 0; i < a.length; i++) {
@@ -132,10 +130,6 @@ class Map extends Component {
     );
     return infowindow;
   };
-  setMarkerDataToState = () =>
-    this.setState({
-      expanded: true
-    });
 
   getPinColor = data => {
     const courtType = data.Type.toLowerCase();
@@ -170,50 +164,7 @@ class Map extends Component {
     }
   };
 
-  legend = controlDiv => {
-    // Set CSS styles for the DIV containing the control
-    // Setting padding to 5 px will offset the control
-    // from the edge of the map
-    controlDiv.style.padding = "5px";
-
-    // Set CSS for the control border
-    const controlUI = document.createElement("DIV");
-    controlUI.style = {
-      backgroundColor: "black",
-      borderStyle: "solid",
-      borderWidth: "1px"
-    };
-    controlUI.title = "Legend";
-    controlDiv.appendChild(controlUI);
-
-    // Set CSS for the control text
-    const controlText = document.createElement("DIV");
-    controlText.style = {
-      fontFamily: "Arial, sans-serif",
-      fontSize: "12px",
-      paddingLeft: "4px",
-      paddingRight: "4px"
-    };
-
-    // Add the text
-    controlText.innerHTML =
-      '<div id="legendContainer"><div id="key"> Map Key</div>' +
-      '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B" /></span><span class="keyValue leftSpace">Tennis Club</span></div>' +
-      '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E" /></span><span class="keyValue leftSpace"> Public Tennis Court</span></div>' +
-      '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"/></span><span class="keyValue leftSpace"> Tennis Shop</span></div>' +
-      '<div><span class="keyValue"><img src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff" /></span><span class="keyValue leftSpace"> Other Facility</span></div></div>';
-    controlUI.appendChild(controlText);
-  };
-
   chooseStyles = () => courtStyles[this.state.style] || [];
-
-  createLegend = map => {
-    const legendDiv = document.createElement("div");
-    legendDiv.style.color = "orange";
-    legendDiv.index = 1;
-    this.legend(legendDiv, map);
-    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendDiv);
-  };
 
   createMarker = (map, points, index) => {
     const pinImage = new google.maps.MarkerImage(
@@ -256,15 +207,13 @@ class Map extends Component {
     return map;
   };
 
-  render() {
-    return (
-      <div id="mapContainer">
-        <div id="map" className="map-gic main-map" ref="gmap">
-          Map Loading...
-        </div>
+  render = () => (
+    <div id="mapContainer">
+      <div id="map" className="map-gic main-map" ref="gmap">
+        Map Loading...
       </div>
-    );
-  }
+    </div>
+  );
 }
 export default Map;
 
