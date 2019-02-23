@@ -1,4 +1,16 @@
-.gm-style-iw {
+#content {
+  font-weight: bold;
+}
+
+.courtName {
+  font-size: 17px;
+}
+
+.fa {
+  color: orange;
+}
+
+.gm-style .gm-style-iw-c, .gm-style .gm-style-iw-c, {
   color: orange;
   background: black;
   padding: 10px;
@@ -8,38 +20,10 @@
   border-color: orange;
 }
 
-#content {
-  font-weight: bold;
-}
-
-.tab::active {
-  background: red;
-}
-
-#legendContainer {
-  padding: 10px;
-}
-
-#key {
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  padding-bottom: 10px;
-}
-
-.keyValue {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .leftSpace {
   padding-left: 10px;
 }
 
-.fa {
-  color: orange;
-}
-
-.courtName {
-  font-size: 17px;
+.tab::active {
+  background: red;
 }
