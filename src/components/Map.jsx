@@ -113,42 +113,31 @@ class Map extends Component {
         return "FE7569";
     }
   };
-  getPoints = () => {
-    const points = [];
-    const courts = this.props.courts;
-    for (let i = 0; i < courts.length; i++) {
-      const temp = [courts[i].x, courts[i].y];
-      const a = new google.maps.LatLng(temp[0], temp[1]);
-      points.push(a);
-    }
-    return points;
-  };
+
+  getPoints = () =>
+    this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
 
   chooseStyles = () => courtStyles[this.props.style] || [];
 
-  createMarker = (map, points, index) => {
-    const pinImage = new google.maps.MarkerImage(
-      `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
-        this.props.courts[index]
-      )}`,
-      new google.maps.Size(21, 34),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(10, 34)
-    );
-    const pinShadow = new google.maps.MarkerImage(
-      "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-      new google.maps.Size(40, 37),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(12, 35)
-    );
-    const marker = new google.maps.Marker({
+  createMarker = (map, points, index) =>
+    new google.maps.Marker({
       position: points[index],
-      icon: pinImage,
-      shadow: pinShadow,
+      icon: new google.maps.MarkerImage(
+        `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
+          this.props.courts[index]
+        )}`,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34)
+      ),
+      shadow: new google.maps.MarkerImage(
+        "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35)
+      ),
       map
     });
-    return marker;
-  };
 
   createMap = () => {
     const styles = this.chooseStyles();
