@@ -1,21 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { func } from "prop-types";
 import ButtonPannelConfig from "../constants/buttonPannelConfig";
 
 const DEFAULT_ACTIVE = "wimbledon";
-const DEFAULT_PREVIOUS = "wimbledon";
 
 export default class ButtonPannel extends Component {
   state = {
-    previous: DEFAULT_PREVIOUS,
     active: DEFAULT_ACTIVE
   };
 
   handleClick = active => {
-    const { selectStyle } = this.props;
-    selectStyle(active);
+    this.props.selectStyle(active);
     this.setState({
-      previous: this.state.active,
       active
     });
   };
@@ -24,18 +20,16 @@ export default class ButtonPannel extends Component {
     const { active } = this.state;
     return (
       <div id="styleContainer">
-        <span className="anchor"> Styles: </span>
+        <span className="anchor">Styles:</span>
         {Object.keys(ButtonPannelConfig).map(button => {
-          const config = ButtonPannelConfig[button];
+          const { className, clickText, text } = ButtonPannelConfig[button];
           return (
             <span
-              className={`${config.className} ${
-                config.clickText === active ? "active" : ""
-              }`}
-              key={config.text}
-              onClick={() => this.handleClick(config.clickText)}
+              className={`${className} ${clickText === active ? "active" : ""}`}
+              key={text}
+              onClick={() => this.handleClick(clickText)}
             >
-              {config.text}
+              {text}
             </span>
           );
         })}
@@ -45,5 +39,5 @@ export default class ButtonPannel extends Component {
 }
 
 ButtonPannel.propTypes = {
-  selectStyle: PropTypes.func.isRequired
+  selectStyle: func.isRequired
 };

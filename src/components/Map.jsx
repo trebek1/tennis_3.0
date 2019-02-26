@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { array, string } from "prop-types";
 import courtStyles from "../constants/courtStyles";
 
 const MAX_POINTS = 119;
@@ -80,7 +80,6 @@ class Map extends Component {
   addMarkerToMap(index, marker) {
     const that = this;
     const infowindow = this.setMarkerContent(index);
-
     google.maps.event.addListener(
       marker,
       "click",
@@ -91,7 +90,7 @@ class Map extends Component {
           marker: currentMarker
         } = this.state;
         // If there is a current window then close it
-        if (currentWindow) {
+        if (currentWindow != null) {
           currentWindow.close(map, currentMarker);
         }
         // Open a new info window
@@ -108,7 +107,7 @@ class Map extends Component {
 
   closeInfoWindow(map) {
     const { infowindow, marker } = this.state;
-    if (infowindow) {
+    if (infowindow != null) {
       infowindow.close(map, marker);
       this.setState({
         expanded: false,
@@ -118,12 +117,11 @@ class Map extends Component {
   }
 
   closeInfoWindowOnClick(map) {
-    const that = this;
     google.maps.event.addListener(
       map,
       "click",
       () => {
-        that.closeInfoWindow(map);
+        this.closeInfoWindow(map);
       },
       { passive: true }
     );
@@ -177,6 +175,6 @@ class Map extends Component {
 export default Map;
 
 Map.propTypes = {
-  courts: PropTypes.array.isRequired,
-  style: PropTypes.string.isRequired
+  courts: array.isRequired,
+  style: string.isRequired
 };

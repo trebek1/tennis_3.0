@@ -1,7 +1,6 @@
 import React from "react";
 
-const CourtList = props => {
-  const { courts, selectPoint, sort, sortPoints } = props;
+const CourtList = ({ courts, selectPoint, sort, sortPoints }) => {
   if (courts != null && courts.length > 0) {
     courts.sort((court, nextCourt) =>
       court.name.toUpperCase().localeCompare(nextCourt.name.toUpperCase())

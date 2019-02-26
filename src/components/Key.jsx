@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { func } from "prop-types";
 import CourtTypeTile from "./CourtTypeTile";
 import CourtTypeConfig from "../constants/courtTypeConfig";
 
@@ -52,6 +52,6 @@ export default class Key extends Component {
 }
 
 Key.propTypes = {
-  sortPoints: PropTypes.func.isRequired,
-  updateSort: PropTypes.func.isRequired
+  sortPoints: func.isRequired,
+  updateSort: func.isRequired
 };

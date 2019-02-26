@@ -1,4 +1,5 @@
 import React from "react";
+import { object } from "prop-types";
 import Footer from "./Footer";
 
 const Wrapper = ({ children }) => (
@@ -9,7 +10,7 @@ const Wrapper = ({ children }) => (
 );
 
 Wrapper.propTypes = {
-  children: React.PropTypes.object.isRequired
+  children: object.isRequired
 };
 
 export default Wrapper;

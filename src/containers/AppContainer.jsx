@@ -5,10 +5,10 @@ import { func, array, string } from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-// Action to dispatch
+// Actions to dispatch
 import courtActions from "../actions/courtActions";
 
-// Dumb Components
+// Presentational Components
 import ButtonPannel from "../components/ButtonPannel";
 import CourtList from "../components/CourtList";
 import Key from "../components/Key";
@@ -40,10 +40,7 @@ class App extends Component {
             sortPoints={sortPoints}
           />
         </div>
-        <Map
-          courts={sortedCourts}
-          style={style}
-        />
+        <Map courts={sortedCourts} style={style} />
         <div id="keyContainer">
           <Key updateSort={updateSort} sortPoints={sortPoints} />
         </div>
