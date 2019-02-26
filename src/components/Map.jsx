@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import courtStyles from "../constants/courtStyles";
 
+const MAX_POINTS = 119;
+
 class Map extends Component {
   state = {
     courts: [],
@@ -15,59 +17,18 @@ class Map extends Component {
     ) {
       const map = this.createMap();
       const bounds = map.getBounds();
-      const that = this;
       const points = this.getPoints();
-      for (let j = 0; j < points.length; j++) {
-        // get marker and infowindow variables from functions
-        const marker = this.createMarker(map, points, j);
-        let infowindow = null;
-        // set bounds and set center of map
+      points.forEach((point, idx) => {
+        const marker = this.createMarker(map, points, idx);
         bounds.extend(marker.getPosition());
         map.setCenter(bounds.getCenter());
-        // Handle clicking marker
-        google.maps.event.addListener(
-          marker,
-          "click",
-          () => {
-            const { infowindow: currentWindow } = that.state;
-            // Expand window
-            if (currentWindow) {
-              currentWindow.close(map, that.state.marker);
-            }
-            infowindow = this.setMarkerContent(j);
-            infowindow.open(map, marker);
-            // Add window and marker to state
-            that.setState({
-              infowindow,
-              marker
-            });
-          },
-          { passive: false }
-        );
-      }
-      // zoom out once so that user is guaranteed to see markers if on sort
-      if (points.length < 100 && points.length !== 1) {
-        map.setZoom(map.getZoom() - 1);
-      }
-
-      // Add listener to map so that if its clicked then the window closes if its open
-      google.maps.event.addListener(
-        map,
-        "click",
-        () => {
-          const { infowindow, marker } = that.state;
-          if (infowindow) {
-            infowindow.close(map, marker);
-            that.setState({
-              expanded: false,
-              infowindow: null
-            });
-          }
-        },
-        { passive: true }
-      );
+        this.addMarkerToMap(idx, marker);
+      });
+      if (points.length !== MAX_POINTS) map.setZoom(map.getZoom() - 1);
+      this.closeInfoWindowOnClick(map);
     }
   }
+
   setMarkerContent = index => {
     const court = this.props.courts[index];
     const content = `<div id="content"><div class="courtName">${
@@ -108,6 +69,57 @@ class Map extends Component {
 
   getPoints = () =>
     this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
+  addMarkerToMap(index, marker) {
+    const that = this;
+    const infowindow = this.setMarkerContent(index);
+
+    google.maps.event.addListener(
+      marker,
+      "click",
+      () => {
+        const {
+          infowindow: currentWindow,
+          map,
+          marker: currentMarker
+        } = this.state;
+        // If there is a current window then close it
+        if (currentWindow) {
+          currentWindow.close(map, currentMarker);
+        }
+        // Open a new info window
+        infowindow.open(map, marker);
+        // update state
+        that.setState({
+          infowindow,
+          marker
+        });
+      },
+      { passive: false }
+    );
+  }
+
+  closeInfoWindow(map) {
+    const { infowindow, marker } = this.state;
+    if (infowindow) {
+      infowindow.close(map, marker);
+      this.setState({
+        expanded: false,
+        infowindow: null
+      });
+    }
+  }
+
+  closeInfoWindowOnClick(map) {
+    const that = this;
+    google.maps.event.addListener(
+      map,
+      "click",
+      () => {
+        that.closeInfoWindow(map);
+      },
+      { passive: true }
+    );
+  }
 
   chooseStyles = () => courtStyles[this.props.style] || [];
 
@@ -132,16 +144,14 @@ class Map extends Component {
     });
 
   createMap = () => {
-    const styles = this.chooseStyles();
-    const bounds = new google.maps.LatLngBounds();
-    const mapOptions = {
+    const that = this;
+    const map = new google.maps.Map(document.getElementById("map"), {
       center: new google.maps.LatLng(37.763108, -122.455799),
       zoom: 13,
       gestureHandling: "greedy",
-      styles,
-      bounds
-    };
-    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      styles: that.chooseStyles(),
+      bounds: new google.maps.LatLngBounds()
+    });
     this.setState({
       map
     });
