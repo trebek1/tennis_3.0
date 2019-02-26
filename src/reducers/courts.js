@@ -18,7 +18,6 @@ const OTHER = "other";
 
 const courts = (state = initialState, action) => {
   let { sortedCourts } = state;
-  let selectedPoint;
   switch (action.type) {
     case GET_COURTS:
       return {
@@ -27,7 +26,6 @@ const courts = (state = initialState, action) => {
         sortedCourts: action.payload[0].sfcourts
       };
     case SORT_POINTS:
-      sortedCourts = courts;
       switch (action.payload) {
         case CLUB:
         case SHOP:
@@ -38,19 +36,17 @@ const courts = (state = initialState, action) => {
           );
           break;
         default:
-          sortedCourts = state.courts.filter(court => court.type != null);
+          sortedCourts = [...state.courts];
           break;
       }
       return {
         ...state,
         sortedCourts,
-        selectedPoint: []
       };
     case SELECT_POINT:
-      selectedPoint = sortedCourts[action.payload];
       return {
         ...state,
-        selectedPoint: [selectedPoint]
+        sortedCourts: [sortedCourts[action.payload]]
       };
 
     default:

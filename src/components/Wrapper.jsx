@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "./Footer";
 
-const Wrapper = props => (
+const Wrapper = ({ children }) => (
   <div className="app-wrapper">
-    <div className="content">{props.children}</div>
+    <div className="content">{children}</div>
     <Footer />
   </div>
 );

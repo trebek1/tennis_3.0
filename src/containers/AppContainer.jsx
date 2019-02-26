@@ -24,26 +24,24 @@ class App extends Component {
       sort,
       sortPoints,
       selectPoint,
-      selectedPoint,
       sortedCourts,
       style,
       updateSort,
       selectStyle
     } = this.props;
-    const selectedPointLength = selectedPoint.length === 1;
     return (
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="sideContainer">
           <CourtList
-            courts={selectedPointLength ? selectedPoint : sortedCourts}
+            courts={sortedCourts}
             selectPoint={selectPoint}
             sort={sort}
             sortPoints={sortPoints}
           />
         </div>
         <Map
-          courts={selectedPointLength ? selectedPoint : sortedCourts}
+          courts={sortedCourts}
           style={style}
         />
         <div id="keyContainer">
@@ -58,13 +56,12 @@ class App extends Component {
 }
 
 const mapStateToProps = ({
-  courts: { sortedCourts, selectedPoint, sort, courts },
+  courts: { sortedCourts, sort, courts },
   styles: { styles }
 }) => ({
   courts,
   style: styles,
   sortedCourts,
-  selectedPoint,
   sort
 });
 
@@ -83,7 +80,6 @@ export default connect(
 
 App.propTypes = {
   getCourts: func.isRequired,
-  selectedPoint: array,
   selectPoint: func,
   selectStyle: func.isRequired,
   sortedCourts: array,
@@ -96,7 +92,6 @@ App.propTypes = {
 App.defaultProps = {
   style: string,
   sortPoints: func,
-  selectedPoint: array,
   sort: string,
   selectPoint: func,
   sortedCourts: array
