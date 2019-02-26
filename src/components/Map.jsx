@@ -10,6 +10,14 @@ class Map extends Component {
     expanded: false
   };
 
+  constructor(props) {
+    super(props);
+    this.mapRef = null;
+    this.setMapRef = element => {
+      this.mapRef = element;
+    };
+  }
+
   componentDidUpdate({ courts, style }) {
     if (
       this.props.courts.length !== courts.length ||
@@ -145,7 +153,7 @@ class Map extends Component {
 
   createMap = () => {
     const that = this;
-    const map = new google.maps.Map(document.getElementById("map"), {
+    const map = new google.maps.Map(this.mapRef, {
       center: new google.maps.LatLng(37.763108, -122.455799),
       zoom: 13,
       gestureHandling: "greedy",
@@ -160,7 +168,7 @@ class Map extends Component {
 
   render = () => (
     <div id="mapContainer">
-      <div id="map" className="map-gic main-map" ref="gmap">
+      <div id="map" className="map-gic main-map" ref={this.setMapRef}>
         Map Loading...
       </div>
     </div>
