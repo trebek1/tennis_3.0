@@ -22,7 +22,7 @@ class Map extends Component {
   componentDidUpdate() {
     if (this.props.courts.length > 0) {
       const map = this.createMap();
-      let bounds = map.getBounds();
+      const bounds = map.getBounds();
       const that = this;
       const points = this.getPoints();
       for (let j = 0; j < points.length; j++) {
@@ -37,9 +37,10 @@ class Map extends Component {
           marker,
           "click",
           () => {
+            const { infowindow: currentWindow } = that.state;
             // Expand window
-            if (that.state.infowindow) {
-              that.state.infowindow.close(map, that.state.marker);
+            if (currentWindow) {
+              currentWindow.close(map, that.state.marker);
             }
             infowindow = this.setMarkerContent(j);
             infowindow.open(map, marker);
@@ -48,12 +49,6 @@ class Map extends Component {
               infowindow,
               marker
             });
-
-            const a = document.getElementsByClassName("gm-style-iw");
-            for (let i = 0; i < a.length; i++) {
-              const node = a[i].parentElement;
-              node.removeChild(node.firstChild);
-            }
           },
           { passive: false }
         );
@@ -62,19 +57,15 @@ class Map extends Component {
       if (points.length < 100 && points.length !== 1) {
         map.setZoom(map.getZoom() - 1);
       }
-      if (points.length === 1) {
-        const point = points[0];
-        bounds = new google.maps.LatLngBounds(point);
-        map.fitBounds(bounds);
-        map.setZoom(map.getZoom() - 6);
-      }
+
       // Add listener to map so that if its clicked then the window closes if its open
       google.maps.event.addListener(
         map,
         "click",
         () => {
-          if (that.state.infowindow) {
-            that.state.infowindow.close(that.state.map, that.state.marker);
+          const { infowindow, marker } = that.state;
+          if (infowindow) {
+            infowindow.close(map, marker);
             that.setState({
               expanded: false,
               infowindow: null
@@ -87,7 +78,7 @@ class Map extends Component {
   }
   setMarkerContent = index => {
     const court = this.props.courts[index];
-    const contentString = `<div id="content"><div class="courtName">${
+    const content = `<div id="content"><div class="courtName">${
       court.name
     }</div><div><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i>${
       court.address
@@ -105,17 +96,11 @@ class Map extends Component {
         : ""
     }</div>`;
     // Create new info window - Popup with street location and the title of the movie
-    const infowindow = new google.maps.InfoWindow(
-      {
-        content: contentString
-      },
-      { passive: true }
-    );
-    return infowindow;
+    return new google.maps.InfoWindow({ content });
   };
 
-  getPinColor = data => {
-    switch (data.type) {
+  getPinColor = ({ type }) => {
+    switch (type) {
       case "shop":
         return "FE7569";
       case "club":
