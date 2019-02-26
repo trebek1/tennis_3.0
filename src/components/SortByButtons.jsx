@@ -5,7 +5,7 @@ import CourtTypeConfig from "../constants/courtTypeConfig";
 
 const DEFAULT_SORT = "all";
 
-export default class Key extends Component {
+export default class SortByButtons extends Component {
   state = {
     sort: DEFAULT_SORT
   };
@@ -51,7 +51,7 @@ export default class Key extends Component {
   );
 }
 
-Key.propTypes = {
+SortByButtons.propTypes = {
   sortPoints: func.isRequired,
   updateSort: func.isRequired
 };

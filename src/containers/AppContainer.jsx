@@ -9,10 +9,10 @@ import { bindActionCreators } from "redux";
 import courtActions from "../actions/courtActions";
 
 // Presentational Components
-import ButtonPannel from "../components/ButtonPannel";
 import CourtList from "../components/CourtList";
-import Key from "../components/Key";
 import Map from "../components/Map";
+import SortByButtons from "../components/SortByButtons";
+import StyleButtons from "../components/StyleButtons";
 
 class App extends Component {
   componentDidMount() {
@@ -42,10 +42,10 @@ class App extends Component {
         </div>
         <Map courts={sortedCourts} style={style} />
         <div id="keyContainer">
-          <Key updateSort={updateSort} sortPoints={sortPoints} />
+          <SortByButtons updateSort={updateSort} sortPoints={sortPoints} />
         </div>
         <div id="styleSelectorContainer">
-          <ButtonPannel selectStyle={selectStyle} />
+          <StyleButtons selectStyle={selectStyle} />
         </div>
       </div>
     );

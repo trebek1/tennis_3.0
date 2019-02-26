@@ -4,7 +4,7 @@ import ButtonPannelConfig from "../constants/buttonPannelConfig";
 
 const DEFAULT_ACTIVE = "wimbledon";
 
-export default class ButtonPannel extends Component {
+export default class StyleButtons extends Component {
   state = {
     active: DEFAULT_ACTIVE
   };
@@ -38,6 +38,6 @@ export default class ButtonPannel extends Component {
   }
 }
 
-ButtonPannel.propTypes = {
+StyleButtons.propTypes = {
   selectStyle: func.isRequired
 };

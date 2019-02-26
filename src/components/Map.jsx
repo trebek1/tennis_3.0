@@ -6,8 +6,9 @@ const MAX_POINTS = 119;
 
 class Map extends Component {
   state = {
-    courts: [],
-    expanded: false
+    map: null,
+    marker: null,
+    infowindow: null
   };
 
   constructor(props) {
@@ -18,24 +19,60 @@ class Map extends Component {
     };
   }
 
-  componentDidUpdate({ courts, style }) {
-    if (
-      this.props.courts.length !== courts.length ||
-      this.props.style !== style
-    ) {
-      const map = this.createMap();
-      const bounds = map.getBounds();
-      const points = this.getPoints();
-      points.forEach((point, idx) => {
-        const marker = this.createMarker(map, points, idx);
-        bounds.extend(marker.getPosition());
-        map.setCenter(bounds.getCenter());
-        this.addMarkerToMap(idx, marker);
-      });
-      if (points.length !== MAX_POINTS) map.setZoom(map.getZoom() - 1);
-      this.closeInfoWindowOnClick(map);
+  chooseStyles = () => courtStyles[this.props.style] || [];
+
+  createMap = () => {
+    const that = this;
+    const map = new google.maps.Map(this.mapRef, {
+      center: new google.maps.LatLng(37.763108, -122.455799),
+      zoom: 13,
+      gestureHandling: "greedy",
+      styles: that.chooseStyles(),
+      bounds: new google.maps.LatLngBounds()
+    });
+    this.setState({
+      map
+    });
+    return map;
+  };
+
+  getPoints = () =>
+    this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
+
+  getPinColor = ({ type }) => {
+    switch (type) {
+      case "shop":
+        return "FE7569";
+      case "club":
+        return "F8EC3B";
+      case "court":
+        return "3BF83E";
+      case "other":
+        return "00ccff";
+      default:
+        return "FE7569";
     }
-  }
+  };
+
+  createMarker = (map, points, index) =>
+    new google.maps.Marker({
+      position: points[index],
+      icon: new google.maps.MarkerImage(
+        `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
+          this.props.courts[index]
+        )}`,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34)
+      ),
+      shadow: new google.maps.MarkerImage(
+        "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35)
+      ),
+      map
+    });
 
   setMarkerContent = index => {
     const court = this.props.courts[index];
@@ -60,23 +97,6 @@ class Map extends Component {
     return new google.maps.InfoWindow({ content });
   };
 
-  getPinColor = ({ type }) => {
-    switch (type) {
-      case "shop":
-        return "FE7569";
-      case "club":
-        return "F8EC3B";
-      case "court":
-        return "3BF83E";
-      case "other":
-        return "00ccff";
-      default:
-        return "FE7569";
-    }
-  };
-
-  getPoints = () =>
-    this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
   addMarkerToMap(index, marker) {
     const that = this;
     const infowindow = this.setMarkerContent(index);
@@ -110,7 +130,6 @@ class Map extends Component {
     if (infowindow != null) {
       infowindow.close(map, marker);
       this.setState({
-        expanded: false,
         infowindow: null
       });
     }
@@ -127,42 +146,24 @@ class Map extends Component {
     );
   }
 
-  chooseStyles = () => courtStyles[this.props.style] || [];
-
-  createMarker = (map, points, index) =>
-    new google.maps.Marker({
-      position: points[index],
-      icon: new google.maps.MarkerImage(
-        `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
-          this.props.courts[index]
-        )}`,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34)
-      ),
-      shadow: new google.maps.MarkerImage(
-        "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-        new google.maps.Size(40, 37),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(12, 35)
-      ),
-      map
-    });
-
-  createMap = () => {
-    const that = this;
-    const map = new google.maps.Map(this.mapRef, {
-      center: new google.maps.LatLng(37.763108, -122.455799),
-      zoom: 13,
-      gestureHandling: "greedy",
-      styles: that.chooseStyles(),
-      bounds: new google.maps.LatLngBounds()
-    });
-    this.setState({
-      map
-    });
-    return map;
-  };
+  componentDidUpdate({ courts, style }) {
+    if (
+      this.props.courts.length !== courts.length ||
+      this.props.style !== style
+    ) {
+      const map = this.createMap();
+      const bounds = map.getBounds();
+      const points = this.getPoints();
+      points.forEach((point, idx) => {
+        const marker = this.createMarker(map, points, idx);
+        bounds.extend(marker.getPosition());
+        map.setCenter(bounds.getCenter());
+        this.addMarkerToMap(idx, marker);
+      });
+      if (points.length !== MAX_POINTS) map.setZoom(map.getZoom() - 1);
+      this.closeInfoWindowOnClick(map);
+    }
+  }
 
   render = () => (
     <div id="mapContainer">
