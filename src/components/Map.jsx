@@ -8,19 +8,11 @@ class Map extends Component {
     expanded: false
   };
 
-  shouldComponentUpdate({ courts, style }) {
-    if (this.state.courts !== courts || this.state.style !== style) {
-      this.setState({
-        courts,
-        style
-      });
-      return true;
-    }
-    return false;
-  }
-
-  componentDidUpdate() {
-    if (this.props.courts.length > 0) {
+  componentDidUpdate({ courts, style }) {
+    if (
+      this.props.courts.length !== courts.length ||
+      this.props.style !== style
+    ) {
       const map = this.createMap();
       const bounds = map.getBounds();
       const that = this;
