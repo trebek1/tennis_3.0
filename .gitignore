@@ -3,3 +3,6 @@
 courts.json
 .DS_Store
 node_modules
+courts.js
+dist
+dist/*

@@ -18,7 +18,7 @@ const CourtList = ({ courts, selectPoint, sort, sortPoints }) => {
         ))}
         {courts.length === 1 ? (
           <li
-            className="courtListItem"
+            className="courtListItem return"
             onClick={() => {
               sortPoints(sort);
             }}
