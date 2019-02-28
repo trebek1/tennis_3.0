@@ -46,10 +46,10 @@ describe(`CourtList component`, () => {
   test("expect to be able to click back  button ", () => {
     const mockCallBack = jest.fn();
     const component = shallow(
-      <CourtList courts={twoCourts} selectPoint={mockCallBack} />
+      <CourtList courts={oneCourt} sortPoints={mockCallBack} />
     );
-    const oneCourt = component.childAt(1);
-    oneCourt.simulate("click");
+    const backButton = component.childAt(1);
+    backButton.simulate("click");
 
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
