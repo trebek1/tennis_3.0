@@ -7,7 +7,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
 
-import AppContainer from "AppContainer";
+import AppContainer from "./containers/AppContainer.jsx";
 import Wrapper from "./components/Wrapper";
 import reducers from "./reducers";
 
@@ -23,4 +23,5 @@ const routes = (
   </Provider>
 );
 
-ReactDOM.render(routes, document.getElementById("root"));
+ReactDOM.render(routes, document.getElementById("app"));
+module.hot.accept();
