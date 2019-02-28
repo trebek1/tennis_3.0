@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 
-import CourtList from "../../src/components/CourtList.jsx";
+import CourtList from "../../src/components/CourtList";
 
 import { oneCourt, twoCourts } from "../__fixtures__/CourtFixtures";
 

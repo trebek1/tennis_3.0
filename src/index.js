@@ -7,7 +7,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
 
-import AppContainer from "./containers/AppContainer.jsx";
+import AppContainer from "./containers/AppContainer";
 import Wrapper from "./components/Wrapper";
 import reducers from "./reducers";
 
