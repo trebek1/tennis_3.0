@@ -4,8 +4,20 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import moxios from "moxios";
 import fetchMock from "fetch-mock";
+import courtStyles from "../../src/constants/courtStyles";
 
-import { GET_COURTS, getCourts } from "../../src/actions/courtActions";
+import {
+  GET_COURTS,
+  SELECT_POINT,
+  SELECT_STYLE,
+  SORT_POINTS,
+  UPDATE_SORT,
+  getCourts,
+  selectStyle,
+  sortPoints,
+  selectPoint,
+  updateSort
+} from "../../src/actions/courtActions";
 import * as axios from "axios";
 
 import { twoCourts } from "../__fixtures__/CourtFixtures";
@@ -13,7 +25,7 @@ import { twoCourts } from "../__fixtures__/CourtFixtures";
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("Court Action", () => {
+describe("Async court Action", () => {
   beforeEach(() => moxios.install());
   afterEach(() => moxios.uninstall());
 
@@ -22,8 +34,8 @@ describe("Court Action", () => {
     const store = mockStore({});
 
     moxios.stubRequest("/courts", {
-      status: 201,
-      response: expectedResponse
+      response: expectedResponse,
+      status: 201
     });
 
     await store.dispatch(getCourts()).then(() => {
@@ -31,11 +43,54 @@ describe("Court Action", () => {
       // traversing the data layer that is done in the getCourts action
       expect(store.getActions()).toEqual([
         {
-          type: GET_COURTS,
-          payload: expectedResponse
+          payload: expectedResponse,
+          type: GET_COURTS
         }
       ]);
     });
     done();
+  });
+});
+
+describe("non async actions ", () => {
+  describe("selectStyle", () => {
+    it("should create an action to change the map style", () => {
+      const { australia } = courtStyles;
+      const expectedAction = {
+        payload: australia,
+        type: SELECT_STYLE
+      };
+      expect(selectStyle(australia)).toEqual(expectedAction);
+    });
+  });
+  describe("sortPoints", () => {
+    it("should create an action to change the map style", () => {
+      const sort = "all";
+      const expectedAction = {
+        payload: sort,
+        type: SORT_POINTS
+      };
+      expect(sortPoints(sort)).toEqual(expectedAction);
+    });
+  });
+  describe("selectPoint", () => {
+    it("should create an action to change the map style", () => {
+      const index = 10;
+      const expectedAction = {
+        payload: index,
+        type: SELECT_POINT
+      };
+      expect(selectPoint(index)).toEqual(expectedAction);
+    });
+  });
+  describe("updateSort", () => {
+    it("should create an action to change the map style", () => {
+      const sort = "all";
+      const expectedAction = {
+        payload: sort,
+        type: UPDATE_SORT
+      };
+      expect(updateSort(sort)).toEqual(expectedAction);
+    });
   });
 });

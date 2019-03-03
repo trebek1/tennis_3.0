@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1551648167825" clover="3.2.0">
-  <project timestamp="1551648167825" name="All files">
-    <metrics statements="134" coveredstatements="23" conditionals="46" coveredconditionals="6" methods="47" coveredmethods="9" elements="227" coveredelements="38" complexity="0" loc="134" ncloc="134" packages="6" files="16" classes="16"/>
+<coverage generated="1551649399430" clover="3.2.0">
+  <project timestamp="1551649399430" name="All files">
+    <metrics statements="134" coveredstatements="23" conditionals="46" coveredconditionals="6" methods="47" coveredmethods="13" elements="227" coveredelements="42" complexity="0" loc="134" ncloc="134" packages="6" files="16" classes="16"/>
     <package name="src">
       <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/atrzeciak/personal/tennis_3.0/src/index.js">
@@ -14,9 +14,9 @@
       </file>
     </package>
     <package name="src.actions">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
       <file name="courtActions.js" path="/Users/atrzeciak/personal/tennis_3.0/src/actions/courtActions.js">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
