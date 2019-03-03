@@ -64,7 +64,7 @@ describe("non async actions ", () => {
     });
   });
   describe("sortPoints", () => {
-    it("should create an action to change the map style", () => {
+    it("should create an action to sort the points to show on the map", () => {
       const sort = "all";
       const expectedAction = {
         payload: sort,
@@ -74,7 +74,7 @@ describe("non async actions ", () => {
     });
   });
   describe("selectPoint", () => {
-    it("should create an action to change the map style", () => {
+    it("should create an action to select a point for the map", () => {
       const index = 10;
       const expectedAction = {
         payload: index,
@@ -84,7 +84,7 @@ describe("non async actions ", () => {
     });
   });
   describe("updateSort", () => {
-    it("should create an action to change the map style", () => {
+    it("should create an action to update the sort of points on the map", () => {
       const sort = "all";
       const expectedAction = {
         payload: sort,
