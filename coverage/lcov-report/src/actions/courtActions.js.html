@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">76.47% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>13/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">42.86% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>3/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/12</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -76,24 +76,24 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,24 +104,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from "axios";
 &nbsp;
-export const GET_COURTS = <span class="cstat-no" title="statement not covered" >"GET_COURTS";</span>
-export const SELECT_POINT = <span class="cstat-no" title="statement not covered" >"SELECT_POINT";</span>
-export const SELECT_STYLE = <span class="cstat-no" title="statement not covered" >"SELECT_STYLE";</span>
-export const SORT_POINTS = <span class="cstat-no" title="statement not covered" >"SORT_POINTS";</span>
-export const UPDATE_SORT = <span class="cstat-no" title="statement not covered" >"UPDATE_SORT";</span>
+export const GET_COURTS = "GET_COURTS";
+export const SELECT_POINT = "SELECT_POINT";
+export const SELECT_STYLE = "SELECT_STYLE";
+export const SORT_POINTS = "SORT_POINTS";
+export const UPDATE_SORT = "UPDATE_SORT";
 &nbsp;
-export const getCourts = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >di</span>spatch =&gt;</span></span>
-<span class="cstat-no" title="statement not covered" >  axios</span>
+export const getCourts = () =&gt; dispatch =&gt;
+  axios
     .get("/courts")
-    .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; <span class="cstat-no" title="statement not covered" >dispatch({ type: GET_COURTS, payload: response.data }))</span>;
+    .then(response =&gt; dispatch({ type: GET_COURTS, payload: response.data }));
 &nbsp;
-export const selectStyle = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ty</span>pe =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SELECT_STYLE, payload: type })</span>;</span>
+export const selectStyle = <span class="fstat-no" title="function not covered" >ty</span>pe =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SELECT_STYLE, payload: type })</span>;
 &nbsp;
-export const sortPoints = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ty</span>pe =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SORT_POINTS, payload: type })</span>;</span>
+export const sortPoints = <span class="fstat-no" title="function not covered" >ty</span>pe =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SORT_POINTS, payload: type })</span>;
 &nbsp;
-export const selectPoint = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >in</span>dex =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SELECT_POINT, payload: index })</span>;</span>
+export const selectPoint = <span class="fstat-no" title="function not covered" >in</span>dex =&gt; (<span class="cstat-no" title="statement not covered" >{ type: SELECT_POINT, payload: index })</span>;
 &nbsp;
-export const updateSort = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >so</span>rt =&gt; (<span class="cstat-no" title="statement not covered" >{ type: UPDATE_SORT, payload: sort })</span>;</span>
+export const updateSort = <span class="fstat-no" title="function not covered" >so</span>rt =&gt; (<span class="cstat-no" title="statement not covered" >{ type: UPDATE_SORT, payload: sort })</span>;
 &nbsp;
 export default {
   getCourts,
@@ -136,7 +136,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Feb 28 2019 11:08:11 GMT-0800 (Pacific Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 03 2019 13:22:47 GMT-0800 (Pacific Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

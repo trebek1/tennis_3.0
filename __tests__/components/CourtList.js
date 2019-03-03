@@ -23,7 +23,7 @@ describe(`CourtList component`, () => {
     const component = shallow(<CourtList courts={twoCourts} />);
     expect(component.find(".courtListItem").length).toEqual(twoCourts.length);
   });
-  test("renders the correct number of courts", () => {
+  test("renders one court and return button", () => {
     const component = shallow(<CourtList courts={oneCourt} />);
     expect(component.find(".courtListItem").length).toEqual(
       oneCourt.length + 1

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/constants/buttonPannelConfig.js</title>
+    <title>Code coverage report for src/constants/courtTypeConfig.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/constants</a> buttonPannelConfig.js
+      <a href="../../index.html">All files</a> / <a href="index.html">src/constants</a> courtTypeConfig.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -78,7 +78,37 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,36 +140,96 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default {
-  australia: {
-    className: "tab australia ",
-    clickText: "australia",
-    text: "Australian Open"
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+&nbsp;
+export default {
+  all: {
+    className: "key all",
+    id: "all",
+    imageNode: (
+      &lt;span className="keyValue"&gt;
+        &lt;img
+          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|F8EC3B"
+          alt="all"
+        /&gt;
+        &lt;img
+          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|3BF83E"
+          alt="all"
+        /&gt;
+        &lt;img
+          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|FE7569"
+          alt="all"
+        /&gt;
+        &lt;img
+          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|00ccff"
+          alt="all"
+        /&gt;
+      &lt;/span&gt;
+    ),
+    text: "All Locations",
+    url: null
   },
-  day: {
-    className: "tab day ",
-    clickText: "day",
-    text: "Day"
+  club: {
+    className: "key club",
+    id: "club",
+    imageNode: null,
+    text: "Tennis Club",
+    url:
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|F8EC3B"
   },
-  french: {
-    className: "tab french ",
-    clickText: "french",
-    text: "French Open"
+  court: {
+    className: "key court",
+    id: "court",
+    imageNode: null,
+    text: "Public Tennis Court",
+    url:
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|3BF83E"
   },
-  night: {
-    className: "tab night ",
-    clickText: "night",
-    text: "Night"
+  other: {
+    className: "key other",
+    id: "other",
+    imageNode: null,
+    text: "Other Facility",
+    url:
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|00ccff"
   },
-  usa: {
-    className: "tab usa ",
-    clickText: "usa",
-    text: "U.S. Open"
-  },
-  wimbledon: {
-    className: "tab wimbledon ",
-    clickText: "wimbledon",
-    text: "Wimbledon"
+  shop: {
+    className: "key shop",
+    id: "shop",
+    imageNode: null,
+    text: "Tennis Shop",
+    url:
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=%E2%80%A2|FE7569"
   }
 };
 &nbsp;</pre></td></tr>

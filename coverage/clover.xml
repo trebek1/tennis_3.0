@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1551380891572" clover="3.2.0">
-  <project timestamp="1551380891572" name="All files">
-    <metrics statements="136" coveredstatements="11" conditionals="46" coveredconditionals="6" methods="48" coveredmethods="6" elements="230" coveredelements="23" complexity="0" loc="136" ncloc="136" packages="6" files="17" classes="17"/>
+<coverage generated="1551648167825" clover="3.2.0">
+  <project timestamp="1551648167825" name="All files">
+    <metrics statements="134" coveredstatements="23" conditionals="46" coveredconditionals="6" methods="47" coveredmethods="9" elements="227" coveredelements="38" complexity="0" loc="134" ncloc="134" packages="6" files="16" classes="16"/>
     <package name="src">
       <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/atrzeciak/personal/tennis_3.0/src/index.js">
@@ -14,31 +14,26 @@
       </file>
     </package>
     <package name="src.actions">
-      <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
       <file name="courtActions.js" path="/Users/atrzeciak/personal/tennis_3.0/src/actions/courtActions.js">
-        <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-      </file>
-      <file name="index.js" path="/Users/atrzeciak/personal/tennis_3.0/src/actions/index.js">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
       <metrics statements="82" coveredstatements="11" conditionals="33" coveredconditionals="6" methods="33" coveredmethods="6"/>
-      <file name="CourtList.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/CourtList.jsx">
+      <file name="CourtList.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/CourtList.js">
         <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="8" type="cond" truecount="4" falsecount="0"/>
@@ -50,17 +45,17 @@
         <line num="23" count="1" type="stmt"/>
         <line num="32" count="3" type="stmt"/>
       </file>
-      <file name="CourtTypeTile.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/CourtTypeTile.jsx">
+      <file name="CourtTypeTile.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/CourtTypeTile.js">
         <metrics statements="2" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
       </file>
-      <file name="Footer.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Footer.jsx">
+      <file name="Footer.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Footer.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
       </file>
-      <file name="Map.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Map.jsx">
+      <file name="Map.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Map.js">
         <metrics statements="48" coveredstatements="0" conditionals="21" coveredconditionals="0" methods="17" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
@@ -111,7 +106,7 @@
         <line num="169" count="0" type="stmt"/>
         <line num="178" count="0" type="stmt"/>
       </file>
-      <file name="SortByButtons.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/SortByButtons.jsx">
+      <file name="SortByButtons.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/SortByButtons.js">
         <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -123,7 +118,7 @@
         <line num="35" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
       </file>
-      <file name="StyleButtons.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/StyleButtons.jsx">
+      <file name="StyleButtons.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/StyleButtons.js">
         <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -135,7 +130,7 @@
         <line num="30" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
       </file>
-      <file name="Wrapper.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Wrapper.jsx">
+      <file name="Wrapper.js" path="/Users/atrzeciak/personal/tennis_3.0/src/components/Wrapper.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -150,13 +145,13 @@
       <file name="courtStyles.js" path="/Users/atrzeciak/personal/tennis_3.0/src/constants/courtStyles.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
-      <file name="courtTypeConfig.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/constants/courtTypeConfig.jsx">
+      <file name="courtTypeConfig.js" path="/Users/atrzeciak/personal/tennis_3.0/src/constants/courtTypeConfig.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
     <package name="src.containers">
       <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="AppContainer.jsx" path="/Users/atrzeciak/personal/tennis_3.0/src/containers/AppContainer.jsx">
+      <file name="AppContainer.js" path="/Users/atrzeciak/personal/tennis_3.0/src/containers/AppContainer.js">
         <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="19" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>

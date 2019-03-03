@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/reducers/courts.js</title>
+    <title>Code coverage report for src/components/SortByButtons.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/reducers</a> courts.js
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> SortByButtons.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/19</span>
+        <span class='fraction'>0/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/10</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Functions</span>
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/19</span>
+        <span class='fraction'>0/9</span>
       </div>
     </div>
     <p class="quiet">
@@ -107,7 +107,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,15 +115,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,87 +130,93 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const {
-  GET_COURTS,
-  SORT_POINTS,
-  SELECT_POINT
-} = <span class="cstat-no" title="statement not covered" >require("../actions/courtActions");</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
+import { func } from "prop-types";
+import CourtTypeTile from "./CourtTypeTile";
+import CourtTypeConfig from "../constants/courtTypeConfig";
 &nbsp;
-const initialState = <span class="cstat-no" title="statement not covered" >{</span>
-  courts: [],
-  sortedCourts: [],
-  selectedPoint: [],
-  sort: "all"
+const DEFAULT_SORT = <span class="cstat-no" title="statement not covered" >"all";</span>
+&nbsp;
+export default class SortByButtons extends Component {
+  state = {
+    sort: DEFAULT_SORT
+  };
+&nbsp;
+  sortPoints = <span class="fstat-no" title="function not covered" >so</span>rt =&gt; {
+    const { sortPoints, updateSort } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >    sortPoints(sort);</span>
+<span class="cstat-no" title="statement not covered" >    updateSort(sort);</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      sort
+    });
+  };
+&nbsp;
+  render = <span class="fstat-no" title="function not covered" >()</span> =&gt; (
+<span class="cstat-no" title="statement not covered" >    &lt;div&gt;</span>
+      &lt;span className="anchor keyTitle"&gt;Sort By Type:&lt;/span&gt;
+&nbsp;
+      {Object.keys(CourtTypeConfig).map(<span class="fstat-no" title="function not covered" >co</span>urt =&gt; {
+        const {
+          className,
+          id,
+          imageNode,
+          text,
+          textClassName,
+          url
+        } = <span class="cstat-no" title="statement not covered" >CourtTypeConfig[court];</span>
+<span class="cstat-no" title="statement not covered" >        return (</span>
+          &lt;CourtTypeTile
+            className={`${className} ${
+              this.state.sort === id ? "activeSort" : ""
+            }`}
+            id={id}
+            imageNode={imageNode}
+            key={id}
+            sortPoints={this.sortPoints}
+            text={text}
+            textClassName={textClassName}
+            url={url}
+          /&gt;
+        );
+      })}
+    &lt;/div&gt;
+  );
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >SortByButtons.propTypes = {</span>
+  sortPoints: func.isRequired,
+  updateSort: func.isRequired
 };
-&nbsp;
-const COURT = <span class="cstat-no" title="statement not covered" >"court";</span>
-const CLUB = <span class="cstat-no" title="statement not covered" >"club";</span>
-const SHOP = <span class="cstat-no" title="statement not covered" >"shop";</span>
-const OTHER = <span class="cstat-no" title="statement not covered" >"other";</span>
-&nbsp;
-const courts = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate = <span class="branch-0 cbranch-no" title="branch not covered" >initialState,</span> action) =&gt; {</span>
-  let { sortedCourts } = <span class="cstat-no" title="statement not covered" >state;</span>
-<span class="cstat-no" title="statement not covered" >  switch (action.type) {</span>
-    case GET_COURTS:
-<span class="cstat-no" title="statement not covered" >      return {</span>
-        ...state,
-        courts: action.payload[0].sfcourts,
-        sortedCourts: action.payload[0].sfcourts
-      };
-    case SORT_POINTS:
-<span class="cstat-no" title="statement not covered" >      switch (action.payload) {</span>
-        case CLUB:
-        case SHOP:
-        case COURT:
-        case OTHER:
-<span class="cstat-no" title="statement not covered" >          sortedCourts = state.courts.filter(</span>
-<span class="fstat-no" title="function not covered" >            co</span>urt =&gt; <span class="cstat-no" title="statement not covered" >court.type === action.payload</span>
-          );
-<span class="cstat-no" title="statement not covered" >          break;</span>
-        default:
-<span class="cstat-no" title="statement not covered" >          sortedCourts = [...state.courts];</span>
-<span class="cstat-no" title="statement not covered" >          break;</span>
-      }
-<span class="cstat-no" title="statement not covered" >      return {</span>
-        ...state,
-        sortedCourts,
-      };
-    case SELECT_POINT:
-<span class="cstat-no" title="statement not covered" >      return {</span>
-        ...state,
-        sortedCourts: [sortedCourts[action.payload]]
-      };
-&nbsp;
-    default:
-<span class="cstat-no" title="statement not covered" >      return state;</span>
-  }
-};
-&nbsp;
-export default courts;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
