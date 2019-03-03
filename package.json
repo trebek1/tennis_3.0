@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "webpack --mode development --module-bind js=babel-loader",
     "build": "webpack --mode production --module-bind js=babel-loader ",
-    "start": "webpack --config ./webpack.config.js --mode development",
-    "node": "node server.js",
+    "start": "node server.js",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage --verbose"
