@@ -11,12 +11,10 @@ import {
   SELECT_POINT,
   SELECT_STYLE,
   SORT_POINTS,
-  UPDATE_SORT,
   getCourts,
   selectStyle,
   sortPoints,
-  selectPoint,
-  updateSort
+  selectPoint
 } from "../../src/actions/courtActions";
 import * as axios from "axios";
 
@@ -81,16 +79,6 @@ describe("non async actions ", () => {
         type: SELECT_POINT
       };
       expect(selectPoint(index)).toEqual(expectedAction);
-    });
-  });
-  describe("updateSort", () => {
-    it("should create an action to update the sort of points on the map", () => {
-      const sort = "all";
-      const expectedAction = {
-        payload: sort,
-        type: UPDATE_SORT
-      };
-      expect(updateSort(sort)).toEqual(expectedAction);
     });
   });
 });
