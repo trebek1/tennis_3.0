@@ -26,7 +26,6 @@ class App extends Component {
       selectPoint,
       sortedCourts,
       style,
-      updateSort,
       selectStyle
     } = this.props;
     return (
@@ -82,7 +81,7 @@ App.propTypes = {
   sortedCourts: array,
   style: string,
   sort: string,
-  sortPoints: func,
+  sortPoints: func
 };
 
 App.defaultProps = {

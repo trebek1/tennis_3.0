@@ -6,9 +6,9 @@ const MAX_POINTS = 119;
 
 class Map extends Component {
   state = {
+    infowindow: null,
     map: null,
-    marker: null,
-    infowindow: null
+    marker: null
   };
 
   constructor(props) {

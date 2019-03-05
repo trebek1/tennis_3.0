@@ -51,5 +51,5 @@ export default class SortByButtons extends Component {
 }
 
 SortByButtons.propTypes = {
-  sortPoints: func.isRequired,
+  sortPoints: func.isRequired
 };
