@@ -11,9 +11,8 @@ export default class SortByButtons extends Component {
   };
 
   sortPoints = sort => {
-    const { sortPoints, updateSort } = this.props;
+    const { sortPoints } = this.props;
     sortPoints(sort);
-    updateSort(sort);
     this.setState({
       sort
     });
@@ -53,5 +52,4 @@ export default class SortByButtons extends Component {
 
 SortByButtons.propTypes = {
   sortPoints: func.isRequired,
-  updateSort: func.isRequired
 };

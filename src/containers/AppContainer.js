@@ -42,7 +42,7 @@ class App extends Component {
         </div>
         <Map courts={sortedCourts} style={style} />
         <div id="keyContainer">
-          <SortByButtons updateSort={updateSort} sortPoints={sortPoints} />
+          <SortByButtons sortPoints={sortPoints} />
         </div>
         <div id="styleSelectorContainer">
           <StyleButtons selectStyle={selectStyle} />
@@ -83,7 +83,6 @@ App.propTypes = {
   style: string,
   sort: string,
   sortPoints: func,
-  updateSort: func.isRequired
 };
 
 App.defaultProps = {
