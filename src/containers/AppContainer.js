@@ -52,8 +52,12 @@ class App extends Component {
 }
 
 const mapStateToProps = ({
-  courts: { sortedCourts, sort, courts },
-  styles: { styles }
+  courts: { sortedCourts = [], sort = "all", courts = [] } = {
+    sortedCourts: [],
+    sort: "all",
+    courts: []
+  },
+  styles: { styles = "wimbledon" } = { styles: "wimbledon" }
 }) => ({
   courts,
   style: styles,
