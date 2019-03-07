@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { func } from "prop-types";
 import ButtonPannelConfig from "../constants/buttonPannelConfig";
+import StyleButton from "./StyleButton";
 
 const DEFAULT_ACTIVE = "wimbledon";
 
@@ -24,13 +25,14 @@ export default class StyleButtons extends Component {
         {Object.keys(ButtonPannelConfig).map(button => {
           const { className, clickText, text } = ButtonPannelConfig[button];
           return (
-            <span
-              className={`${className} ${clickText === active ? "active" : ""}`}
+            <StyleButton
+              active={active}
+              className={className}
+              clickText={clickText}
+              handleClick={this.handleClick}
               key={text}
-              onClick={() => this.handleClick(clickText)}
-            >
-              {text}
-            </span>
+              text={text}
+            />
           );
         })}
       </div>
