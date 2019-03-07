@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production --module-bind js=babel-loader ",
-    "coverage": "jest --coverage --verbose",
+    "coverage": "jest --coverage --verbose --env=jsdom",
     "dev": "webpack --mode development --module-bind js=babel-loader",
     "start": "node server.js",
-    "test": "jest --verbose",
-    "test:watch": "jest --watch"
+    "test": "jest --verbose --env=jsdom",
+    "test:watch": "jest --watch --env=jsdom"
   },
   "babel": {
     "env": {
