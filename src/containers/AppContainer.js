@@ -16,7 +16,9 @@ import StyleButtons from "../components/StyleButtons";
 
 class AppContainer extends Component {
   componentDidMount() {
+    console.log("mounted here ", this.props.getCourts());
     this.props.getCourts();
+    console.log("done");
   }
 
   render() {
@@ -66,13 +68,10 @@ const mapStateToProps = ({
   styles
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      ...courtActions
-    },
-    dispatch
-  );
+const mapDispatchToProps = dispatch => ({
+  ...courtActions,
+  getCourts: () => dispatch(courtActions.getCourts())
+});
 
 export default connect(
   mapStateToProps,
