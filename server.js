@@ -42,7 +42,7 @@ app.use(
   })
 );
 
-var Courts = require("./models/courts.js");
+var Courts = require("./models/Courts.js");
 
 app.get("/courts", function(req, res) {
   Courts.find(function(err, courts) {

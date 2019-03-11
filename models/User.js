@@ -7,31 +7,28 @@ const userSchema = new mongoose.Schema({
   passwordDigest: String
 });
 
-userSchema.methods.checkPassword = function(password) {
-  return bcrypt.compareSync(password, this.passwordDigest);
-};
+userSchema.methods.checkPassword = password =>
+  bcrypt.compareSync(password, this.passwordDigest);
 
 userSchema.statics.createSecure = function(username, password, cb) {
-  var that = this;
-  bcrypt.genSalt(function(err, salt) {
-    bcrypt.hash(password, salt, function(err, hash) {
+  let that = this;
+  bcrypt.genSalt((err, salt) =>
+    bcrypt.hash(password, salt, (err, hash) =>
       that.create(
         {
           username: username,
           passwordDigest: hash
         },
         cb
-      );
-    });
-  });
+      )
+    )
+  );
 };
 
-userSchema.statics.encryptPassword = function(password) {
-  var hash = bcrypt.hashSync(password, salt);
-  return hash;
-};
+userSchema.statics.encryptPassword = password =>
+  bcrypt.hashSync(password, salt);
 
-userSchema.statics.authenticate = function(username, password, cb) {
+userSchema.statics.authenticate = (username, password, cb) =>
   this.find(
     {
       username: username
@@ -46,8 +43,5 @@ userSchema.statics.authenticate = function(username, password, cb) {
       }
     }
   );
-};
 
-var User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);

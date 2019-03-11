@@ -5,5 +5,4 @@ const courtsSchema = mongoose.Schema({
   sfcourts: Array
 });
 
-const Courts = mongoose.model("Court", courtsSchema);
-module.exports = Courts;
+module.exports = mongoose.model("Court", courtsSchema);
