@@ -5,8 +5,8 @@ import styles from "./styles";
 
 const reducers = combineReducers({
   courts,
-  styles,
-  routing: routerReducer
+  routing: routerReducer,
+  styles
 });
 
 export default reducers;

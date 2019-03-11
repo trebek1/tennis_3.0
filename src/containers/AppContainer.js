@@ -14,7 +14,7 @@ import Map from "../components/Map";
 import SortByButtons from "../components/SortByButtons";
 import StyleButtons from "../components/StyleButtons";
 
-class App extends Component {
+class AppContainer extends Component {
   componentDidMount() {
     this.props.getCourts();
   }
@@ -25,9 +25,10 @@ class App extends Component {
       sortPoints,
       selectPoint,
       sortedCourts,
-      style,
+      styles,
       selectStyle
     } = this.props;
+
     return (
       <div id="mainContainer">
         <div id="title"> Tennis Courts in San Francisco </div>
@@ -39,7 +40,7 @@ class App extends Component {
             sortPoints={sortPoints}
           />
         </div>
-        <Map courts={sortedCourts} style={style} />
+        <Map courts={sortedCourts} styles={styles} />
         <div id="keyContainer">
           <SortByButtons sortPoints={sortPoints} />
         </div>
@@ -57,12 +58,12 @@ const mapStateToProps = ({
     sort: "all",
     courts: []
   },
-  styles: { styles = "wimbledon" } = { styles: "wimbledon" }
+  styles = "wimbledon"
 }) => ({
   courts,
-  style: styles,
+  sort,
   sortedCourts,
-  sort
+  styles
 });
 
 const mapDispatchToProps = dispatch =>
@@ -76,20 +77,19 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(AppContainer);
 
-App.propTypes = {
+AppContainer.propTypes = {
   getCourts: func.isRequired,
   selectPoint: func,
-  selectStyle: func.isRequired,
   sortedCourts: array,
-  style: string,
+  styles: string,
   sort: string,
   sortPoints: func
 };
 
-App.defaultProps = {
-  style: string,
+AppContainer.defaultProps = {
+  styles: string,
   sortPoints: func,
   sort: string,
   selectPoint: func,

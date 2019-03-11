@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1551950062895" clover="3.2.0">
-  <project timestamp="1551950062895" name="All files">
-    <metrics statements="133" coveredstatements="53" conditionals="52" coveredconditionals="14" methods="47" coveredmethods="25" elements="232" coveredelements="92" complexity="0" loc="133" ncloc="133" packages="6" files="17" classes="17"/>
+<coverage generated="1552265573681" clover="3.2.0">
+  <project timestamp="1552265573682" name="All files">
+    <metrics statements="133" coveredstatements="61" conditionals="51" coveredconditionals="14" methods="47" coveredmethods="30" elements="231" coveredelements="105" complexity="0" loc="133" ncloc="133" packages="6" files="17" classes="17"/>
     <package name="src">
       <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/trebek1/code/tennis_3.0/src/index.js">
@@ -30,23 +30,23 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="83" coveredstatements="37" conditionals="33" coveredconditionals="12" methods="34" coveredmethods="17"/>
+      <metrics statements="83" coveredstatements="42" conditionals="33" coveredconditionals="12" methods="34" coveredmethods="20"/>
       <file name="CourtList.js" path="/Users/trebek1/code/tennis_3.0/src/components/CourtList.js">
         <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="4" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="4" count="9" type="cond" truecount="4" falsecount="0"/>
         <line num="5" count="5" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
         <line num="11" count="7" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
       </file>
       <file name="CourtTypeTile.js" path="/Users/trebek1/code/tennis_3.0/src/components/CourtTypeTile.js">
         <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="4" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
+        <line num="4" count="19" type="stmt"/>
       </file>
       <file name="Footer.js" path="/Users/trebek1/code/tennis_3.0/src/components/Footer.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -54,12 +54,12 @@
         <line num="4" count="1" type="stmt"/>
       </file>
       <file name="Map.js" path="/Users/trebek1/code/tennis_3.0/src/components/Map.js">
-        <metrics statements="48" coveredstatements="2" conditionals="21" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <metrics statements="48" coveredstatements="7" conditionals="21" coveredconditionals="0" methods="17" coveredmethods="3"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
         <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -101,7 +101,7 @@
         <line num="161" count="0" type="stmt"/>
         <line num="163" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="164" count="0" type="stmt"/>
-        <line num="169" count="0" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
         <line num="178" count="1" type="stmt"/>
       </file>
       <file name="SortByButtons.js" path="/Users/trebek1/code/tennis_3.0/src/components/SortByButtons.js">
@@ -110,15 +110,15 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
-        <line num="33" count="25" type="stmt"/>
-        <line num="34" count="25" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="33" count="30" type="stmt"/>
+        <line num="34" count="30" type="stmt"/>
         <line num="53" count="3" type="stmt"/>
       </file>
       <file name="StyleButton.js" path="/Users/trebek1/code/tennis_3.0/src/components/StyleButton.js">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="4" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
+        <line num="4" count="20" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
       </file>
       <file name="StyleButtons.js" path="/Users/trebek1/code/tennis_3.0/src/components/StyleButtons.js">
@@ -126,10 +126,10 @@
         <line num="6" count="3" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="26" count="24" type="stmt"/>
-        <line num="27" count="24" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="26" count="30" type="stmt"/>
+        <line num="27" count="30" type="stmt"/>
         <line num="43" count="3" type="stmt"/>
       </file>
       <file name="Wrapper.js" path="/Users/trebek1/code/tennis_3.0/src/components/Wrapper.js">
@@ -152,17 +152,17 @@
       </file>
     </package>
     <package name="src.containers">
-      <metrics statements="9" coveredstatements="6" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="AppContainer.js" path="/Users/trebek1/code/tennis_3.0/src/containers/AppContainer.js">
-        <metrics statements="9" coveredstatements="6" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="2"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="61" count="1" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
         <line num="69" count="1" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <line num="70" count="3" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
         <line num="91" count="1" type="stmt"/>
       </file>
     </package>
@@ -198,10 +198,10 @@
         <metrics statements="6" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
       </file>
     </package>
   </project>

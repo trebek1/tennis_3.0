@@ -19,7 +19,7 @@ class Map extends Component {
     };
   }
 
-  chooseStyles = () => courtStyles[this.props.style] || [];
+  chooseStyles = () => courtStyles[this.props.styles] || [];
 
   createMap = () => {
     const that = this;
@@ -146,10 +146,10 @@ class Map extends Component {
     );
   }
 
-  componentDidUpdate({ courts, style }) {
+  componentDidUpdate({ courts, styles }) {
     if (
       this.props.courts.length !== courts.length ||
-      this.props.style !== style
+      this.props.styles !== styles
     ) {
       const map = this.createMap();
       const bounds = map.getBounds();
@@ -177,5 +177,5 @@ export default Map;
 
 Map.propTypes = {
   courts: array.isRequired,
-  style: string.isRequired
+  styles: string.isRequired
 };
