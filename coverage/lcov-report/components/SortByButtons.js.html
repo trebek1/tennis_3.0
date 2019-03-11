@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/StyleButtons.js</title>
+    <title>Code coverage report for components/SortByButtons.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> StyleButtons.js
+      <a href="../index.html">All files</a> / <a href="index.html">components</a> SortByButtons.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -27,7 +27,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -91,7 +91,17 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,18 +116,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,48 +158,58 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from "react";
 import { func } from "prop-types";
-import ButtonPannelConfig from "../constants/buttonPannelConfig";
-import StyleButton from "./StyleButton";
+import CourtTypeTile from "./CourtTypeTile";
+import CourtTypeConfig from "../constants/courtTypeConfig";
 &nbsp;
-const DEFAULT_ACTIVE = "wimbledon";
+const DEFAULT_SORT = "all";
 &nbsp;
-export default class StyleButtons extends Component {
+export default class SortByButtons extends Component {
   state = {
-    active: DEFAULT_ACTIVE
+    sort: DEFAULT_SORT
   };
 &nbsp;
-  handleClick = active =&gt; {
-    this.props.selectStyle(active);
+  sortPoints = sort =&gt; {
+    const { sortPoints } = this.props;
+    sortPoints(sort);
     this.setState({
-      active
+      sort
     });
   };
 &nbsp;
-  render() {
-    const { active } = this.state;
-    return (
-      &lt;div id="styleContainer"&gt;
-        &lt;span className="anchor"&gt;Styles:&lt;/span&gt;
-        {Object.keys(ButtonPannelConfig).map(button =&gt; {
-          const { className, clickText, text } = ButtonPannelConfig[button];
-          return (
-            &lt;StyleButton
-              active={active}
-              className={className}
-              clickText={clickText}
-              handleClick={this.handleClick}
-              key={text}
-              text={text}
-            /&gt;
-          );
-        })}
-      &lt;/div&gt;
-    );
-  }
+  render = () =&gt; (
+    &lt;div&gt;
+      &lt;span className="anchor keyTitle"&gt;Sort By Type:&lt;/span&gt;
+&nbsp;
+      {Object.keys(CourtTypeConfig).map(court =&gt; {
+        const {
+          className,
+          id,
+          imageNode,
+          text,
+          textClassName,
+          url
+        } = CourtTypeConfig[court];
+        return (
+          &lt;CourtTypeTile
+            className={`${className} ${
+              this.state.sort === id ? "activeSort" : ""
+            }`}
+            id={id}
+            imageNode={imageNode}
+            key={id}
+            sortPoints={this.sortPoints}
+            text={text}
+            textClassName={textClassName}
+            url={url}
+          /&gt;
+        );
+      })}
+    &lt;/div&gt;
+  );
 }
 &nbsp;
-StyleButtons.propTypes = {
-  selectStyle: func.isRequired
+SortByButtons.propTypes = {
+  sortPoints: func.isRequired
 };
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -187,10 +217,10 @@ StyleButtons.propTypes = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 11 2019 01:50:32 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 11 2019 01:52:14 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
-<script src="../../prettify.js"></script>
+<script src="../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -198,7 +228,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../sorter.js"></script>
-<script src="../../block-navigation.js"></script>
+<script src="../sorter.js"></script>
+<script src="../block-navigation.js"></script>
 </body>
 </html>
