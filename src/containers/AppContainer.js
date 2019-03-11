@@ -16,9 +16,7 @@ import StyleButtons from "../components/StyleButtons";
 
 class AppContainer extends Component {
   componentDidMount() {
-    console.log("mounted here ", this.props.getCourts());
     this.props.getCourts();
-    console.log("done");
   }
 
   render() {

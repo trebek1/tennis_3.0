@@ -9,7 +9,8 @@
     "dev": "webpack --mode development --module-bind js=babel-loader",
     "start": "node server.js",
     "test": "jest --verbose --env=jsdom",
-    "test:watch": "jest --watch --env=jsdom"
+    "test:watch": "jest --watch --env=jsdom",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "babel": {
     "env": {
@@ -111,5 +112,6 @@
   },
   "engines": {
     "node": "10.10.0"
-  }
+  },
+  "heroku-run-build-script": true
 }
