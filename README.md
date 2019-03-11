@@ -1,4 +1,4 @@
-This Application is currently being refactored and updated with modern javascript as of 2019. Don't judge too hard right now! When this update is complete v1.0 will be released of this project. This update will include unit testing, modern javascript syntax, more modularized code, better use of one directional data flow and more modularization of the map.
+This Application is currently under construction as of March 2019. When this update is complete the project will have unit testing, modern javascript syntax, more modularized code, end to end testing, continuous integration and other modern upgrades.
 
 To launch app
 
