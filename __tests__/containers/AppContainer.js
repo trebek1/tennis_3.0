@@ -37,43 +37,4 @@ describe(`AppContainer component`, () => {
     );
     expect(component.exists()).toBe(true);
   });
-
-  it("should call getCourts during componentDidMount", () => {
-    const testState = {};
-    const mockFn = jest.fn();
-    const store = createMockStore(testState);
-    const componentDidMount = jest.spyOn(
-      AppContainer.prototype,
-      "componentDidMount"
-    );
-    const getCourts = jest.spyOn(
-      AppContainer.WrappedComponent.propTypes,
-      "getCourts"
-    );
-    component = mountWithStore(
-      <AppContainer
-        courts={{}}
-        getCourts={mockFn}
-        selectStyle={() => {}}
-        sortedCourts={() => {}}
-      />,
-      store
-    );
-    expect(getCourts).toHaveBeenCalledTimes(1);
-    expect(componentDidMount).toHaveBeenCalledTimes(1);
-  });
-  it("should default to the default state ", () => {
-    const testState = {};
-    const store = createMockStore(testState);
-
-    component = shallowWithStore(<AppContainer />, store);
-    expect(component.props().styles).toEqual("wimbledon");
-    expect(component.props().sort).toEqual("all");
-    expect(JSON.stringify(component.props().sortedCourts)).toEqual(
-      JSON.stringify([])
-    );
-    expect(JSON.stringify(component.props().courts)).toEqual(
-      JSON.stringify([])
-    );
-  });
 });

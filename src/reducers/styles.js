@@ -1,6 +1,6 @@
 const { SELECT_STYLE } = require("../actions/courtActions");
 
-const initialState = "wimbledon";
+export const initialState = "wimbledon";
 
 const styles = (state = initialState, action) => {
   switch (action.type) {

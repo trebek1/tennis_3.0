@@ -13,7 +13,7 @@ export const twoCourts = [
     index: 116,
     lights: "No",
     name: "Serramonte",
-    type: "other",
+    type: "club",
     x: 37.6568403,
     y: -122.4669707
   }

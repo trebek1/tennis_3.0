@@ -4,7 +4,7 @@ const {
   SELECT_POINT
 } = require("../actions/courtActions");
 
-const initialState = {
+export const initialState = {
   courts: [],
   sortedCourts: [],
   selectedPoint: [],
