@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>0/4</span>
       </div>
     </div>
     <p class="quiet">
@@ -73,7 +73,33 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -88,44 +114,39 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router, IndexRoute, Route, browserHistory } from "react-router";
-import { createStore, applyMiddleware } from "redux";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { syncHistoryWithStore } from "react-router-redux";
-&nbsp;
-import React from "react";
-import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  IndexRoute
+} from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 &nbsp;
 import AppContainer from "./containers/AppContainer";
-import Wrapper from "./components/Wrapper";
+import Footer from "./components/Footer";
 import reducers from "./reducers";
 &nbsp;
 const store = <span class="cstat-no" title="statement not covered" >createStore(reducers, applyMiddleware(thunk));</span>
-const history = <span class="cstat-no" title="statement not covered" >syncHistoryWithStore(browserHistory, store);</span>
 const routes = (
 <span class="cstat-no" title="statement not covered" >  &lt;Provider store={store}&gt;</span>
-    &lt;Router history={history}&gt;
-      &lt;Route path="/" component={Wrapper}&gt;
-        &lt;IndexRoute component={AppContainer} /&gt;
-      &lt;/Route&gt;
+    &lt;Router&gt;
+      &lt;div&gt;
+        &lt;Switch&gt;
+          &lt;div className="app-wrapper"&gt;
+            &lt;Route exact path="/" component={AppContainer} /&gt;
+            &lt;Footer /&gt;
+          &lt;/div&gt;
+        &lt;/Switch&gt;
+      &lt;/div&gt;
     &lt;/Router&gt;
   &lt;/Provider&gt;
 );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >ReactDOM.render(routes, document.getElementById("app"));</span>
+<span class="cstat-no" title="statement not covered" >render(routes, document.getElementById("app"));</span>
 <span class="cstat-no" title="statement not covered" >module.hot.accept();</span>
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -133,7 +154,7 @@ const routes = (
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 10 2019 23:17:42 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 11 2019 00:33:57 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

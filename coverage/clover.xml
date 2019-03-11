@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1552285062886" clover="3.2.0">
-  <project timestamp="1552285062886" name="All files">
-    <metrics statements="133" coveredstatements="77" conditionals="51" coveredconditionals="25" methods="48" coveredmethods="26" elements="232" coveredelements="128" complexity="0" loc="133" ncloc="133" packages="6" files="17" classes="17"/>
+<coverage generated="1552289637710" clover="3.2.0">
+  <project timestamp="1552289637710" name="All files">
+    <metrics statements="130" coveredstatements="76" conditionals="51" coveredconditionals="25" methods="46" coveredmethods="26" elements="227" coveredelements="127" complexity="0" loc="130" ncloc="130" packages="6" files="17" classes="17"/>
     <package name="src">
-      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/trebek1/code/tennis_3.0/src/index.js">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.actions">
@@ -152,18 +151,16 @@
       </file>
     </package>
     <package name="src.containers">
-      <metrics statements="9" coveredstatements="4" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <metrics statements="7" coveredstatements="3" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="AppContainer.js" path="/Users/trebek1/code/tennis_3.0/src/containers/AppContainer.js">
-        <metrics statements="9" coveredstatements="4" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="7" coveredstatements="3" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="19" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="79" count="1" type="stmt"/>
-        <line num="88" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.reducers">
