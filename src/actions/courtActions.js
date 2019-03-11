@@ -10,7 +10,7 @@ export const getCourts = () => dispatch =>
     .get("/courts")
     .then(response => dispatch({ type: GET_COURTS, payload: response.data }));
 
-export const selectStyle = type => ({ type: SELECT_STYLE, payload: type });
+export const selectStyle = style => ({ type: SELECT_STYLE, payload: style });
 
 export const sortPoints = type => ({ type: SORT_POINTS, payload: type });
 

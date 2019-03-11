@@ -66,14 +66,9 @@ const mapStateToProps = ({
   styles
 });
 
-const mapDispatchToProps = dispatch => ({
-  ...courtActions,
-  getCourts: () => dispatch(courtActions.getCourts())
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  courtActions
 )(AppContainer);
 
 AppContainer.propTypes = {
