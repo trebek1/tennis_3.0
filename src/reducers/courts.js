@@ -41,7 +41,7 @@ const courts = (state = initialState, action) => {
       }
       return {
         ...state,
-        sortedCourts,
+        sortedCourts
       };
     case SELECT_POINT:
       return {
