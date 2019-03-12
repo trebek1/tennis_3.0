@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1552294334473" clover="3.2.0">
-  <project timestamp="1552294334473" name="All files">
-    <metrics statements="126" coveredstatements="76" conditionals="51" coveredconditionals="25" methods="46" coveredmethods="26" elements="223" coveredelements="127" complexity="0" loc="126" ncloc="126" packages="5" files="16" classes="16"/>
+<coverage generated="1552358361025" clover="3.2.0">
+  <project timestamp="1552358361025" name="All files">
+    <metrics statements="125" coveredstatements="83" conditionals="51" coveredconditionals="25" methods="46" coveredmethods="31" elements="222" coveredelements="139" complexity="0" loc="125" ncloc="125" packages="5" files="16" classes="16"/>
     <package name="actions">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="courtActions.js" path="/Users/trebek1/code/tennis_3.0/src/actions/courtActions.js">
@@ -19,7 +19,7 @@
       </file>
     </package>
     <package name="components">
-      <metrics statements="83" coveredstatements="37" conditionals="33" coveredconditionals="12" methods="34" coveredmethods="17"/>
+      <metrics statements="83" coveredstatements="42" conditionals="33" coveredconditionals="12" methods="34" coveredmethods="20"/>
       <file name="App.js" path="/Users/trebek1/code/tennis_3.0/src/components/App.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="16" count="1" type="stmt"/>
@@ -29,19 +29,19 @@
       <file name="CourtList.js" path="/Users/trebek1/code/tennis_3.0/src/components/CourtList.js">
         <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="3" count="3" type="stmt"/>
-        <line num="4" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="4" count="9" type="cond" truecount="4" falsecount="0"/>
         <line num="5" count="5" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
         <line num="11" count="7" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
       </file>
       <file name="CourtTypeTile.js" path="/Users/trebek1/code/tennis_3.0/src/components/CourtTypeTile.js">
         <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
+        <line num="4" count="19" type="stmt"/>
       </file>
       <file name="Footer.js" path="/Users/trebek1/code/tennis_3.0/src/components/Footer.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -49,12 +49,12 @@
         <line num="4" count="1" type="stmt"/>
       </file>
       <file name="Map.js" path="/Users/trebek1/code/tennis_3.0/src/components/Map.js">
-        <metrics statements="48" coveredstatements="2" conditionals="21" coveredconditionals="0" methods="17" coveredmethods="0"/>
+        <metrics statements="48" coveredstatements="7" conditionals="21" coveredconditionals="0" methods="17" coveredmethods="3"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -96,7 +96,7 @@
         <line num="161" count="0" type="stmt"/>
         <line num="163" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="164" count="0" type="stmt"/>
-        <line num="169" count="0" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
         <line num="178" count="2" type="stmt"/>
       </file>
       <file name="SortByButtons.js" path="/Users/trebek1/code/tennis_3.0/src/components/SortByButtons.js">
@@ -105,15 +105,15 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
-        <line num="33" count="25" type="stmt"/>
-        <line num="34" count="25" type="stmt"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="33" count="30" type="stmt"/>
+        <line num="34" count="30" type="stmt"/>
         <line num="53" count="4" type="stmt"/>
       </file>
       <file name="StyleButton.js" path="/Users/trebek1/code/tennis_3.0/src/components/StyleButton.js">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
+        <line num="4" count="20" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
       </file>
       <file name="StyleButtons.js" path="/Users/trebek1/code/tennis_3.0/src/components/StyleButtons.js">
@@ -121,10 +121,10 @@
         <line num="6" count="4" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="26" count="24" type="stmt"/>
-        <line num="27" count="24" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="26" count="30" type="stmt"/>
+        <line num="27" count="30" type="stmt"/>
         <line num="43" count="4" type="stmt"/>
       </file>
     </package>
@@ -141,16 +141,15 @@
       </file>
     </package>
     <package name="containers">
-      <metrics statements="7" coveredstatements="3" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="6" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="AppContainer.js" path="/Users/trebek1/code/tennis_3.0/src/containers/AppContainer.js">
-        <metrics statements="7" coveredstatements="3" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="55" count="2" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="74" count="2" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
+        <metrics statements="6" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
       </file>
     </package>
     <package name="reducers">

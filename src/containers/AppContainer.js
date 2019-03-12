@@ -14,7 +14,7 @@ import Map from "../components/Map";
 import SortByButtons from "../components/SortByButtons";
 import StyleButtons from "../components/StyleButtons";
 
-class AppContainer extends Component {
+export class AppContainer extends Component {
   componentDidMount() {
     this.props.getCourts();
   }
