@@ -5,9 +5,6 @@ To launch app
 // install packages
 npm install
 
-//start mongo daemon
-sudo mongod
-
 //start project
 npm start
 

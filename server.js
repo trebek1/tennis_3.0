@@ -20,8 +20,10 @@ mongoose.connect(
   { useMongoClient: true }
 );
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "# MongoDB - Connection Error: "));
+mongoose.connection.on(
+  "error",
+  console.error.bind(console, "# MongoDB - Connection Error: ")
+);
 
 // favicon
 app.use(favicon(path.join(__dirname, "static", "favicon.ico")));
