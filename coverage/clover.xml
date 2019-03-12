@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1552358361025" clover="3.2.0">
-  <project timestamp="1552358361025" name="All files">
-    <metrics statements="125" coveredstatements="83" conditionals="51" coveredconditionals="25" methods="46" coveredmethods="31" elements="222" coveredelements="139" complexity="0" loc="125" ncloc="125" packages="5" files="16" classes="16"/>
+<coverage generated="1552369197302" clover="3.2.0">
+  <project timestamp="1552369197302" name="All files">
+    <metrics statements="126" coveredstatements="84" conditionals="51" coveredconditionals="25" methods="46" coveredmethods="31" elements="223" coveredelements="140" complexity="0" loc="126" ncloc="126" packages="5" files="16" classes="16"/>
     <package name="actions">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="courtActions.js" path="/Users/trebek1/code/tennis_3.0/src/actions/courtActions.js">
@@ -141,15 +141,16 @@
       </file>
     </package>
     <package name="containers">
-      <metrics statements="6" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="6" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="AppContainer.js" path="/Users/trebek1/code/tennis_3.0/src/containers/AppContainer.js">
-        <metrics statements="6" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="6" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="19" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="72" count="2" type="stmt"/>
-        <line num="81" count="2" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
       </file>
     </package>
     <package name="reducers">

@@ -1,4 +1,4 @@
-This Application is currently under construction as of March 2019. When this update is complete the project will have unit testing, modern javascript syntax, more modularized code, end to end testing, continuous integration and other modern upgrades.
+This Application is currently under construction as of March 2019. When this update is complete the project will have unit testing, integration and end to end testing, continuous integration and other modern upgrades.
 
 To launch app
 
