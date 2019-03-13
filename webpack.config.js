@@ -44,7 +44,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({ template: "./index.html" })
+    new HtmlWebpackPlugin({
+      apiUrl: `https://maps.googleapis.com/maps/api/js?key=${process.env.KEY}`,
+      template: "./index.html"
+    })
   ],
   output: {
     filename: "bundle.js",
