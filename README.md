@@ -1,4 +1,5 @@
-This Application is currently under construction as of March 2019. When this update is complete the project will have unit testing, integration and end to end testing, continuous integration and other modern upgrades.
+This Application is currently under construction as of March 2019.
+Todo: 1). Add End to End Testing 2). Add Jenkins CI 3). Add Flow Types and remove PropTypes
 
 To launch app
 
