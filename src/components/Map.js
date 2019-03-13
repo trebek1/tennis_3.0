@@ -4,6 +4,12 @@ import courtStyles from "../constants/courtStyles";
 
 const MAX_POINTS = 119;
 
+const iconMap = {
+  address: "fa-address-book-o",
+  lights: "fa-lightbulb-o",
+  phone: "fa-mobile"
+};
+
 class Map extends Component {
   state = {
     infowindow: null,
@@ -76,23 +82,23 @@ class Map extends Component {
 
   setMarkerContent = index => {
     const court = this.props.courts[index];
-    const content = `<div id="content"><div class="courtName">${
-      court.name
-    }</div><div><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i>${
-      court.address
-    }</div>${
-      court.lights
-        ? `<div><i class="fa fa-lightbulb-o fa-fw" aria-hidden="true"></i>${
-            court.lights
-          }</div>`
-        : ""
-    } ${
-      court.phone
-        ? `<div><i class="fa fa-mobile fa-fw" aria-hidden="true"></i>${
-            court.phone
-          }</div>`
-        : ""
-    }</div>`;
+
+    const content = Object.keys(iconMap).reduce(
+      (list, field) => {
+        if (court[field])
+          return (list += `
+          <div>
+            <i class="fa ${iconMap[field]} fa-fw"></i>
+            ${court[field]}
+          </div>`);
+        return list;
+      },
+      `
+      <div id="content">
+        <div class="courtName">${court.name}</div>
+      </div>`
+    );
+
     // Create new info window - Popup with street location and the title of the movie
     return new google.maps.InfoWindow({ content });
   };
@@ -160,6 +166,7 @@ class Map extends Component {
         map.setCenter(bounds.getCenter());
         this.addMarkerToMap(idx, marker);
       });
+
       if (points.length !== MAX_POINTS) map.setZoom(map.getZoom() - 1);
       this.closeInfoWindowOnClick(map);
     }

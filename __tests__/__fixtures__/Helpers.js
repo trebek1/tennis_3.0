@@ -61,7 +61,12 @@ export const setupGoogleMock = () => {
         return {
           //methods
           fitBounds: function() {},
-          getBounds: function() {},
+          getBounds: function() {
+            return {
+              extend: function() {},
+              getCenter: function() {}
+            };
+          },
           getCenter: function() {},
           getDiv: function() {},
           getHeading: function() {},
@@ -141,6 +146,7 @@ export const setupGoogleMock = () => {
       //https://developers.google.com/maps/documentation/javascript/reference#Marker
       Marker: function() {
         return {
+          getPosition: function() {},
           setTitle: function(visible) {},
           setVisible: function() {},
           setZIndex: function() {}
