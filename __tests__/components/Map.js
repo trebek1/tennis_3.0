@@ -69,6 +69,12 @@ describe(`Map component`, () => {
     component.setProps({ courts: twoCourts });
     expect(spy).toHaveBeenCalled();
   });
+  test("createMap should not be called if props are same ", () => {
+    component = mount(<Map courts={twoCourts} styles="usa" />);
+    const spy = jest.spyOn(component.instance(), "createMap");
+    component.setProps({ courts: twoCourts });
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
   test("closeInfoWindowOnClick should be called after clicking map", () => {
     component = mount(<Map courts={[]} styles="usa" />);
     const spy = jest.spyOn(component.instance(), "closeInfoWindowOnClick");

@@ -41,7 +41,7 @@ export const setupGoogleMock = () => {
       GroundOverlay: function() {},
       //https://developers.google.com/maps/documentation/javascript/reference#ImageMapType
       ImageMapType: function() {},
-      InfoWindow: function() {
+      InfoWindow: function(context) {
         return {};
       },
       //https://developers.google.com/maps/documentation/javascript/reference#KmlLayer
