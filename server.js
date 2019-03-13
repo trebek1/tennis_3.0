@@ -1,5 +1,4 @@
 import bodyParser from "body-parser";
-import config from "./webpack.config";
 import express from "express";
 import favicon from "serve-favicon";
 import mongoose from "mongoose";
@@ -7,6 +6,7 @@ import path from "path";
 import session from "express-session";
 import webpack from "webpack";
 
+import config from "./webpack.config";
 import Courts from "./models/Courts.js";
 
 const app = express();

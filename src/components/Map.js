@@ -58,7 +58,7 @@ class Map extends Component {
     new google.maps.Marker({
       position: points[index],
       icon: new google.maps.MarkerImage(
-        `http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
+        `https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
           this.props.courts[index]
         )}`,
         new google.maps.Size(21, 34),
@@ -66,7 +66,7 @@ class Map extends Component {
         new google.maps.Point(10, 34)
       ),
       shadow: new google.maps.MarkerImage(
-        "http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        "https://chart.apis.google.com/chart?chst=d_map_pin_shadow",
         new google.maps.Size(40, 37),
         new google.maps.Point(0, 0),
         new google.maps.Point(12, 35)
