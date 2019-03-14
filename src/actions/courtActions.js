@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
+import type { Dispatch as ReduxDispatch } from 'redux';
 
 export const GET_COURTS: string = 'GET_COURTS';
 export const SELECT_POINT: string = 'SELECT_POINT';

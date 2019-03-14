@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 // Redux
 import { connect } from 'react-redux';
 
+import type { Dispatch as ReduxDispatch } from 'redux';
+
 // Actions to dispatch
 import courtActions from '../actions/courtActions';
-
-import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
 
 import type { Court } from '../types';
 

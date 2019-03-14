@@ -1,7 +1,7 @@
 This Application is currently under construction as of March 2019.
 Todo:
 1). Add End to End Testing
-2). Add Flow Types and remove PropTypes
+2). Type Map Component - Clean up Types
 
 To launch app
 

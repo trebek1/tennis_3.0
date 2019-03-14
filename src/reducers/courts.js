@@ -1,12 +1,12 @@
 // @flow strict-local
 
+import type { Court } from '../types';
+
 const {
   GET_COURTS,
   SORT_POINTS,
   SELECT_POINT,
 } = require('../actions/courtActions');
-
-import type { Court } from '../types';
 
 type State = {
   courts: Array<Court>,
