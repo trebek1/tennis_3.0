@@ -1,10 +1,10 @@
-import React from "react";
-import { shallow, mount } from "enzyme";
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import moxios from "moxios";
-import fetchMock from "fetch-mock";
-import courtStyles from "../../src/constants/courtStyles";
+import React from 'react';
+import { shallow, mount } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import moxios from 'moxios';
+import fetchMock from 'fetch-mock';
+import courtStyles from '../../src/constants/courtStyles';
 
 import {
   GET_COURTS,
@@ -14,26 +14,26 @@ import {
   getCourts,
   selectStyle,
   sortPoints,
-  selectPoint
-} from "../../src/actions/courtActions";
-import * as axios from "axios";
+  selectPoint,
+} from '../../src/actions/courtActions';
+import * as axios from 'axios';
 
-import { twoCourts } from "../__fixtures__/CourtFixtures";
+import { twoCourts } from '../__fixtures__/CourtFixtures';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("Async court Action", () => {
+describe('Async court Action', () => {
   beforeEach(() => moxios.install());
   afterEach(() => moxios.uninstall());
 
-  it("Sets courts to store after fetching", async done => {
+  it('Sets courts to store after fetching', async done => {
     const expectedResponse = { data: [{ sfcourts: twoCourts }] };
     const store = mockStore({});
 
-    moxios.stubRequest("/courts", {
+    moxios.stubRequest('/courts', {
       response: expectedResponse,
-      status: 201
+      status: 201,
     });
 
     await store.dispatch(getCourts()).then(() => {
@@ -42,41 +42,41 @@ describe("Async court Action", () => {
       expect(store.getActions()).toEqual([
         {
           payload: expectedResponse,
-          type: GET_COURTS
-        }
+          type: GET_COURTS,
+        },
       ]);
     });
     done();
   });
 });
 
-describe("non async actions ", () => {
-  describe("selectStyle", () => {
-    it("should create an action to change the map style", () => {
+describe('non async actions ', () => {
+  describe('selectStyle', () => {
+    it('should create an action to change the map style', () => {
       const { australia } = courtStyles;
       const expectedAction = {
         payload: australia,
-        type: SELECT_STYLE
+        type: SELECT_STYLE,
       };
       expect(selectStyle(australia)).toEqual(expectedAction);
     });
   });
-  describe("sortPoints", () => {
-    it("should create an action to sort the points to show on the map", () => {
-      const sort = "all";
+  describe('sortPoints', () => {
+    it('should create an action to sort the points to show on the map', () => {
+      const sort = 'all';
       const expectedAction = {
         payload: sort,
-        type: SORT_POINTS
+        type: SORT_POINTS,
       };
       expect(sortPoints(sort)).toEqual(expectedAction);
     });
   });
-  describe("selectPoint", () => {
-    it("should create an action to select a point for the map", () => {
+  describe('selectPoint', () => {
+    it('should create an action to select a point for the map', () => {
       const index = 10;
       const expectedAction = {
         payload: index,
-        type: SELECT_POINT
+        type: SELECT_POINT,
       };
       expect(selectPoint(index)).toEqual(expectedAction);
     });

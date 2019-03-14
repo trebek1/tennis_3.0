@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { array, string } from "prop-types";
-import courtStyles from "../constants/courtStyles";
+import React, { Component } from 'react';
+import { array, string } from 'prop-types';
+import courtStyles from '../constants/courtStyles';
 
 const MAX_POINTS = 119;
 
 const iconMap = {
-  address: "fa-address-book-o",
-  lights: "fa-lightbulb-o",
-  phone: "fa-mobile"
+  address: 'fa-address-book-o',
+  lights: 'fa-lightbulb-o',
+  phone: 'fa-mobile',
 };
 
 class Map extends Component {
   state = {
     infowindow: null,
     map: null,
-    marker: null
+    marker: null,
   };
 
   constructor(props) {
@@ -32,12 +32,12 @@ class Map extends Component {
     const map = new google.maps.Map(this.mapRef, {
       center: new google.maps.LatLng(37.763108, -122.455799),
       zoom: 13,
-      gestureHandling: "greedy",
+      gestureHandling: 'greedy',
       styles: that.chooseStyles(),
-      bounds: new google.maps.LatLngBounds()
+      bounds: new google.maps.LatLngBounds(),
     });
     this.setState({
-      map
+      map,
     });
     return map;
   };
@@ -47,16 +47,16 @@ class Map extends Component {
 
   getPinColor = ({ type }) => {
     switch (type) {
-      case "shop":
-        return "FE7569";
-      case "club":
-        return "F8EC3B";
-      case "court":
-        return "3BF83E";
-      case "other":
-        return "00ccff";
+      case 'shop':
+        return 'FE7569';
+      case 'club':
+        return 'F8EC3B';
+      case 'court':
+        return '3BF83E';
+      case 'other':
+        return '00ccff';
       default:
-        return "FE7569";
+        return 'FE7569';
     }
   };
 
@@ -72,12 +72,12 @@ class Map extends Component {
         new google.maps.Point(10, 34)
       ),
       shadow: new google.maps.MarkerImage(
-        "https://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        'https://chart.apis.google.com/chart?chst=d_map_pin_shadow',
         new google.maps.Size(40, 37),
         new google.maps.Point(0, 0),
         new google.maps.Point(12, 35)
       ),
-      map
+      map,
     });
 
   setMarkerContent = index => {
@@ -108,12 +108,12 @@ class Map extends Component {
     const infowindow = this.setMarkerContent(index);
     google.maps.event.addListener(
       marker,
-      "click",
+      'click',
       () => {
         const {
           infowindow: currentWindow,
           map,
-          marker: currentMarker
+          marker: currentMarker,
         } = this.state;
         // If there is a current window then close it
         if (currentWindow != null) {
@@ -124,7 +124,7 @@ class Map extends Component {
         // update state
         that.setState({
           infowindow,
-          marker
+          marker,
         });
       },
       { passive: false }
@@ -136,7 +136,7 @@ class Map extends Component {
     if (infowindow != null) {
       infowindow.close(map, marker);
       this.setState({
-        infowindow: null
+        infowindow: null,
       });
     }
   }
@@ -144,7 +144,7 @@ class Map extends Component {
   closeInfoWindowOnClick(map) {
     google.maps.event.addListener(
       map,
-      "click",
+      'click',
       () => {
         this.closeInfoWindow(map);
       },
@@ -184,5 +184,5 @@ export default Map;
 
 Map.propTypes = {
   courts: array.isRequired,
-  styles: string.isRequired
+  styles: string.isRequired,
 };

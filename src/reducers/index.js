@@ -1,12 +1,12 @@
-import { routerReducer } from "react-router-redux";
-import { combineReducers } from "redux";
-import courts from "./courts";
-import styles from "./styles";
+import { routerReducer } from 'react-router-redux';
+import { combineReducers } from 'redux';
+import courts from './courts';
+import styles from './styles';
 
 const reducers = combineReducers({
   courts,
   routing: routerReducer,
-  styles
+  styles,
 });
 
 export default reducers;

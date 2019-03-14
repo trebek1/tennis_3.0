@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { func } from "prop-types";
-import ButtonPannelConfig from "../constants/buttonPannelConfig";
-import StyleButton from "./StyleButton";
+import React, { Component } from 'react';
+import { func } from 'prop-types';
+import ButtonPannelConfig from '../constants/buttonPannelConfig';
+import StyleButton from './StyleButton';
 
-const DEFAULT_ACTIVE = "wimbledon";
+const DEFAULT_ACTIVE = 'wimbledon';
 
 export default class StyleButtons extends Component {
   state = {
-    active: DEFAULT_ACTIVE
+    active: DEFAULT_ACTIVE,
   };
 
   handleClick = active => {
     this.props.selectStyle(active);
     this.setState({
-      active
+      active,
     });
   };
 
@@ -41,5 +41,5 @@ export default class StyleButtons extends Component {
 }
 
 StyleButtons.propTypes = {
-  selectStyle: func.isRequired
+  selectStyle: func.isRequired,
 };

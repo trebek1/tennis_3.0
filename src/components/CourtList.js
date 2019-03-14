@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const CourtList = ({ courts, selectPoint, sort, sortPoints }) => {
   if (courts != null && courts.length > 0) {
@@ -10,7 +10,7 @@ const CourtList = ({ courts, selectPoint, sort, sortPoints }) => {
         {courts.map((court, index) => (
           <li
             className="courtListItem"
-            key={index}
+            key={court.address}
             onClick={() => selectPoint(index)}
           >
             {court.name}
@@ -23,7 +23,7 @@ const CourtList = ({ courts, selectPoint, sort, sortPoints }) => {
               sortPoints(sort);
             }}
           >
-            {"Return to Previous Map"}
+            {'Return to Previous Map'}
           </li>
         ) : null}
       </ul>

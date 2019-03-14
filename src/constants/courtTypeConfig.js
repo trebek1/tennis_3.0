@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default {
   all: {
-    className: "key all",
-    id: "all",
+    className: 'key all',
+    id: 'all',
     imageNode: (
       <span className="keyValue">
         <img
@@ -24,39 +24,39 @@ export default {
         />
       </span>
     ),
-    text: "All Locations",
-    url: null
+    text: 'All Locations',
+    url: null,
   },
   club: {
-    className: "key club",
-    id: "club",
+    className: 'key club',
+    id: 'club',
     imageNode: null,
-    text: "Tennis Club",
+    text: 'Tennis Club',
     url:
-      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
+      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B',
   },
   court: {
-    className: "key court",
-    id: "court",
+    className: 'key court',
+    id: 'court',
     imageNode: null,
-    text: "Public Tennis Court",
+    text: 'Public Tennis Court',
     url:
-      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
+      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E',
   },
   other: {
-    className: "key other",
-    id: "other",
+    className: 'key other',
+    id: 'other',
     imageNode: null,
-    text: "Other Facility",
+    text: 'Other Facility',
     url:
-      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
+      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff',
   },
   shop: {
-    className: "key shop",
-    id: "shop",
+    className: 'key shop',
+    id: 'shop',
     imageNode: null,
-    text: "Tennis Shop",
+    text: 'Tennis Shop',
     url:
-      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
-  }
+      'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569',
+  },
 };

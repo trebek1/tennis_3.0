@@ -1,20 +1,20 @@
 const {
   GET_COURTS,
   SORT_POINTS,
-  SELECT_POINT
-} = require("../actions/courtActions");
+  SELECT_POINT,
+} = require('../actions/courtActions');
 
 export const initialState = {
   courts: [],
   sortedCourts: [],
   selectedPoint: [],
-  sort: "all"
+  sort: 'all',
 };
 
-const COURT = "court";
-const CLUB = "club";
-const SHOP = "shop";
-const OTHER = "other";
+const COURT = 'court';
+const CLUB = 'club';
+const SHOP = 'shop';
+const OTHER = 'other';
 
 const courts = (state = initialState, action) => {
   let { sortedCourts } = state;
@@ -23,7 +23,7 @@ const courts = (state = initialState, action) => {
       return {
         ...state,
         courts: action.payload[0].sfcourts,
-        sortedCourts: action.payload[0].sfcourts
+        sortedCourts: action.payload[0].sfcourts,
       };
     case SORT_POINTS:
       switch (action.payload) {
@@ -41,12 +41,12 @@ const courts = (state = initialState, action) => {
       }
       return {
         ...state,
-        sortedCourts
+        sortedCourts,
       };
     case SELECT_POINT:
       return {
         ...state,
-        sortedCourts: [sortedCourts[action.payload]]
+        sortedCourts: [sortedCourts[action.payload]],
       };
 
     default:

@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const courtsSchema = mongoose.Schema({
-  sfcourts: Array
+  sfcourts: Array,
 });
 
-module.exports = mongoose.model("Court", courtsSchema);
+module.exports = mongoose.model('Court', courtsSchema);

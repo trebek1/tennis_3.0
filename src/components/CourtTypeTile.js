@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const CourtTypeTile = ({ className, id, imageNode, sortPoints, text, url }) => (
   <div className={className} id={id} onClick={() => sortPoints(id)}>

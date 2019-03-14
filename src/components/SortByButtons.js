@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { func } from "prop-types";
-import CourtTypeTile from "./CourtTypeTile";
-import CourtTypeConfig from "../constants/courtTypeConfig";
+import React, { Component } from 'react';
+import { func } from 'prop-types';
+import CourtTypeTile from './CourtTypeTile';
+import CourtTypeConfig from '../constants/courtTypeConfig';
 
-const DEFAULT_SORT = "all";
+const DEFAULT_SORT = 'all';
 
 export default class SortByButtons extends Component {
   state = {
-    sort: DEFAULT_SORT
+    sort: DEFAULT_SORT,
   };
 
   sortPoints = sort => {
     const { sortPoints } = this.props;
     sortPoints(sort);
     this.setState({
-      sort
+      sort,
     });
   };
 
@@ -29,12 +29,12 @@ export default class SortByButtons extends Component {
           imageNode,
           text,
           textClassName,
-          url
+          url,
         } = CourtTypeConfig[court];
         return (
           <CourtTypeTile
             className={`${className} ${
-              this.state.sort === id ? "activeSort" : ""
+              this.state.sort === id ? 'activeSort' : ''
             }`}
             id={id}
             imageNode={imageNode}
@@ -51,5 +51,5 @@ export default class SortByButtons extends Component {
 }
 
 SortByButtons.propTypes = {
-  sortPoints: func.isRequired
+  sortPoints: func.isRequired,
 };

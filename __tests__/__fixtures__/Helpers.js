@@ -64,7 +64,7 @@ export const setupGoogleMock = () => {
           getBounds: function() {
             return {
               extend: function() {},
-              getCenter: function() {}
+              getCenter: function() {},
             };
           },
           getCenter: function() {},
@@ -112,12 +112,12 @@ export const setupGoogleMock = () => {
             toGeoJson: function() {},
             //properties
             controlPosition: {},
-            controls: []
+            controls: [],
           },
           mapTypes: {
             //https://developers.google.com/maps/documentation/javascript/reference#MapTypeRegistry
             //methods
-            set: function() {}
+            set: function() {},
           },
           overlayMapTypes: {
             //https://developers.google.com/maps/documentation/javascript/reference#MVCArray
@@ -129,17 +129,17 @@ export const setupGoogleMock = () => {
             pop: function() {},
             push: function() {},
             removeAt: function() {},
-            setAt: function() {}
-          }
+            setAt: function() {},
+          },
         };
       },
       MapTypeControlStyle: {},
       //https://developers.google.com/maps/documentation/javascript/reference#MapTypeId
       MapTypeId: {
-        HYBRID: "",
-        ROADMAP: "",
-        SATELLITE: "",
-        TERRAIN: ""
+        HYBRID: '',
+        ROADMAP: '',
+        SATELLITE: '',
+        TERRAIN: '',
       },
       //https://developers.google.com/maps/documentation/javascript/reference#MapTypeRegistry
       MapTypeRegistry: function() {},
@@ -149,18 +149,18 @@ export const setupGoogleMock = () => {
           getPosition: function() {},
           setTitle: function(visible) {},
           setVisible: function() {},
-          setZIndex: function() {}
+          setZIndex: function() {},
         };
       },
       MarkerImage: function() {},
       //https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions
       MarkerOptions: {
-        visible: false
+        visible: false,
       },
       //https://developers.google.com/maps/documentation/javascript/reference#MaxZoomService
       MaxZoomService: function() {
         return {
-          getMaxZoomAtLatLng: function() {}
+          getMaxZoomAtLatLng: function() {},
         };
       },
       //https://developers.google.com/maps/documentation/javascript/reference#MaxZoomStatus
@@ -211,16 +211,16 @@ export const setupGoogleMock = () => {
       ZoomControlStyle: {},
       __gjsload__: function() {},
       event: {
-        addListener: function() {}
+        addListener: function() {},
       },
       places: {
         AutocompleteService: function() {
           return {
-            getPlacePredictions: function() {}
+            getPlacePredictions: function() {},
           };
-        }
-      }
-    }
+        },
+      },
+    },
   };
   global.window.google = google;
 };

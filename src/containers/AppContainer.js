@@ -1,18 +1,17 @@
-import React, { Component } from "react";
-import { func, array, string } from "prop-types";
+import React, { Component } from 'react';
+import { func, array, string } from 'prop-types';
 
 // Redux
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
 
 // Actions to dispatch
-import courtActions from "../actions/courtActions";
+import courtActions from '../actions/courtActions';
 
 // Presentational Components
-import CourtList from "../components/CourtList";
-import Map from "../components/Map";
-import SortByButtons from "../components/SortByButtons";
-import StyleButtons from "../components/StyleButtons";
+import CourtList from '../components/CourtList';
+import Map from '../components/Map';
+import SortByButtons from '../components/SortByButtons';
+import StyleButtons from '../components/StyleButtons';
 
 export class AppContainer extends Component {
   componentDidMount() {
@@ -26,7 +25,7 @@ export class AppContainer extends Component {
       selectPoint,
       sortedCourts,
       styles,
-      selectStyle
+      selectStyle,
     } = this.props;
 
     return (
@@ -53,17 +52,17 @@ export class AppContainer extends Component {
 }
 
 const mapStateToProps = ({
-  courts: { sortedCourts = [], sort = "all", courts = [] } = {
+  courts: { sortedCourts = [], sort = 'all', courts = [] } = {
     sortedCourts: [],
-    sort: "all",
-    courts: []
+    sort: 'all',
+    courts: [],
   },
-  styles = "wimbledon"
+  styles = 'wimbledon',
 }) => ({
   courts,
   sort,
   sortedCourts,
-  styles
+  styles,
 });
 
 export default connect(
@@ -77,7 +76,7 @@ AppContainer.propTypes = {
   sortedCourts: array,
   styles: string,
   sort: string,
-  sortPoints: func
+  sortPoints: func,
 };
 
 AppContainer.defaultProps = {
@@ -85,5 +84,5 @@ AppContainer.defaultProps = {
   sortPoints: func,
   sort: string,
   selectPoint: func,
-  sortedCourts: array
+  sortedCourts: array,
 };
