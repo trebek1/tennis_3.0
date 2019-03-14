@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "10"
+
+deploy:
+  provider: heroku
+  api_key: HEROKU
+  app:
+    master: sftennis2017
+
+notifications:
+  email:
+    recipients:
+      - trebek08@gmail.com
+    on_success: change
+    on_failure: always
