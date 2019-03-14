@@ -5,3 +5,21 @@ export type TennisEntity = {|
   text: string,
   url: string,
 |};
+
+export type Court = {|
+  address: string,
+  clay?: string,
+  courts?: number,
+  grass?: string,
+  index: number,
+  indoor?: string,
+  lights?: string,
+  name: string,
+  phone: string,
+  proshop?: string,
+  stringing?: string,
+  type: string,
+  wall?: string,
+  x: number,
+  y: number,
+|};

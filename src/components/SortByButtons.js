@@ -1,16 +1,28 @@
+// @flow
+
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 import CourtTypeTile from './CourtTypeTile';
 import CourtTypeConfig from '../constants/courtTypeConfig';
 
+import type { TennisEntity } from '../types';
+
 const DEFAULT_SORT = 'all';
 
-export default class SortByButtons extends Component {
+type Props = {|
+  sortPoints: (type: string) => { type: string, payload: string },
+|};
+
+type State = {|
+  sort: string,
+|};
+
+export default class SortByButtons extends Component<Props, State> {
   state = {
     sort: DEFAULT_SORT,
   };
 
-  sortPoints = sort => {
+  sortPoints = (sort: string): void => {
     const { sortPoints } = this.props;
     sortPoints(sort);
     this.setState({
@@ -30,7 +42,7 @@ export default class SortByButtons extends Component {
           text,
           textClassName,
           url,
-        } = CourtTypeConfig[court];
+        }: TennisEntity = CourtTypeConfig[court];
         return (
           <CourtTypeTile
             className={`${className} ${
@@ -49,7 +61,3 @@ export default class SortByButtons extends Component {
     </div>
   );
 }
-
-SortByButtons.propTypes = {
-  sortPoints: func.isRequired,
-};
