@@ -4,7 +4,8 @@ node_js:
 
 deploy:
   provider: heroku
-  api_key: HEROKU
+  api_key:
+    secure: HEROKU
   app:
     master: sftennis2017
 
