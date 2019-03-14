@@ -13,8 +13,8 @@ import {
   SORT_POINTS,
   getCourts,
   selectStyle,
-  sortPoints,
   selectPoint,
+  sortPoints,
 } from '../../src/actions/courtActions';
 import * as axios from 'axios';
 

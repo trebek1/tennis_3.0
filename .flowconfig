@@ -1,0 +1,16 @@
+[ignore]
+.*/build/*
+.*/css/*
+.*/dist/*
+.*/node_modules/*
+.*/static/*
+.*/*.config*
+[include]
+src/*
+[libs]
+/flow-typed/npm
+[lints]
+
+[options]
+
+[strict]

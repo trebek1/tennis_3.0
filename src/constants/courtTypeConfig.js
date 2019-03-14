@@ -1,6 +1,10 @@
+// @flow
+
 import React from 'react';
 
-export default {
+import type { TennisEntity } from '../types';
+
+export default ({
   all: {
     className: 'key all',
     id: 'all',
@@ -59,4 +63,6 @@ export default {
     url:
       'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569',
   },
-};
+}: {
+  [string]: TennisEntity,
+});

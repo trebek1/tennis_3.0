@@ -1,4 +1,6 @@
-export default {
+// @flow
+
+export default ({
   australia: [
     {
       featureType: 'all',
@@ -436,4 +438,10 @@ export default {
       stylers: [{ lightness: 17 }, { color: '#1a1a1a' }],
     },
   ],
-};
+}: {
+  [string]: Array<{
+    featureType: string,
+    elementType: string,
+    stylers: Array<{ [string]: string | number }>,
+  }>,
+});

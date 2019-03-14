@@ -1,4 +1,6 @@
-export default {
+// @flow
+
+export default ({
   australia: {
     className: 'tab australia ',
     clickText: 'australia',
@@ -29,4 +31,4 @@ export default {
     clickText: 'wimbledon',
     text: 'Wimbledon',
   },
-};
+}: { [string]: { className: string, clickText: string, text: string } });
