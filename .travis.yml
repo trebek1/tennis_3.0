@@ -1,17 +1,15 @@
 language: node_js
 node_js:
-  - "10"
-
+- '10'
 deploy:
   provider: heroku
   api_key:
-    secure: HEROKU
+    secure: h0FZ7GJidkJBrpkI4rkLAdTOTRXT3sLinBu4MyPVDmQBGA4cLoH5sS0DeW0Vjhco0fpZE6Pp7x2skHjpEQ/JhpFfFAFAun2CxDUx980AAp+eAK4FuGBzGzWFkxDcjBNzToGVLX/2MuKcJiAqHi3+jkQyyypLONDsuxqVYRql7aqYn9+HDKg4HvnJtAXpUhKgtBdSXynNOssGmLy1iJqr/ehAaiHcm4ht/Kk4zkutA+2fJ1Rmu+GalX8BKyyjV9Enut5ys/EJgCSj1PFeqmlt0fDgqQSson4cCSepBcaazm+2YKA5MeZDV2BhrrCR9zLCsq+C18PrG+Q5L/xhD/fnevP9/RPhW2da7FqiM0jhklY4M9BkfWmTXETHnJUM+mw8Q5Gk/RiYheSMaST0zyBYPmXxrGY6BLlNY08ngeV6OsNjyfpSZDd0HJ8VGI0Y5/RF4iZvzJCrCNu0Ju1VS2Skb0Yx8H4J25K1Nimp4BftG/Ys+WfGe3XA0tZ6Z6+fFluNTCsE0yrHLIKm8J9DNXFgIIeYGvj/1W4H312mkXdSz+SBcG++pdAsSor1IJSHorT8mBFBWobI7wYbQ8qU9w72GXnR23XhU/hfj8IwZ5ArXzwwb+joPfqT9arXELLW8MmooyHzbOrFFubb88qxJV+mPWqTcq2+T9c/bbskbQx48Go=
   app:
     master: sftennis2017
-
 notifications:
   email:
     recipients:
-      - trebek08@gmail.com
+    - trebek08@gmail.com
     on_success: change
     on_failure: always
