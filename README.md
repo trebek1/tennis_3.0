@@ -1,5 +1,7 @@
 This Application is currently under construction as of March 2019.
-Todo: 1). Add End to End Testing 2). Add Travis CI 3). Add Flow Types and remove PropTypes
+Todo:
+1). Add End to End Testing
+2). Add Flow Types and remove PropTypes
 
 To launch app
 
