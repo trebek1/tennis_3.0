@@ -95,8 +95,7 @@
     "style-loader": "^0.23.1",
     "url-loader": "^0.5.9",
     "webpack": "^4.29.5",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-dev-middleware": "^1.6.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

@@ -41,7 +41,7 @@ app.use(
     publicPath: config.output.publicPath
   })
 );
-app.use(require("webpack-hot-middleware")(compiler));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

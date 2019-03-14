@@ -43,7 +43,6 @@ module.exports = {
     extensions: ["*", ".js", ".jsx"]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       apiUrl: `https://maps.googleapis.com/maps/api/js?key=${process.env.KEY}`,
       template: "./index.html"
