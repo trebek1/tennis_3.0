@@ -1,4 +1,5 @@
 // @flow
+
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 import ButtonPannelConfig from '../constants/buttonPannelConfig';
