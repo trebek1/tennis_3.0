@@ -7,19 +7,19 @@ export default {
     imageNode: (
       <span className="keyValue">
         <img
-          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
+          src="https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
           alt="all"
         />
         <img
-          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
+          src="https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
           alt="all"
         />
         <img
-          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
+          src="https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
           alt="all"
         />
         <img
-          src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
+          src="https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
           alt="all"
         />
       </span>
@@ -33,7 +33,7 @@ export default {
     imageNode: null,
     text: "Tennis Club",
     url:
-      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
+      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|F8EC3B"
   },
   court: {
     className: "key court",
@@ -41,7 +41,7 @@ export default {
     imageNode: null,
     text: "Public Tennis Court",
     url:
-      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
+      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|3BF83E"
   },
   other: {
     className: "key other",
@@ -49,7 +49,7 @@ export default {
     imageNode: null,
     text: "Other Facility",
     url:
-      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
+      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|00ccff"
   },
   shop: {
     className: "key shop",
@@ -57,6 +57,6 @@ export default {
     imageNode: null,
     text: "Tennis Shop",
     url:
-      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
+      "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"
   }
 };
