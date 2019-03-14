@@ -1,5 +1,6 @@
+// @flow strict-local
+
 import React, { Component } from 'react';
-import { func, array, string } from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
@@ -7,14 +8,28 @@ import { connect } from 'react-redux';
 // Actions to dispatch
 import courtActions from '../actions/courtActions';
 
+import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux';
+
+import type { Court } from '../types';
+
 // Presentational Components
 import CourtList from '../components/CourtList';
 import Map from '../components/Map';
 import SortByButtons from '../components/SortByButtons';
 import StyleButtons from '../components/StyleButtons';
 
-export class AppContainer extends Component {
-  componentDidMount() {
+type Props = {|
+  getCourts: () => (dispatch: ReduxDispatch) => any, // should be typed as a promise
+  selectPoint: (index: number) => { type: string, payload: number },
+  selectStyle: (style: string) => { type: string, payload: string },
+  sortedCourts: Array<Court>,
+  styles: string,
+  sort: string,
+  sortPoints: (type: string) => { type: string, payload: string },
+|};
+
+export class AppContainer extends Component<Props> {
+  componentDidMount(): void {
     this.props.getCourts();
   }
 
@@ -26,7 +41,7 @@ export class AppContainer extends Component {
       sortedCourts,
       styles,
       selectStyle,
-    } = this.props;
+    }: Props = this.props;
 
     return (
       <div id="mainContainer">
@@ -69,20 +84,3 @@ export default connect(
   mapStateToProps,
   courtActions
 )(AppContainer);
-
-AppContainer.propTypes = {
-  getCourts: func.isRequired,
-  selectPoint: func,
-  sortedCourts: array,
-  styles: string,
-  sort: string,
-  sortPoints: func,
-};
-
-AppContainer.defaultProps = {
-  styles: string,
-  sortPoints: func,
-  sort: string,
-  selectPoint: func,
-  sortedCourts: array,
-};

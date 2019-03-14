@@ -1,10 +1,21 @@
+// @flow strict-local
+
 const {
   GET_COURTS,
   SORT_POINTS,
   SELECT_POINT,
 } = require('../actions/courtActions');
 
-export const initialState = {
+import type { Court } from '../types';
+
+type State = {
+  courts: Array<Court>,
+  sortedCourts: Array<Court>,
+  selectedPoint: Array<Court>,
+  sort: string,
+};
+
+export const initialState: State = {
   courts: [],
   sortedCourts: [],
   selectedPoint: [],
@@ -16,7 +27,10 @@ const CLUB = 'club';
 const SHOP = 'shop';
 const OTHER = 'other';
 
-const courts = (state = initialState, action) => {
+const courts = (
+  state: State = initialState,
+  action: { type: string, payload: Object }
+) => {
   let { sortedCourts } = state;
   switch (action.type) {
     case GET_COURTS:
@@ -31,6 +45,7 @@ const courts = (state = initialState, action) => {
         case SHOP:
         case COURT:
         case OTHER:
+          // $FlowFixMe
           sortedCourts = state.courts.filter(
             court => court.type === action.payload
           );

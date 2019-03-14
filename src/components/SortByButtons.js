@@ -1,4 +1,4 @@
-// @flow
+// @flow strict-local
 
 import React, { Component } from 'react';
 import CourtTypeTile from './CourtTypeTile';

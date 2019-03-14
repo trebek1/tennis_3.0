@@ -4,12 +4,12 @@ import * as React from 'react';
 
 import type { Court } from '../types';
 
-type Props = {
+type Props = {|
   courts: Array<Court>,
   selectPoint: (index: number) => { type: string, payload: number },
   sort: string,
   sortPoints: (type: string) => { type: string, payload: string },
-};
+|};
 
 const CourtList = ({
   courts,
