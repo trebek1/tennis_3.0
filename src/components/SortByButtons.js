@@ -1,7 +1,6 @@
 // @flow
 
 import React, { Component } from 'react';
-import { func } from 'prop-types';
 import CourtTypeTile from './CourtTypeTile';
 import CourtTypeConfig from '../constants/courtTypeConfig';
 

@@ -13,10 +13,6 @@ import Map from '../components/Map';
 import SortByButtons from '../components/SortByButtons';
 import StyleButtons from '../components/StyleButtons';
 
-type Props = {||};
-
-type State = {||};
-
 export class AppContainer extends Component {
   componentDidMount() {
     this.props.getCourts();
