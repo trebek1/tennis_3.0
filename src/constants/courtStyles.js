@@ -1,5 +1,7 @@
 // @flow strict-local
 
+import type { CourtStyle } from '../types';
+
 export default ({
   australia: [
     {
@@ -439,9 +441,5 @@ export default ({
     },
   ],
 }: {
-  [string]: Array<{
-    featureType: string,
-    elementType: string,
-    stylers: Array<{ [string]: string | number }>,
-  }>,
+  [string]: Array<CourtStyle>,
 });

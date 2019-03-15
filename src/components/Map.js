@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import { array, string } from 'prop-types';
+// @flow strict-local
+
+import * as React from 'react';
 import courtStyles from '../constants/courtStyles';
+
+import type { Court } from '../types';
 
 const MAX_POINTS = 119;
 
@@ -10,8 +13,24 @@ const iconMap = {
   phone: 'fa-mobile',
 };
 
-class Map extends Component {
-  state = {
+// Types dont exist for these
+type InfoWindow = any;
+type MapType = any;
+type Marker = any;
+
+type Props = {|
+  courts: Array<Court>,
+  styles: string,
+|};
+
+type State = {|
+  infoWindow: InfoWindow,
+  map: MapType,
+  marker: Marker,
+|};
+
+class Map extends React.Component<Props, State> {
+  state: State = {
     infowindow: null,
     map: null,
     marker: null,
@@ -25,9 +44,9 @@ class Map extends Component {
     };
   }
 
-  chooseStyles = () => courtStyles[this.props.styles] || [];
+  chooseStyles = (): Array<CourtStyle> => courtStyles[this.props.styles] || [];
 
-  createMap = () => {
+  createMap = (): MapType => {
     const that = this;
     const map = new google.maps.Map(this.mapRef, {
       center: new google.maps.LatLng(37.763108, -122.455799),
@@ -42,10 +61,10 @@ class Map extends Component {
     return map;
   };
 
-  getPoints = () =>
+  getPoints = (): Array<Court> =>
     this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
 
-  getPinColor = ({ type }) => {
+  getPinColor = ({ type }): string => {
     switch (type) {
       case 'shop':
         return 'FE7569';
@@ -60,7 +79,7 @@ class Map extends Component {
     }
   };
 
-  createMarker = (map, points, index) =>
+  createMarker = (map: MapType, points: Array<Court>, index: number): Marker =>
     new google.maps.Marker({
       position: points[index],
       icon: new google.maps.MarkerImage(
@@ -80,7 +99,7 @@ class Map extends Component {
       map,
     });
 
-  setMarkerContent = index => {
+  setMarkerContent = (index: number): InfoWindow => {
     const court = this.props.courts[index];
 
     const content = Object.keys(iconMap).reduce(
@@ -103,7 +122,7 @@ class Map extends Component {
     return new google.maps.InfoWindow({ content });
   };
 
-  addMarkerToMap(index, marker) {
+  addMarkerToMap(index: number, marker: Marker): void {
     const that = this;
     const infowindow = this.setMarkerContent(index);
     google.maps.event.addListener(
@@ -131,7 +150,7 @@ class Map extends Component {
     );
   }
 
-  closeInfoWindow(map) {
+  closeInfoWindow(map: MapType): void {
     const { infowindow, marker } = this.state;
     if (infowindow != null) {
       infowindow.close(map, marker);
@@ -141,7 +160,7 @@ class Map extends Component {
     }
   }
 
-  closeInfoWindowOnClick(map) {
+  closeInfoWindowOnClick(map: MapType): void {
     google.maps.event.addListener(
       map,
       'click',
@@ -152,7 +171,7 @@ class Map extends Component {
     );
   }
 
-  componentDidUpdate({ courts, styles }) {
+  componentDidUpdate({ courts, styles }): void {
     if (
       this.props.courts.length !== courts.length ||
       this.props.styles !== styles
@@ -172,7 +191,7 @@ class Map extends Component {
     }
   }
 
-  render = () => (
+  render = (): React.Node => (
     <div id="mapContainer">
       <div id="map" className="map-gic main-map" ref={this.setMapRef}>
         Map Loading...
@@ -181,8 +200,3 @@ class Map extends Component {
   );
 }
 export default Map;
-
-Map.propTypes = {
-  courts: array.isRequired,
-  styles: string.isRequired,
-};

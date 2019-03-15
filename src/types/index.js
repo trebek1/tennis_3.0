@@ -23,3 +23,9 @@ export type Court = {|
   x: number,
   y: number,
 |};
+
+export type CourtStyle = {
+  featureType: string,
+  elementType: string,
+  stylers: Array<{ [string]: string | number }>,
+};
