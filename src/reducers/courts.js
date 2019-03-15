@@ -27,7 +27,7 @@ const courts = (
   state: State = initialState,
   action: { type: string, payload: Object }
 ) => {
-  let { sortedCourts } = state;
+  let { sort, sortedCourts } = state;
   switch (action.type) {
     case GET_COURTS:
       return {
@@ -42,16 +42,19 @@ const courts = (
         case COURT:
         case OTHER:
           // $FlowFixMe
+          sort = action.payload;
           sortedCourts = state.courts.filter(
             court => court.type === action.payload
           );
           break;
         default:
+          sort = 'all';
           sortedCourts = [...state.courts];
           break;
       }
       return {
         ...state,
+        sort,
         sortedCourts,
       };
     case SELECT_POINT:

@@ -67,12 +67,8 @@ export class AppContainer extends Component<Props> {
 }
 
 const mapStateToProps = ({
-  courts: { sortedCourts = [], sort = 'all', courts = [] } = {
-    sortedCourts: [],
-    sort: 'all',
-    courts: [],
-  },
-  styles = 'wimbledon',
+  courts: { sortedCourts, sort, courts },
+  styles,
 }) => ({
   courts,
   sort,

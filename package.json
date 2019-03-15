@@ -92,7 +92,6 @@
     "mongoose": "^4.13.18",
     "node-fetch": "^2.3.0",
     "nodemon": "^1.18.10",
-    "prop-types": "^15.7.1",
     "puppeteer": "^1.13.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

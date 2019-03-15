@@ -34,6 +34,7 @@ class Map extends React.Component<Props, State> {
     infowindow: null,
     map: null,
     marker: null,
+    markers: [],
   };
 
   constructor(props) {
@@ -171,23 +172,52 @@ class Map extends React.Component<Props, State> {
     );
   }
 
+  fitMapToPoints = (markers, map): void => {
+    const bounds = new google.maps.LatLngBounds();
+    markers.forEach(marker => bounds.extend(marker.getPosition()));
+    if (this.state.map != null) {
+      map.fitBounds(bounds);
+    }
+
+    if (markers.length === MAX_POINTS) {
+      map.setZoom(13);
+    } else if (markers.length === 1) {
+      map.setZoom(15);
+    } else {
+      map.setZoom(map.getZoom() + 1);
+    }
+  };
+
   componentDidUpdate({ courts, styles }): void {
     if (
       this.props.courts.length !== courts.length ||
       this.props.styles !== styles
     ) {
-      const map = this.createMap();
-      const bounds = map.getBounds();
+      let { map } = this.state;
+      if (this.state.map == null) {
+        map = this.createMap();
+      }
+
+      if (this.props.styles !== styles) {
+        map.setOptions({ styles: this.chooseStyles() });
+        return;
+      }
+
       const points = this.getPoints();
+      let markers = [];
+      this.state.markers.forEach(marker => marker.setMap(null));
       points.forEach((point, idx) => {
         const marker = this.createMarker(map, points, idx);
-        bounds.extend(marker.getPosition());
-        map.setCenter(bounds.getCenter());
         this.addMarkerToMap(idx, marker);
+        markers = [...markers, marker];
       });
 
-      if (points.length !== MAX_POINTS) map.setZoom(map.getZoom() - 1);
-      this.closeInfoWindowOnClick(map);
+      this.fitMapToPoints(markers, map);
+
+      if (markers.length !== this.state.markers.length)
+        this.setState({ markers });
+
+      if (this.state.map == null) this.closeInfoWindowOnClick(map);
     }
   }
 
