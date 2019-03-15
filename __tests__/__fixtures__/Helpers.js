@@ -51,7 +51,11 @@ export const setupGoogleMock = () => {
       //https://developers.google.com/maps/documentation/javascript/reference#LatLng
       LatLng: function() {},
       //https://developers.google.com/maps/documentation/javascript/reference#LatLngBounds
-      LatLngBounds: function() {},
+      LatLngBounds: function() {
+        return {
+          extend: function() {},
+        };
+      },
       //https://developers.google.com/maps/documentation/javascript/reference#MVCArray
       MVCArray: function() {},
       //https://developers.google.com/maps/documentation/javascript/reference#MVCObject
