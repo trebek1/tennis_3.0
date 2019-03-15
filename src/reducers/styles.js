@@ -1,6 +1,6 @@
 // @flow strict-local
 
-const { SELECT_STYLE } = require('../actions/courtActions');
+import { SELECT_STYLE } from '../actions/courtActions';
 
 export const initialState = 'wimbledon';
 

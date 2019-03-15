@@ -5,13 +5,13 @@ import mongoose from 'mongoose';
 import path from 'path';
 import session from 'express-session';
 import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
 
 import config from './webpack.config';
 import Courts from './models/Courts.js';
 
 const app = express();
 const compiler = webpack(config);
-const MongoStore = require('connect-mongo')(session);
 
 mongoose.connect(
   `mongodb://${process.env.TENNIS_USERNAME}:${
@@ -37,7 +37,7 @@ app.get('/courts', (req, res) =>
 );
 
 app.use(
-  require('webpack-dev-middleware')(compiler, {
+  webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
   })
 );

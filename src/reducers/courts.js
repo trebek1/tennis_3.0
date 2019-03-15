@@ -2,11 +2,7 @@
 
 import type { Court } from '../types';
 
-const {
-  GET_COURTS,
-  SORT_POINTS,
-  SELECT_POINT,
-} = require('../actions/courtActions');
+import { GET_COURTS, SORT_POINTS, SELECT_POINT } from '../actions/courtActions';
 
 type State = {
   courts: Array<Court>,
