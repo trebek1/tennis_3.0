@@ -18,7 +18,7 @@ module.exports = merge(common, {
     port: 3711,
     proxy: {
       '/courts': {
-        target: 'http://0.0.0.0:1338',
+        target: 'http://0.0.0.0:3000',
         changeOrigin: false,
         secure: false,
         logLevel: 'debug',

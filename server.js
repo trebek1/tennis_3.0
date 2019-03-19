@@ -45,9 +45,9 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.listen(process.env.PORT || 1338, err => {
+app.listen(process.env.PORT || 3000, err => {
   if (err) {
     return console.error(err);
   }
-  console.log('Listening at http://localhost:1338');
+  console.log('Listening at http://localhost:3000');
 });
