@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import courtStyles from '../constants/courtStyles';
+import Pins from '../constants/pins';
 
 import type { Court } from '../types';
 
@@ -68,15 +69,15 @@ class Map extends React.Component<Props, State> {
   getPinColor = ({ type }): string => {
     switch (type) {
       case 'shop':
-        return 'FE7569';
+        return Pins.redPin;
       case 'club':
-        return 'F8EC3B';
+        return Pins.yellowPin;
       case 'court':
-        return '3BF83E';
+        return Pins.greenPin;
       case 'other':
-        return '00ccff';
+        return Pins.bluePin;
       default:
-        return 'FE7569';
+        return Pins.redPin;
     }
   };
 
@@ -84,15 +85,13 @@ class Map extends React.Component<Props, State> {
     new google.maps.Marker({
       position: points[index],
       icon: new google.maps.MarkerImage(
-        `https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|${this.getPinColor(
-          this.props.courts[index]
-        )}`,
+        this.getPinColor(this.props.courts[index]),
         new google.maps.Size(21, 34),
         new google.maps.Point(0, 0),
         new google.maps.Point(10, 34)
       ),
       shadow: new google.maps.MarkerImage(
-        'https://chart.apis.google.com/chart?chst=d_map_pin_shadow',
+        'http://chart.apis.google.com/chart?chst=d_map_pin_shadow',
         new google.maps.Size(40, 37),
         new google.maps.Point(0, 0),
         new google.maps.Point(12, 35)
