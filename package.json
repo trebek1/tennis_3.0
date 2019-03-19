@@ -110,6 +110,7 @@
     "style-loader": "^0.23.1",
     "url-loader": "^0.5.9",
     "webpack": "^4.29.5",
+    "webpack-dev-middleware": "^1.12.2",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1"
   },
@@ -127,7 +128,6 @@
     "redux-mock-store": "^1.5.3",
     "redux-test-utils": "^0.3.0",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-middleware": "^1.12.2",
     "webpack-dev-server": "^3.2.1"
   },
   "engines": {
