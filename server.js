@@ -3,15 +3,12 @@ import express from 'express';
 import favicon from 'serve-favicon';
 import mongoose from 'mongoose';
 import path from 'path';
-import session from 'express-session';
 import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
-
-import config from './webpack.config';
 import Courts from './models/Courts.js';
-
-const app = express();
+import config from './webpack.prod';
+import webpackMiddleware from 'webpack-dev-middleware';
 const compiler = webpack(config);
+const app = express();
 
 mongoose.connect(
   `mongodb://${process.env.TENNIS_USERNAME}:${
@@ -36,20 +33,21 @@ app.get('/courts', (req, res) =>
   })
 );
 
-app.use(
-  webpackMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-  })
-);
+if (process.env.NODE_ENV !== 'production') {
+  console.log('on dev!');
+  app.use(
+    webpackMiddleware(compiler, {
+      publicPath: config.output.publicPath,
+    })
+  );
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-
-app.listen(process.env.PORT || 3000, err => {
+app.listen(process.env.PORT || 1338, err => {
   if (err) {
     return console.error(err);
   }
-  console.log('Listening at http://localhost:3000/');
+  console.log('Listening at http://localhost:1338');
 });

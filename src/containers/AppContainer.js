@@ -14,6 +14,7 @@ import type { Court } from '../types';
 
 // Presentational Components
 import CourtList from '../components/CourtList';
+import Footer from '../components/Footer';
 import Map from '../components/Map';
 import SortByButtons from '../components/SortByButtons';
 import StyleButtons from '../components/StyleButtons';
@@ -44,23 +45,26 @@ export class AppContainer extends Component<Props> {
     }: Props = this.props;
 
     return (
-      <div id="mainContainer">
-        <div id="title"> Tennis Courts in San Francisco </div>
-        <div id="sideContainer">
-          <CourtList
-            courts={sortedCourts}
-            selectPoint={selectPoint}
-            sort={sort}
-            sortPoints={sortPoints}
-          />
+      <div>
+        <div id="mainContainer">
+          <div id="title"> Tennis Courts in San Francisco </div>
+          <div id="sideContainer">
+            <CourtList
+              courts={sortedCourts}
+              selectPoint={selectPoint}
+              sort={sort}
+              sortPoints={sortPoints}
+            />
+          </div>
+          <Map courts={sortedCourts} styles={styles} />
+          <div id="keyContainer">
+            <SortByButtons sortPoints={sortPoints} />
+          </div>
+          <div id="styleSelectorContainer">
+            <StyleButtons selectStyle={selectStyle} />
+          </div>
         </div>
-        <Map courts={sortedCourts} styles={styles} />
-        <div id="keyContainer">
-          <SortByButtons sortPoints={sortPoints} />
-        </div>
-        <div id="styleSelectorContainer">
-          <StyleButtons selectStyle={selectStyle} />
-        </div>
+        <Footer />
       </div>
     );
   }

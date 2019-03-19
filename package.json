@@ -4,15 +4,16 @@
   "description": "Tennis court app with ES6",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production --module-bind js=babel-loader ",
+    "build": "babel-node server.js",
+    "client": "webpack-dev-server --open --config webpack.dev.babel.js",
     "coverage": "jest --coverage --verbose --env=jsdom",
-    "dev": "webpack --mode development --module-bind js=babel-loader",
     "flow": "flow",
     "heroku-postbuild": "echo Skip build on Heroku",
     "lint:js": "eslint . --ext .js,.jsx",
-    "start": "nodemon --exec babel-node server.js",
-    "test": "jest --verbose --env=jsdom",
-    "test:watch": "jest --watch --env=jsdom"
+    "server": "babel-node server.js",
+    "start": "babel-node server.js",
+    "test:watch": "jest --watch --env=jsdom",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "babel": {
     "env": {
@@ -87,6 +88,7 @@
     "file-loader": "^3.0.1",
     "font-awesome": "^4.7.0",
     "font-awesome-loader": "^1.0.2",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.6.0",
     "mongoose": "^4.13.18",
@@ -107,10 +109,12 @@
     "style-loader": "^0.23.1",
     "url-loader": "^0.5.9",
     "webpack": "^4.29.5",
-    "webpack-dev-middleware": "^1.6.1"
+    "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
+    "babel-register": "^6.26.0",
+    "concurrently": "^4.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "enzyme-to-json": "^3.3.5",
@@ -120,7 +124,10 @@
     "moxios": "^0.4.0",
     "redux-mock-store": "^1.5.3",
     "redux-test-utils": "^0.3.0",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
   },
   "engines": {
     "node": "10.10.0"
