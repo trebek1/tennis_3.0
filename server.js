@@ -33,19 +33,14 @@ app.get('/courts', (req, res) =>
   })
 );
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('on dev!');
-  app.use(
-    webpackMiddleware(compiler, {
-      publicPath: config.output.publicPath,
-    })
-  );
-}
+app.use(
+  webpackMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+  })
+);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 app.listen(process.env.PORT || 3000, err => {
   if (err) {
