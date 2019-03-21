@@ -5,14 +5,14 @@
   "license": "MIT",
   "scripts": {
     "build": "babel-node server.js",
-    "client": "webpack-dev-server --open --config webpack.dev.babel.js",
+    "client": "webpack-dev-server --open --config webpack.dev.js",
     "coverage": "jest --coverage --verbose --env=jsdom",
     "flow": "flow",
     "heroku-postbuild": "echo Skip build on Heroku",
     "lint:js": "eslint . --ext .js,.jsx",
     "server": "babel-node server.js",
     "start": "babel-node server.js",
-    "test": "jest",
+    "test": "jest --verbose --env=jsdom",
     "test:watch": "jest --watch --env=jsdom",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -35,12 +35,14 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
     "setupFilesAfterEnv": [
       "<rootDir>enzyme.config.js"
     ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    "transform": {
+      "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
       "!node_modules/"
@@ -120,7 +122,6 @@
   },
   "devDependencies": {
     "babel-jest": "^24.5.0",
-    "babel-register": "^6.26.0",
     "concurrently": "^4.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
@@ -135,7 +136,11 @@
     "webpack-dev-server": "^3.2.1"
   },
   "engines": {
-    "node": "10.10.0"
+    "node": "11.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/trebek1/tennis_3.0"
   },
   "heroku-run-build-script": true
 }

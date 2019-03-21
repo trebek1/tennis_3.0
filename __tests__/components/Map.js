@@ -39,7 +39,9 @@ describe(`Map component`, () => {
   });
   it('choosing a club court should return the correct color ', () => {
     component = shallow(<Map courts={twoCourts} styles="usa" />);
-    expect(component.instance().getPinColor(twoCourts[1])).toEqual('F8EC3B');
+    expect(component.instance().getPinColor(twoCourts[1])).toEqual(
+      'test-file-stub'
+    );
   });
   it('should create a marker ', () => {
     component = shallow(<Map courts={twoCourts} styles="usa" />);
