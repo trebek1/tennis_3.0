@@ -107,7 +107,7 @@ class Map extends React.Component<Props, State> {
         if (court[field])
           return (list += `
           <div>
-            ${iconMap[field]}
+            <i class="fa ${iconMap[field]} fa-fw"></i>
             ${court[field]}
           </div>`);
         return list;
