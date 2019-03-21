@@ -1,9 +1,7 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import webpack from 'webpack';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
   entry: ['./src/index.js', './src/css/home.css'],
   module: {
     rules: [
@@ -23,36 +21,37 @@ module.exports = {
         use: 'url-loader?limit=10000',
       },
       {
-        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        test: /\.(ttf|eot|svg|ico)(\?[\s\S]+)?$/,
         use: 'file-loader',
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        use: ['file-loader?name=images/[name].[ext]'],
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        use: [
+          'file-loader?name=images/[name].[ext]',
+          'image-webpack-loader?bypassOnDebug',
+        ],
       },
       {
         test: /font-awesome\.config\.js/,
         use: [{ loader: 'style-loader' }, { loader: 'font-awesome-loader' }],
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['eslint-loader'],
-      },
     ],
   },
+
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       apiUrl: `https://maps.googleapis.com/maps/api/js?key=${process.env.KEY}`,
+      filename: 'index.html',
       template: './index.html',
     }),
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   devServer: {
     contentBase: './dist',
