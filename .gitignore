@@ -6,3 +6,4 @@ node_modules
 dist
 dist/*
 mapStyles.bak
+courts.js
