@@ -4,7 +4,7 @@ import * as React from 'react';
 import courtStyles from '../constants/courtStyles';
 import Pins from '../constants/pins';
 
-import type { Court } from '../types';
+import type { Court, CourtStyle } from '../types';
 
 const MAX_POINTS = 119;
 
@@ -25,9 +25,10 @@ type Props = {|
 |};
 
 type State = {|
-  infoWindow: InfoWindow,
+  infowindow: InfoWindow,
   map: MapType,
   marker: Marker,
+  markers: Array<Marker>,
 |};
 
 class Map extends React.Component<Props, State> {
@@ -38,10 +39,13 @@ class Map extends React.Component<Props, State> {
     markers: [],
   };
 
-  constructor(props) {
+  setMapRef = null;
+  mapRef = null;
+
+  constructor(props: Props) {
     super(props);
     this.mapRef = null;
-    this.setMapRef = element => {
+    this.setMapRef = (element: ?HTMLDivElement) => {
       this.mapRef = element;
     };
   }
@@ -50,6 +54,7 @@ class Map extends React.Component<Props, State> {
 
   createMap = (): MapType => {
     const that = this;
+    // $FlowFixMe
     const map = new google.maps.Map(this.mapRef, {
       center: new google.maps.LatLng(37.763108, -122.455799),
       zoom: 13,
@@ -64,9 +69,10 @@ class Map extends React.Component<Props, State> {
   };
 
   getPoints = (): Array<Court> =>
+    // $FlowFixMe
     this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
 
-  getPinColor = ({ type }): string => {
+  getPinColor = ({ type }: Court): string => {
     switch (type) {
       case 'shop':
         return Pins.redPin;
@@ -82,6 +88,7 @@ class Map extends React.Component<Props, State> {
   };
 
   createMarker = (map: MapType, points: Array<Court>, index: number): Marker =>
+    // $FlowFixMe
     new google.maps.Marker({
       position: points[index],
       icon: new google.maps.MarkerImage(
@@ -105,6 +112,7 @@ class Map extends React.Component<Props, State> {
     const content = Object.keys(iconMap).reduce(
       (list, field) => {
         if (court[field])
+          // $FlowFixMe
           return (list += `
           <div>
             <i class="fa ${iconMap[field]} fa-fw"></i>
@@ -119,12 +127,14 @@ class Map extends React.Component<Props, State> {
     );
 
     // Create new info window - Popup with street location and the title of the movie
+    // $FlowFixMe
     return new google.maps.InfoWindow({ content });
   };
 
   addMarkerToMap(index: number, marker: Marker): void {
     const that = this;
     const infowindow = this.setMarkerContent(index);
+    // $FlowFixMe
     google.maps.event.addListener(
       marker,
       'click',
@@ -161,6 +171,7 @@ class Map extends React.Component<Props, State> {
   }
 
   closeInfoWindowOnClick(map: MapType): void {
+    // $FlowFixMe
     google.maps.event.addListener(
       map,
       'click',
@@ -171,7 +182,8 @@ class Map extends React.Component<Props, State> {
     );
   }
 
-  fitMapToPoints = (markers, map): void => {
+  fitMapToPoints = (markers: Array<Marker>, map: MapType): void => {
+    // $FlowFixMe
     const bounds = new google.maps.LatLngBounds();
     markers.forEach(marker => bounds.extend(marker.getPosition()));
     if (this.state.map != null) {
@@ -187,7 +199,7 @@ class Map extends React.Component<Props, State> {
     }
   };
 
-  componentDidUpdate({ courts, styles }): void {
+  componentDidUpdate({ courts, styles }: Props): void {
     if (
       this.props.courts.length !== courts.length ||
       this.props.styles !== styles

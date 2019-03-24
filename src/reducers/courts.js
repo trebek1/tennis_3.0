@@ -43,6 +43,7 @@ const courts = (
         case OTHER:
           // $FlowFixMe
           sort = action.payload;
+          // $FlowFixMe
           sortedCourts = state.courts.filter(
             court => court.type === action.payload
           );
