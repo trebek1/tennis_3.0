@@ -34,6 +34,10 @@ export class AppContainer extends Component<Props> {
     this.props.getCourts();
   }
 
+  isMobileDevice = () =>
+    typeof window.orientation !== 'undefined' ||
+    navigator.userAgent.indexOf('IEMobile') !== -1;
+
   render() {
     const {
       sort,
@@ -46,25 +50,29 @@ export class AppContainer extends Component<Props> {
 
     return (
       <div>
+        <div id="title"> Tennis Courts in San Francisco </div>
         <div id="mainContainer">
-          <div id="title"> Tennis Courts in San Francisco </div>
-          <div id="sideContainer">
-            <CourtList
-              courts={sortedCourts}
-              selectPoint={selectPoint}
-              sort={sort}
-              sortPoints={sortPoints}
-            />
-          </div>
+          {!this.isMobileDevice() ? (
+            <div id="sideContainer">
+              <CourtList
+                courts={sortedCourts}
+                selectPoint={selectPoint}
+                sort={sort}
+                sortPoints={sortPoints}
+              />
+            </div>
+          ) : null}
           <Map courts={sortedCourts} styles={styles} />
+        </div>
+        <div id="selectorContainer">
           <div id="keyContainer">
             <SortByButtons sortPoints={sortPoints} />
           </div>
           <div id="styleSelectorContainer">
             <StyleButtons selectStyle={selectStyle} />
           </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     );
   }

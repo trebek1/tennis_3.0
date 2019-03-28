@@ -1,5 +1,17 @@
 @import './contentWindow.css';
 
+@media only screen and (min-width: 768px) {
+    #mapContainer {
+      width: 100%;
+    }
+    #mainContainer {
+      height: 76vh;
+    }
+    #title {
+        font-size: 76px;
+    }
+}
+
 html,
 body {
   margin: 0;
@@ -38,8 +50,9 @@ input:-webkit-autofill {
   width: 100%;
 }
 
-#keyContainer {
-  padding: 10px 0px;
+#keyContainer, #styleSelectorContainer {
+  height: 5vh;
+  padding: 15px;
 }
 
 #map {
@@ -52,16 +65,23 @@ input:-webkit-autofill {
   display: inline-block;
 }
 
+#mainContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#selectorContainer {
+    height: 20vh;
+}
+
 #mapContainer {
-  width: 75%;
-  height: 400px;
-  display: inline-block;
+  height: 100%;
 }
 
 #sideContainer {
   width: 25%;
-  height: 400px;
-  display: inline-block;
+  height: 70vh;
   overflow: scroll;
   white-space: wrap;
   background: #dcdcdc;
@@ -71,14 +91,21 @@ input:-webkit-autofill {
   display: inline-block;
 }
 
-#styleSelectorContainer {
-  padding: 10px 0px;
+#title {
+  height: 6vh;
+  padding: 10px;
 }
 
-#title {
-  text-align: left;
-  padding: 10px 0px;
-  font-size: 40px;
+@media (min-width: 992px) {
+    #mapContainer {
+      width: 75%;
+    }
+    #mainContainer {
+      height: 70vh;
+    }
+    #title {
+        font-size: 40px;
+    }
 }
 
 .active {
@@ -121,7 +148,7 @@ input:-webkit-autofill {
 }
 
 .footer {
-  height: 10vh;
+  height: 5vh;
   width: 100vw;
   border-bottom: rgb(36, 39, 41);
 }

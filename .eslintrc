@@ -22,7 +22,9 @@
   },
   "globals": {
     "document": true,
-    "google": true
+    "google": true,
+    "navigator": true,
+    "window": true,
   },
   "settings": {
     "import/resolver": {
