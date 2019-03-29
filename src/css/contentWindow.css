@@ -15,7 +15,7 @@
   background: red;
 }
 
-@media (max-width:320px)  {
+@media (max-width:400px)  {
     #courtName {
         font-size: 64px
     }
