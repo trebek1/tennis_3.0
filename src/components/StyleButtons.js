@@ -28,8 +28,7 @@ export default class StyleButtons extends Component<Props, State> {
   };
 
   isMobile = (): boolean =>
-    typeof window.orientation !== 'undefined' ||
-    navigator.userAgent.indexOf('IEMobile') !== -1;
+    window.innerWidth <= 800 && window.innerHeight <= 800;
 
   render() {
     const { active } = this.state;

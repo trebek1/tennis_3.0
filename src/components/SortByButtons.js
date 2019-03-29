@@ -30,9 +30,7 @@ export default class SortByButtons extends Component<Props, State> {
     });
   };
 
-  isMobile = (): boolean =>
-    typeof window.orientation !== 'undefined' ||
-    navigator.userAgent.indexOf('IEMobile') !== -1;
+  isMobile = () => window.innerWidth <= 800 && window.innerHeight <= 800;
 
   render = () => (
     <div>
