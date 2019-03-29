@@ -1,9 +1,6 @@
-#content {
-  font-weight: bold;
-}
-
-.courtName {
+#courtName {
   font-size: 17px;
+  font-weight: bold;
 }
 
 .fa {
@@ -16,4 +13,22 @@
 
 .tab::active {
   background: red;
+}
+
+@media (max-width:320px)  {
+    #courtName {
+        font-size: 64px
+    }
+    #courtInfoWindow {
+        font-size: 40px
+    }
+}
+
+@media (min-width:500) {
+    #courtName {
+        font-size: 17px
+    }
+    #courtInfoWindow {
+        font-size: 13px
+    }
 }

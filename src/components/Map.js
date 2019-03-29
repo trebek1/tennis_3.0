@@ -91,25 +91,19 @@ class Map extends React.Component<Props, State> {
     // $FlowFixMe
     new google.maps.Marker({
       position: points[index],
-      icon: new google.maps.MarkerImage(
-        this.getPinColor(this.props.courts[index]),
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34)
-      ),
-      shadow: new google.maps.MarkerImage(
-        'http://chart.apis.google.com/chart?chst=d_map_pin_shadow',
-        new google.maps.Size(40, 37),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(12, 35)
-      ),
+      icon: {
+        url: this.getPinColor(this.props.courts[index]),
+        size: new google.maps.Size(24, 34),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(10, 34),
+      },
       map,
     });
 
   setMarkerContent = (index: number): InfoWindow => {
     const court = this.props.courts[index];
 
-    const content = Object.keys(iconMap).reduce(
+    let content = Object.keys(iconMap).reduce(
       (list, field) => {
         if (court[field])
           // $FlowFixMe
@@ -122,9 +116,11 @@ class Map extends React.Component<Props, State> {
       },
       `
       <div id="content">
-        <div class="courtName">${court.name}</div>
-      </div>`
+        <div id="courtName">${court.name}</div><div id="courtInfoWindow">`
+
     );
+
+    content += '</div></div>';
 
     // Create new info window - Popup with street location and the title of the movie
     // $FlowFixMe
