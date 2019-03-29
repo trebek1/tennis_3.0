@@ -15,20 +15,18 @@
   background: red;
 }
 
-@media (max-width:400px)  {
-    #courtName {
-        font-size: 64px
-    }
-    #courtInfoWindow {
-        font-size: 40px
-    }
+#courtName {
+  font-size: 20px;
+}
+#courtInfoWindow {
+  font-size: 20px;
 }
 
-@media (min-width:500) {
-    #courtName {
-        font-size: 17px
-    }
-    #courtInfoWindow {
-        font-size: 13px
-    }
+@media (min-width: 501px) {
+  #courtName {
+    font-size: 17px;
+  }
+  #courtInfoWindow {
+    font-size: 13px;
+  }
 }

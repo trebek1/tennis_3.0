@@ -34,7 +34,7 @@ export class AppContainer extends Component<Props> {
     this.props.getCourts();
   }
 
-  isMobileDevice = () =>
+  isMobile = () =>
     typeof window.orientation !== 'undefined' ||
     navigator.userAgent.indexOf('IEMobile') !== -1;
 
@@ -52,7 +52,7 @@ export class AppContainer extends Component<Props> {
       <div>
         <div id="title"> Tennis Courts in San Francisco </div>
         <div id="mainContainer">
-          {!this.isMobileDevice() ? (
+          {!this.isMobile() ? (
             <div id="sideContainer">
               <CourtList
                 courts={sortedCourts}
@@ -64,15 +64,21 @@ export class AppContainer extends Component<Props> {
           ) : null}
           <Map courts={sortedCourts} styles={styles} />
         </div>
-        <div id="selectorContainer">
+        <div
+          id="selectorContainer"
+          style={{
+            display: this.isMobile() ? 'flex' : 'block',
+            justifyContent: 'space-between',
+          }}
+        >
           <div id="keyContainer">
             <SortByButtons sortPoints={sortPoints} />
           </div>
           <div id="styleSelectorContainer">
             <StyleButtons selectStyle={selectStyle} />
           </div>
-          <Footer />
         </div>
+        <Footer />
       </div>
     );
   }

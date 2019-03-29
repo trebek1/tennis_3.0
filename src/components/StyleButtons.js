@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import ButtonPannelConfig from '../constants/buttonPannelConfig';
 import StyleButton from './StyleButton';
+import SimpleMenu from './SimpleMenu';
 
 const DEFAULT_ACTIVE = 'wimbledon';
 
@@ -26,24 +27,38 @@ export default class StyleButtons extends Component<Props, State> {
     });
   };
 
+  isMobile = (): boolean =>
+    typeof window.orientation !== 'undefined' ||
+    navigator.userAgent.indexOf('IEMobile') !== -1;
+
   render() {
     const { active } = this.state;
     return (
-      <div id="styleContainer">
-        <span className="anchor">Styles:</span>
-        {Object.keys(ButtonPannelConfig).map(button => {
-          const { className, clickText, text } = ButtonPannelConfig[button];
-          return (
-            <StyleButton
-              active={active}
-              className={className}
-              clickText={clickText}
-              handleClick={this.handleClick}
-              key={text}
-              text={text}
-            />
-          );
-        })}
+      <div>
+        {this.isMobile() ? (
+          <SimpleMenu
+            config={ButtonPannelConfig}
+            sortPoints={this.handleClick}
+            title="Style"
+          />
+        ) : (
+          <div id="styleContainer">
+            <span className="anchor">Styles:</span>
+            {Object.keys(ButtonPannelConfig).map(button => {
+              const { className, clickText, text } = ButtonPannelConfig[button];
+              return (
+                <StyleButton
+                  active={active}
+                  className={className}
+                  clickText={clickText}
+                  handleClick={this.handleClick}
+                  key={text}
+                  text={text}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     );
   }
