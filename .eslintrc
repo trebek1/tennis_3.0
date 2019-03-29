@@ -18,13 +18,14 @@
     "react/jsx-filename-extension": 0,
     "react/no-did-update-set-state": 0,
     "react/prop-types": 0,
-    "react/sort-comp": 0
+    "react/sort-comp": 0,
+    "no-useless-escape": 0
   },
   "globals": {
     "document": true,
     "google": true,
     "navigator": true,
-    "window": true,
+    "window": true
   },
   "settings": {
     "import/resolver": {
