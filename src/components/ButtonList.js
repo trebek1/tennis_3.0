@@ -1,18 +1,16 @@
 // @flow strict-local
 
 import React, { Component } from 'react';
-import CourtTypeTile from './CourtTypeTile';
-import CourtTypeConfig from '../constants/courtTypeConfig';
+import SortButton from './SortButton';
 import SimpleMenu from './SimpleMenu';
 
 import type { TennisEntity } from '../types';
 
 import { isMobile } from '../utils';
 
-const DEFAULT_SORT = 'all';
-
 type Props = {|
   config: Object,
+  default: string,
   select: (type: string) => { type: string, payload: string },
   title: string,
 |};
@@ -23,7 +21,7 @@ type State = {|
 
 export default class ButtonList extends Component<Props, State> {
   state = {
-    selection: DEFAULT_SORT,
+    selection: this.props.default,
   };
 
   selectOption = (selection: string): void => {
@@ -40,11 +38,11 @@ export default class ButtonList extends Component<Props, State> {
         <SimpleMenu
           config={this.props.config}
           sortPoints={this.selectOption}
-          title={this.props.title}
+          title={this.state.selection}
         />
       ) : (
         <div>
-          <span className="anchor keyTitle">Sort By Type:</span>
+          <div className="anchor keyTitle">{this.props.title}</div>
 
           {Object.keys(this.props.config).map(court => {
             const {
@@ -56,14 +54,14 @@ export default class ButtonList extends Component<Props, State> {
               url,
             }: TennisEntity = this.props.config[court];
             return (
-              <CourtTypeTile
+              <SortButton
                 className={`${className} ${
                   this.state.selection === id ? 'active' : ''
                 }`}
                 id={id}
                 imageNode={imageNode}
                 key={id}
-                sortPoints={this.selectOption}
+                handleClick={this.selectOption}
                 text={text}
                 textClassName={textClassName}
                 url={url}

@@ -61,6 +61,7 @@ class Map extends React.Component<Props, State> {
       gestureHandling: 'greedy',
       styles: that.chooseStyles(),
       bounds: new google.maps.LatLngBounds(),
+      disableDefaultUI: true,
     });
     this.setState({
       map,
@@ -117,7 +118,6 @@ class Map extends React.Component<Props, State> {
       `
       <div id="content">
         <div id="courtName">${court.name}</div><div id="courtInfoWindow">`
-
     );
 
     content += '</div></div>';

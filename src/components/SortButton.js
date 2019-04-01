@@ -4,7 +4,7 @@ import React from 'react';
 
 import type { TennisEntity } from '../types';
 
-const CourtTypeTile = ({
+const SortButton = ({
   active,
   className,
   id,
@@ -28,4 +28,4 @@ const CourtTypeTile = ({
   </div>
 );
 
-export default CourtTypeTile;
+export default SortButton;

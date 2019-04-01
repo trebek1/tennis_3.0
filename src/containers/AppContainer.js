@@ -13,11 +13,13 @@ import courtActions from '../actions/courtActions';
 import type { Court } from '../types';
 
 // Presentational Components
+import ButtonList from '../components/ButtonList';
 import CourtList from '../components/CourtList';
 import Footer from '../components/Footer';
 import Map from '../components/Map';
-import SortByButtons from '../components/SortByButtons';
-import StyleButtons from '../components/StyleButtons';
+
+import ButtonPannelConfig from '../constants/buttonPannelConfig';
+import CourtTypeConfig from '../constants/courtTypeConfig';
 
 import { isMobile } from '../utils/index';
 
@@ -70,10 +72,20 @@ export class AppContainer extends Component<Props> {
           }}
         >
           <div id="keyContainer">
-            <SortByButtons sortPoints={sortPoints} />
+            <ButtonList
+              config={CourtTypeConfig}
+              default="all"
+              select={sortPoints}
+              title="Sort By Type:"
+            />
           </div>
           <div id="styleSelectorContainer">
-            <StyleButtons selectStyle={selectStyle} />
+            <ButtonList
+              config={ButtonPannelConfig}
+              default="wimbledon"
+              select={selectStyle}
+              title="Styles:"
+            />
           </div>
         </div>
         <Footer />
