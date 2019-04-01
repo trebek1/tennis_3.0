@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import ButtonPannelConfig from '../constants/buttonPannelConfig';
-import StyleButton from './StyleButton';
+import CourtTypeTile from './CourtTypeTile';
 import SimpleMenu from './SimpleMenu';
 
 import { isMobile } from '../utils';
@@ -46,7 +46,7 @@ export default class StyleButtons extends Component<Props, State> {
             {Object.keys(ButtonPannelConfig).map(button => {
               const { className, id, text } = ButtonPannelConfig[button];
               return (
-                <StyleButton
+                <CourtTypeTile
                   active={active}
                   className={className}
                   handleClick={this.handleClick}

@@ -5,21 +5,25 @@ import React from 'react';
 import type { TennisEntity } from '../types';
 
 const CourtTypeTile = ({
+  active,
   className,
   id,
-  imageNode,
-  sortPoints,
-  text,
+  imageNode = null,
+  handleClick,
+  text = null,
   url,
 }: TennisEntity) => (
-  <div className={className} id={id} onClick={() => sortPoints(id)}>
-    {imageNode == null ? (
+  <div
+    className={`${className} ${id === active ? 'active' : ''}`}
+    id={id}
+    onClick={() => handleClick(id)}
+  >
+    {url && (
       <span className="keyValue">
         <img alt={id} src={url} />
       </span>
-    ) : (
-      imageNode
     )}
+    {imageNode}
     <span className="keyValue leftSpace">{text}</span>
   </div>
 );

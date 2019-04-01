@@ -55,13 +55,12 @@ export default class SortByButtons extends Component<Props, State> {
             }: TennisEntity = CourtTypeConfig[court];
             return (
               <CourtTypeTile
-                className={`${className} ${
-                  this.state.sort === id ? 'active' : ''
-                }`}
+                active={this.state.sort}
+                className={className}
                 id={id}
                 imageNode={imageNode}
                 key={id}
-                sortPoints={this.sortPoints}
+                handleClick={this.sortPoints}
                 text={text}
                 textClassName={textClassName}
                 url={url}
