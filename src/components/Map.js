@@ -56,12 +56,12 @@ class Map extends React.Component<Props, State> {
     const that = this;
     // $FlowFixMe
     const map = new google.maps.Map(this.mapRef, {
+      bounds: new google.maps.LatLngBounds(),
       center: new google.maps.LatLng(37.763108, -122.455799),
-      zoom: 13,
+      disableDefaultUI: true,
       gestureHandling: 'greedy',
       styles: that.chooseStyles(),
-      bounds: new google.maps.LatLngBounds(),
-      disableDefaultUI: true,
+      zoom: 13,
     });
     this.setState({
       map,
