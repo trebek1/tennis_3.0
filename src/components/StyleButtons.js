@@ -31,7 +31,6 @@ export default class StyleButtons extends Component<Props, State> {
 
   render() {
     const { active } = this.state;
-    console.log('is this active? ', active);
 
     return (
       <div>
