@@ -26,6 +26,7 @@ class SimpleMenu extends React.Component {
           aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}
+          variant="contained"
         >
           {this.props.title}
         </Button>
@@ -36,18 +37,9 @@ class SimpleMenu extends React.Component {
           onClose={this.handleClose}
         >
           {Object.keys(this.props.config).map(court => {
-            const { id, text, clickText = null } = this.props.config[court];
+            const { id, text } = this.props.config[court];
             return (
-              <MenuItem
-                key={clickText != null ? clickText : id}
-                onClick={() => {
-                  if (clickText) {
-                    this.handleClose(clickText);
-                  } else {
-                    this.handleClose(id);
-                  }
-                }}
-              >
+              <MenuItem key={id} onClick={() => this.handleClose(id)}>
                 {text}
               </MenuItem>
             );

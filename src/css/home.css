@@ -86,16 +86,10 @@ body {
 }
 
 .active {
-  background: silver;
-  cursor: pointer;
-}
-
-.activeSort {
   background: orange;
 }
 
-.anchor,
-.tab {
+.anchor {
   font-size: 20px;
 }
 
@@ -158,7 +152,7 @@ body {
   border-radius: 25px;
 }
 
-.key:hover:not(.activeSort) {
+.key:hover:not(.active) {
   color: orange;
 }
 
@@ -177,16 +171,6 @@ body {
 
 .padding {
   padding: 10px;
-}
-
-.tab {
-  padding: 10px;
-  border-radius: 25px;
-}
-
-.tab:hover:not(.active) {
-  color: orange;
-  cursor: pointer;
 }
 
 @media (min-width: 992px) {

@@ -5,7 +5,7 @@ import * as React from 'react';
 type Props = {|
   active: string,
   className: string,
-  clickText: string,
+  id: string,
   handleClick: (active: string) => void,
   text: string,
 |};
@@ -13,14 +13,14 @@ type Props = {|
 const StyleButton = ({
   active,
   className,
-  clickText,
   handleClick,
+  id,
   text,
 }: Props): React.Node => (
   <span
-    className={`${className} ${clickText === active ? 'active' : ''}`}
+    className={`${className} ${id === active ? 'active' : ''}`}
     key={text}
-    onClick={() => handleClick(clickText)}
+    onClick={() => handleClick(id)}
   >
     {text}
   </span>

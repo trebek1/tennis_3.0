@@ -12,23 +12,25 @@ import { isMobile } from '../utils';
 const DEFAULT_SORT = 'all';
 
 type Props = {|
-  sortPoints: (type: string) => { type: string, payload: string },
+  config: Object,
+  select: (type: string) => { type: string, payload: string },
+  title: string,
 |};
 
 type State = {|
-  sort: string,
+  selection: string,
 |};
 
-export default class SortByButtons extends Component<Props, State> {
+export default class ButtonList extends Component<Props, State> {
   state = {
-    sort: DEFAULT_SORT,
+    selection: DEFAULT_SORT,
   };
 
-  sortPoints = (sort: string): void => {
-    const { sortPoints } = this.props;
-    sortPoints(sort);
+  selectOption = (selection: string): void => {
+    const { select } = this.props;
+    select(selection);
     this.setState({
-      sort,
+      selection,
     });
   };
 
@@ -36,15 +38,15 @@ export default class SortByButtons extends Component<Props, State> {
     <div>
       {isMobile() ? (
         <SimpleMenu
-          config={CourtTypeConfig}
-          sortPoints={this.sortPoints}
-          title={this.state.sort || 'Sort By'}
+          config={this.props.config}
+          sortPoints={this.selectOption}
+          title={this.props.title}
         />
       ) : (
         <div>
           <span className="anchor keyTitle">Sort By Type:</span>
 
-          {Object.keys(CourtTypeConfig).map(court => {
+          {Object.keys(this.props.config).map(court => {
             const {
               className,
               id,
@@ -52,16 +54,16 @@ export default class SortByButtons extends Component<Props, State> {
               text,
               textClassName,
               url,
-            }: TennisEntity = CourtTypeConfig[court];
+            }: TennisEntity = this.props.config[court];
             return (
               <CourtTypeTile
                 className={`${className} ${
-                  this.state.sort === id ? 'active' : ''
+                  this.state.selection === id ? 'active' : ''
                 }`}
                 id={id}
                 imageNode={imageNode}
                 key={id}
-                sortPoints={this.sortPoints}
+                sortPoints={this.selectOption}
                 text={text}
                 textClassName={textClassName}
                 url={url}
