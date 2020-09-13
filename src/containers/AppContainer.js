@@ -23,6 +23,8 @@ import CourtTypeConfig from '../constants/courtTypeConfig';
 
 import { isMobile } from '../utils/index';
 
+import '../css/home.css';
+
 type Props = {|
   getCourts: () => (dispatch: ReduxDispatch) => any, // should be typed as a promise
   selectPoint: (index: number) => { type: string, payload: number },
@@ -104,7 +106,4 @@ const mapStateToProps = ({
   styles,
 });
 
-export default connect(
-  mapStateToProps,
-  courtActions
-)(AppContainer);
+export default connect(mapStateToProps, courtActions)(AppContainer);

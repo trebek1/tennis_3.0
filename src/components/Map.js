@@ -4,6 +4,8 @@ import * as React from 'react';
 import courtStyles from '../constants/courtStyles';
 import Pins from '../constants/pins';
 
+import css from '../css/home.css';
+
 import type { Court, CourtStyle } from '../types';
 
 const MAX_POINTS = 119;
@@ -71,7 +73,7 @@ class Map extends React.Component<Props, State> {
 
   getPoints = (): Array<Court> =>
     // $FlowFixMe
-    this.props.courts.map(court => new google.maps.LatLng(court.x, court.y));
+    this.props.courts.map((court) => new google.maps.LatLng(court.x, court.y));
 
   getPinColor = ({ type }: Court): string => {
     switch (type) {
@@ -181,7 +183,7 @@ class Map extends React.Component<Props, State> {
   fitMapToPoints = (markers: Array<Marker>, map: MapType): void => {
     // $FlowFixMe
     const bounds = new google.maps.LatLngBounds();
-    markers.forEach(marker => bounds.extend(marker.getPosition()));
+    markers.forEach((marker) => bounds.extend(marker.getPosition()));
     if (this.state.map != null) {
       map.fitBounds(bounds);
     }
@@ -212,7 +214,7 @@ class Map extends React.Component<Props, State> {
 
       const points = this.getPoints();
       let markers = [];
-      this.state.markers.forEach(marker => marker.setMap(null));
+      this.state.markers.forEach((marker) => marker.setMap(null));
       points.forEach((point, idx) => {
         const marker = this.createMarker(map, points, idx);
         this.addMarkerToMap(idx, marker);

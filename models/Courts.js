@@ -1,6 +1,5 @@
-'use strict';
-
 import mongoose from 'mongoose';
+
 const courtsSchema = mongoose.Schema({
   sfcourts: Array,
 });

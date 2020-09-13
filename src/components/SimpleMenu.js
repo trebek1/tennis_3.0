@@ -8,11 +8,11 @@ class SimpleMenu extends React.Component {
     anchorEl: null,
   };
 
-  handleClick = event => {
+  handleClick = (event) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = sort => {
+  handleClose = (sort) => {
     this.props.sortPoints(sort);
     this.setState({ anchorEl: null });
   };
@@ -36,7 +36,7 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          {Object.keys(this.props.config).map(court => {
+          {Object.keys(this.props.config).map((court) => {
             const { id, text } = this.props.config[court];
             return (
               <MenuItem key={id} onClick={() => this.handleClose(id)}>

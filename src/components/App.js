@@ -9,6 +9,8 @@ import AppContainer from '../containers/AppContainer';
 import Footer from './Footer';
 import reducers from '../reducers';
 
+import '../css/home.css';
+
 const store = createStore(reducers, applyMiddleware(thunk));
 const App = () => (
   <Provider store={store}>

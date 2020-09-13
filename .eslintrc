@@ -6,6 +6,8 @@
     "arrow-parens": 0,
     "comma-dangle": 0,
     "curly": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
     "function-paren-newline": 0,
     "import/no-named-as-default": 0,
     "jsx-a11y/click-events-have-key-events": 0,
